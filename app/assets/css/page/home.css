@@ -1,15 +1,12 @@
 .hero{
     min-height: 901px;
-    background: linear-gradient(90deg,blue,green);
+    background: linear-gradient(90deg,#007bff,#04d9b2);
 }
 
 img.banks-img{
-    min-width: 95.0785px;
-    min-height: 93.2143px;
+    width: 95.0785px;
+    height: 93.2143px;
 }
 
-.col,
-.row{
-    padding: 0 !important;
-}
+
 
