@@ -1,0 +1,23 @@
+.header-social-icons i.icon-instagram{
+    color: rgb(19, 199, 151);   
+}
+
+.header-social-icons i.icon-facebook{
+    color: white;
+    background: rgb(19, 199, 151);
+    border-radius: 99px;
+}
+
+a.nav-top-link {
+    font-weight: bold;
+    color: black;
+    font-size: 1rem !important;
+}
+
+.footer-text.inline-block.small-block {
+    color: rgb(0, 186, 241);
+}
+
+.copyright-footer {
+    color: black;
+}
