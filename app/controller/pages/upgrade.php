@@ -11,7 +11,7 @@ add_action('init', function(){
                 'post_type' => 'page',
                 'post_status' => 'publish',
                 'meta_input' => [
-                    '_obah-page' => sanitize_title($page)
+                    OBAH_PAGE_META_KEY => sanitize_title($page)
                 ]
             ]);
         }
