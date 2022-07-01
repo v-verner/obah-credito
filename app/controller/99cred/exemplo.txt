@@ -13,7 +13,7 @@ $simulation->set('prazo', '360');
 
 // Valores opcionais usados apenas na primeira simulação
 $simulation->set('nome', 'Loripsum');
-$simulation->set('fone', '549963713411');
+$simulation->set('fone', preg_replace('/\D/', '', '549963713411'));
 $simulation->set('email', 'a@a.com');
 
 $result = $simulation->simulate();

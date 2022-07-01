@@ -54,6 +54,11 @@ class Simulation
         $this->EC = $this->env->getApiKey();
     }
 
+    public function get(string $prop)
+    {
+        return isset($this->$prop) ? $this->$prop : null;
+    }
+
     public function set(string $prop, $value)
     {
         foreach (self::SANITIZE_SCHEMA as $cb => $props) : 

@@ -7,3 +7,4 @@ define('OBAH_PAGES', [
 ]);
 
 define('OBAH_PAGE_META_KEY', '_obah-page'); 
+define('OBAH_99_META_KEY_PREFIX', '_obah_99_api-'); 
