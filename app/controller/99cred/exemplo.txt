@@ -1,0 +1,15 @@
+// $simulation = new Cred99\Simulation();
+// $simulation->set('uf', '1');
+// $simulation->set('perfil', '1');
+// $simulation->set('condicao', '1');
+
+// $simulation->set('idade', '26');
+// $simulation->set('valor', '500000');
+// $simulation->set('valor_financ', '300000');
+// $simulation->set('prazo', '360');
+
+// $simulation->set('nome', 'Loripsum');
+// $simulation->set('fone', '549963713411');
+// $simulation->set('email', 'a@a.com');
+
+// $result = $simulation->simulate();

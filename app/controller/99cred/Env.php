@@ -2,6 +2,7 @@
 
 namespace Cred99;
 
+use DateTime;
 use stdClass;
 
 defined('ABSPATH') || exit();
@@ -11,10 +12,16 @@ class Env
     private $apiEnv;
     private $apiKey;
     private $apiAvailableBanks;
+
     private $minAge;
     private $maxAge;
+
     private $minDuration;
     private $maxDuration;
+
+    private $minAmount;
+    private $maxAmount;
+    private $minInitialPaymentRatio;
 
     public function __construct()
     {
@@ -25,10 +32,27 @@ class Env
         $this->minDuration = (int) $this->getOption('min_duration');
         $this->maxDuration = (int) $this->getOption('max_duration');
 
+        $this->minAmount = (int) $this->getOption('max_duration');
+        $this->maxAmount = (int) $this->getOption('max_duration');
+        $this->minInitialPaymentRatio = $this->getOption('min_initial_payment') / 100;
+
         $banks = $this->getOption('available_banks');
         $banks = array_map('sanitize_title', explode(',', $banks));
 
         $this->apiAvailableBanks = $banks;
+    }
+
+    public function toPublicArray(): array
+    {
+        $props = get_object_vars( $this );
+
+        unset(
+            $props['apiEnv'],
+            $props['apiKey'],
+            $props['apiAvailableBanks'],
+        );
+
+        return $props;
     }
 
     public function isInSandboxMode(): bool
@@ -53,6 +77,20 @@ class Env
 
         return $isAvailable;
 
+    }
+
+    public function getMinimumBirthdayDate(): DateTime
+    {
+        $date = new DateTime( current_time('Y-m-d') );
+        $date->modify('- '. $this->getMinimumAgeForSimulation() .' years');
+        return $date;
+    }
+
+    public function getMaximumBirthdayDate(): DateTime
+    {
+        $date = new DateTime( current_time('Y-m-d') );
+        $date->modify('- '. $this->getMaximumAgeForSimulation() .' years');
+        return $date;
     }
 
     public function getApiEnv(): ?string
@@ -83,6 +121,21 @@ class Env
     public function getMaximumSimulationDuration(): int
     {
         return $this->maxDuration;
+    }
+
+    public function getMinimumSimulationAmount(): int
+    {
+        return $this->minAmount;
+    }
+
+    public function getMaximumSimulationAmount(): int
+    {
+        return $this->maxAmount;
+    }
+
+    public function getMinimumSimulationInitialPaymentRatio(): float
+    {
+        return $this->minInitialPaymentRatio;
     }
 
     public function getApiAvailableBanks(): ?array

@@ -1,11 +1,12 @@
 <?php defined('ABSPATH') || exit('No direct script access allowed');
 
+$env    = new Cred99\Env();
+
 $assets = VVerner\Assets::getInstance();
 $assets->registerCss('main');
 
 $assets->registerJs('app'); 
 $assets->localizeJs('app', [
-    'sec'    => VVerner\AjaxAPI::getInstance()->getGlobalNonce(),
-    'action' => VVerner\AjaxAPI::getInstance()->getGlobalAction(),
-    'url'    => VVerner\AjaxAPI::getInstance()->getRequestUrl()
+    'url'       => VVerner\AjaxAPI::getInstance()->getRequestUrl(),
+    'simulator' => $env->toPublicArray()
 ]); 
