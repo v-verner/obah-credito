@@ -11,22 +11,24 @@ class Env
     private $apiEnv;
     private $apiKey;
     private $apiAvailableBanks;
+    private $minAge;
+    private $maxAge;
+    private $minDuration;
+    private $maxDuration;
 
     public function __construct()
     {
-        if (function_exists('get_field')) : 
-            $this->apiEnv = get_field('99cred_api_env', 'option');
-            $this->apiKey = get_field('99cred_api_key', 'option');
+        $this->apiEnv = $this->getOption('env');
+        $this->apiKey = $this->getOption('key');
+        $this->minAge = (int) $this->getOption('min_age');
+        $this->maxAge = (int) $this->getOption('max_age');
+        $this->minDuration = (int) $this->getOption('min_duration');
+        $this->maxDuration = (int) $this->getOption('max_duration');
 
-            $banks = get_field('99cred_api_available_banks', 'option') ?? '';
-            $banks = array_map('sanitize_title', explode(',', $banks));
+        $banks = $this->getOption('available_banks');
+        $banks = array_map('sanitize_title', explode(',', $banks));
 
-            $this->apiAvailableBanks = $banks;
-        else :
-            $this->apiEnv = null;
-            $this->apiKey = null;
-            $this->apiAvailableBanks = null;
-        endif;
+        $this->apiAvailableBanks = $banks;
     }
 
     public function isInSandboxMode(): bool
@@ -61,6 +63,26 @@ class Env
     public function getApiKey(): ?string
     {
         return $this->apiKey;
+    }
+
+    public function getMinimumAgeForSimulation(): int
+    {
+        return $this->minAge;
+    }
+
+    public function getMaximumAgeForSimulation(): int
+    {
+        return $this->maxAge;
+    }
+
+    public function getMinimumSimulationDuration(): int
+    {
+        return $this->minDuration;
+    }
+
+    public function getMaximumSimulationDuration(): int
+    {
+        return $this->maxDuration;
     }
 
     public function getApiAvailableBanks(): ?array
@@ -123,30 +145,9 @@ class Env
         ];
     }
 
-    public function parseApiResult( stdClass $result ): ?stdClass
+    private function getOption(string $prop)
     {
-        if (!$this->isAvailableBank( $result->Titulo )) : 
-            return null;
-        endif;
-
-        $result->Taxa_Nominal = isset($result->Taxa_Nominal) ? $this->parseToFloat( $result->Taxa_Nominal ) : 0;
-        $result->CET = isset($result->CET) ? $this->parseToFloat( $result->CET ) : 0;
-        $result->Valor_Primeira_Parcela = isset($result->Valor_Primeira_Parcela) ? $this->parseToFloat( $result->Valor_Primeira_Parcela ) : 0;
-        $result->Valor_Ultima_Parcela = isset($result->Valor_Ultima_Parcela) ? $this->parseToFloat( $result->Valor_Ultima_Parcela ) : 0;
-        $result->Valor_Maior_Parcela = isset($result->Valor_Maior_Parcela) ? $this->parseToFloat( $result->Valor_Maior_Parcela ) : 0;
-        $result->Valor_Renda_Minima = isset($result->Valor_Renda_Minima) ? $this->parseToFloat( $result->Valor_Renda_Minima ) : 0;
-        $result->Taxa_Incial = isset($result->Taxa_Incial) ? $this->parseToFloat( $result->Taxa_Incial ) : 0;
-        $result->Tarifa_Mensal = isset($result->Tarifa_Mensal) ? $this->parseToFloat( $result->Tarifa_Mensal ) : 0;
-        $result->id_simulacao = isset($result->id_simulacao) ? (int) $result->id_simulacao : 0;
-
-        return $result;
-    }
-
-    private function parseToFloat( string $str ): float
-    {
-        $str = str_replace('.', '', $str);
-        $str = str_replace(',', '.', $str);
-        return (float) $str;
+        return function_exists('get_field') ? get_field('99cred_api_' . $prop, 'option') : null;
     }
 
     private function getSimpleObject(int $id, string $name): stdClass
