@@ -32,8 +32,8 @@ class Env
         $this->minDuration = (int) $this->getOption('min_duration');
         $this->maxDuration = (int) $this->getOption('max_duration');
 
-        $this->minAmount = (int) $this->getOption('max_duration');
-        $this->maxAmount = (int) $this->getOption('max_duration');
+        $this->minAmount = (int) $this->getOption('min_amount');
+        $this->maxAmount = (int) $this->getOption('max_amount');
         $this->minInitialPaymentRatio = $this->getOption('min_initial_payment') / 100;
 
         $banks = $this->getOption('available_banks');

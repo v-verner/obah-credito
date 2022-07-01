@@ -1,15 +1,24 @@
-// $simulation = new Cred99\Simulation();
-// $simulation->set('uf', '1');
-// $simulation->set('perfil', '1');
-// $simulation->set('condicao', '1');
+$simulation = new Cred99\Simulation();
 
-// $simulation->set('idade', '26');
-// $simulation->set('valor', '500000');
-// $simulation->set('valor_financ', '300000');
-// $simulation->set('prazo', '360');
+// Valores obrigatórios conforme retornos das funções de apoio da class Env
+$simulation->set('uf', '1');
+$simulation->set('perfil', '1');
+$simulation->set('condicao', '1');
 
-// $simulation->set('nome', 'Loripsum');
-// $simulation->set('fone', '549963713411');
-// $simulation->set('email', 'a@a.com');
+// Valores obrigatórios vindos da simulação
+$simulation->set('idade', '26');
+$simulation->set('valor', '500000');
+$simulation->set('valor_financ', '300000');
+$simulation->set('prazo', '360');
 
-// $result = $simulation->simulate();
+// Valores opcionais usados apenas na primeira simulação
+$simulation->set('nome', 'Loripsum');
+$simulation->set('fone', '549963713411');
+$simulation->set('email', 'a@a.com');
+
+$result = $simulation->simulate();
+
+// Caso seja erro, virá a mensagem de erro.
+if (is_wp_error($result)) : 
+    $result->get_error_message();
+endif;

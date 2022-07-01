@@ -3,7 +3,7 @@
 namespace Cred99;
 
 use Exception;
-use stdClass;
+use WP_Error;
 
 defined('ABSPATH') || exit();
 
@@ -65,24 +65,80 @@ class Simulation
         $this->$prop = $value;
     }
 
-    public function simulate(): array
+    public function simulate()
     {
-        $this->validateRequiredProperties();
-        return $this->api->getSimulationResult( $this->toArray() );
+        $validation = $this->validateRequiredProperties();
+
+        if (is_wp_error($validation)) : 
+            return $validation;
+        endif;
+
+        $validation = $this->validateBusinessLogic();
+
+        if (is_wp_error($validation)) : 
+            return $validation;
+        endif;
+
+        $results = $this->api->getSimulationResult( $this->toArray() );
+
+        return $results ? $results : new WP_Error(-1, 'Nenhum resultado localizado');
     }
 
-    private function validateRequiredProperties(): bool
+    private function validateRequiredProperties(): ?WP_Error
     {
         $props = array_filter($this->toArray());
         $props = array_keys($props);
         $missing = array_diff( self::REQUIRED_PROPERTIES, $props );
 
         if ($missing) : 
-            throw new Exception('Missing required props ' . implode(', ', $missing));
-            exit;
+            return new WP_Error(-2, 'Faltando informações para simulação', $missing);
         endif;
 
-        return true;
+        return null;
+    }
+
+    private function validateBusinessLogic(): ?WP_Error
+    {
+        if (!$this->validateAmount()) :
+            return new WP_Error(-3, 'Valor financiado incompatível com simulação');
+        endif;
+
+        if (!$this->validateInitialPayment()) :
+            return new WP_Error(-4, 'Entrada incompatível com simulação');
+        endif;
+
+        if (!$this->validateDuration()) :
+            return new WP_Error(-5, 'Prazo incompatível com simulação');
+        endif;
+
+        if (!$this->validateAge()) :
+            return new WP_Error(-6, 'Idade incompatível com simulação');
+        endif;
+
+        return null;
+    }
+
+    private function validateAge(): bool
+    {
+        return $this->idade >= $this->env->getMinimumAgeForSimulation() && $this->idade <= $this->env->getMaximumAgeForSimulation();
+    }
+    
+    private function validateAmount(): bool
+    {
+        return  $this->valor_financ >= $this->env->getMinimumSimulationAmount() && 
+                $this->valor_financ <= $this->env->getMaximumSimulationAmount() && 
+                $this->valor > $this->valor_financ;
+    }
+    
+    private function validateInitialPayment(): bool
+    {
+        $ratio = $this->valor_financ / $this->valor;
+        return $ratio > $this->env->getMinimumSimulationInitialPaymentRatio();
+    }
+
+    private function validateDuration(): bool
+    {
+        return $this->prazo >= $this->env->getMinimumSimulationDuration() && $this->idade <= $this->env->getMaximumSimulationDuration();
     }
 
     private function toArray(): array
