@@ -144,7 +144,7 @@ class Env
 
     private function parseToFloat( string $str ): float
     {
-        $str = str_replace('.', ',', $str);
+        $str = str_replace('.', '', $str);
         $str = str_replace(',', '.', $str);
         return (float) $str;
     }
