@@ -1,0 +1,22 @@
+.hero{
+    min-height: 901px;
+    background: linear-gradient(180deg,#007bff,#04d9b2);
+}
+
+.hero h2{
+    text-align: center;
+}
+
+.form-row h2{
+    text-align: center;
+    color: black;
+}
+
+.form-col{
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+}
+
+
+
