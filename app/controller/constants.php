@@ -13,7 +13,7 @@ define('OBAH_99_META_KEY_PREFIX', '_obah_99_api-');
 
 // BITRIX
 define('C_REST_IGNORE_SSL',true);
-define('C_REST_BLOCK_LOG',true);
+define('C_REST_BLOCK_LOG', true);
 define('C_REST_WEB_HOOK_URL', get_option('options_bitrix24_api_webhook_url'));
 
 // CAMPOS SIMULAÇÃO
