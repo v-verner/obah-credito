@@ -7,9 +7,38 @@
     text-align: center;
 }
 
+.hero .only-text h2{
+    text-align: center;
+    padding-right: 125px;
+}
+
+.form-row input,
+.form-row select{
+    background-color: rgb(202, 225, 245);
+    min-height: 52px;
+    border-radius: 5px;
+    border: none;
+    color: black;
+    padding-left: 20px;  
+    font-size: 12.5px;  
+}
+
+.form-row input::placeholder{
+    color: black;
+}
+
 .form-row h2{
     text-align: center;
     color: black;
+}
+
+.form-row .col span,
+.form-row button{
+    color:black;
+}
+
+.form-row .col{
+    padding-bottom: 10px;
 }
 
 .form-col{
