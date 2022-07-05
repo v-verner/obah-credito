@@ -1,0 +1,22 @@
+.hero{
+    min-height: 901px;
+    background: linear-gradient(180deg,#007bff,#04d9b2);
+}
+
+.sim-col{
+    background: white;
+    border-radius: 20px;
+    padding-top: 30px !important;
+    padding-bottom: 30px !important;
+}
+
+.sim-col h2{
+    color: black;
+    text-align: end;
+}
+.sim-col p{
+    color: #04d9b2;
+    text-align: end;
+}
+
+
