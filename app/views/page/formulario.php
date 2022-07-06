@@ -1,3 +1,4 @@
+<?php $env = new Cred99\Env(); ?>
 <section class="section dark hero">
     <div class="col large-12">  
         <div class="row align-bottom align-left">
@@ -13,22 +14,22 @@
                         <div class="row"> 
                             <?php $redStar = '* ' ?>
                             <div class="col large-6">
-                                <input type="text" class="uppercase red-star" placeholder='nome completo <?= $redStar ?>'>
+                                <input type="text" class="uppercase red-star" placeholder='nome completo <?= $redStar ?>' required>
                             </div>
                             <div class="col large-6">
                                 <input type="text" class="uppercase" placeholder='data de nascimento <?= $redStar ?>' onfocus="(this.type='date')" onblur="(this.type='text')">   
                             </div>
                             <div class="col large-4">
-                                <input type="number" class="uppercase" placeholder='cpf <?= $redStar ?>' pattern="[0-9]{3}-[0-9]{3}-[0-9]{3}-[0-9]{2}">   
+                                <input type="text" class="uppercase mask-cpf" placeholder='cpf <?= $redStar ?>' inputmode="numeric">   
                             </div>
                             <div class="col large-4">
-                                <input type="tel" class="uppercase" placeholder='telefone <?= $redStar ?> +55' pattern="[0-9]{2}-[0-9]{5}-[0-9]{4}">
+                                <input type="text" class="uppercase mask-phone" placeholder='telefone <?= $redStar ?> +55' inputmode="numeric">
                             </div>
                             <div class="col large-4">
                                 <input type="email" class="uppercase" placeholder='e-mail <?= $redStar ?>'>
                             </div>
                             <div class="col large-6">
-                                <input type="text" class="uppercase" placeholder='informe sua renda bruta' onfocus="(this.type='number')" onblur="(this.type='text')">
+                                <input type="number" class="uppercase" placeholder='informe sua renda bruta'>
                             </div>
                             <div class="col large-6">
                                 <select name="RendaConjunta" class="uppercase">
@@ -39,10 +40,11 @@
                             </div>
                             <?php $second = '(2º Proponente)'?>
                             <div class="col large-6">
-                                <input type="text" class="captalize" placeholder='nome completo <?= $second ?>'>
+                                <label for="xxx" class="sr-only hidden" aria-label="xxxx">Nome </label>
+                                <input type="text" class="uppercase" id="xxxx" placeholder='nome completo <?= $second ?>'>
                             </div>
                             <div class="col large-6">
-                                <input type="text" class="captalize" placeholder='data de nascimento <?= $second ?>' onfocus="(this.type='date')" onblur="(this.type='text')">
+                                <input type="text" class="uppercase" placeholder='data de nascimento <?= $second ?>' onfocus="(this.type='date')" onblur="(this.type='text')">
                             </div>
                             <div class="col large-4">
                                 <input type="number" class="uppercase" placeholder='cpf' pattern="[0-9]{3}-[0-9]{3}-[0-9]{3}-[0-9]{2}">
@@ -64,6 +66,8 @@
                                 </select>
                             </div>
                             <div class="col large-4">
+                                <!-- getMinimumSimulationAmount -->
+                                <!-- getMaximumSimulationAmount -->
                                 <input type="number" class="uppercase" placeholder='valor do imóvel <?= $redStar ?>'>
                             </div>
                             <div class="col large-4">
@@ -77,7 +81,7 @@
                             </div>
                             <div class="col large-6">
                                 <input type="checkbox" aria-invalid="false">
-                                    <span>Ao clicar no botão de envio, concordo com os termos do site. <?= $redStar ?></span>
+                                <label>Ao clicar no botão de envio, concordo com os termos do site. <?= $redStar ?></label>
                             </div>
                             <div class="col large-6">
                                 <select name="Localizacao" class="captalize">
@@ -112,19 +116,17 @@
                                 </select>
                             </div>
                             <div class="col large-6">
-                                <input type="checkbox">
-                                <span>Aceitar LGPD <?= $redStar ?></span>
+                                <input type="checkbox" id="aceito-lgpd" value="1" required>
+                                <label for="aceito-lgpd">Aceitar LGPD <?= $redStar ?></label>
                             </div>
                             <div class="col large-4">
-                                <select name="Prazo" class="uppercase">
-                                    <option value="" disabled selected>prazo</option>
-                                    <?php for($months = 60; $months <= 320; $months++) :?>
-                                        <option value=""><?=$months?></option>
-                                    <?php endfor?>                      
-                                </select>
+                                <input type="number" placeholder="Prazo" min="<?= $env->getMinimumSimulationDuration() ?>" max="<?= $env->getMaximumSimulationDuration() ?>" step="1">
                             </div>
                             <div class="col large-8" style="text-align: end;">
-                                <input type="submit" class="submit uppercase" value="próximo">
+                                <button class="button mb-0 mr-0">
+                                    <span>Próximo</span>
+                                    <i class="icon-angle-right"></i>
+                                </button>
                             </div>
                         </div>
                     </form>
@@ -133,3 +135,7 @@
         </div>
 </div>
 </section>
+
+.form-row input[type="checkbox"] {
+    min-height: unset;
+}
