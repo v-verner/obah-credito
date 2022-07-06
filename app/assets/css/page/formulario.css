@@ -1,6 +1,10 @@
 .hero{
     min-height: 901px;
     background: linear-gradient(180deg,#007bff,#04d9b2);
+    background-image: url("../../img/bg.jpg");
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    background-position: 50% 50%;
 }
 
 .hero h2{
@@ -37,19 +41,19 @@
     min-height: unset;
 }
 
-.form-col{
+.form-row .form-col{
     background: white;
     border-radius: 20px;
     padding: 30px;
 }
 
 
-.label-float{
+.form-row .label-float{
     position: relative;
   
 }
   
-.label-float input{
+.form-row .label-float input{
     border: 0; 
     outline: none;
     font-size: 12.5px;
@@ -61,7 +65,7 @@
     border-radius: 5px;
 }
   
-.label-float label{
+.form-row .label-float label{
     padding-top: 6px;
     font-size: 12.5px;
     color: rgba(0, 0, 0, 0.5);
@@ -76,29 +80,29 @@
     padding-left:30px;
 }
     
-.label-float input:required:invalid + label::after{
+.form-row .label-float input:required:invalid + label::after{
     content: '*';
       color:red;
 }
 
-.label-float input:focus + label,
-.label-float input:not(:placeholder-shown) + label{
+.form-row .label-float input:focus + label,
+.form-row .label-float input:not(:placeholder-shown) + label{
     font-size: 10px;
     margin-top: 0;
     color: #3951b2;
 }
 
-button.button.mb-0.mr-0 {
+.form-row button.button.mb-0.mr-0 {
     background: none;
     border: none;
     color: black;
 }
 
-button:hover{
+.form-row button:hover{
     box-shadow: none !important;
 }
 
-i.icon-angle-right {
+.form-row i.icon-angle-right {
     color: white;
     background: #04d9b2;
     border-radius: 100px;

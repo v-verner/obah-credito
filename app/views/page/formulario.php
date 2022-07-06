@@ -32,7 +32,7 @@
                         <label for="email" class="uppercase">e-mail </label>
                     </div>
                     <div class="col label-float large-6">
-                        <input type="number" id="renda" class="uppercase mask-money" placeholder=' ' inputmode="numeric">
+                        <input type="text" id="renda" class="uppercase mask-money" placeholder=' ' inputmode="numeric">
                         <label for="renda" class="uppercase">informe sua renda bruta </label>
                     </div>
                     <div class="col large-6">
@@ -73,11 +73,11 @@
                         </select>
                     </div>
                     <div class="col label-float large-4">
-                        <input type="number" id="valorImovel" class="mask-money" min="<?= $env->getMinimumSimulationAmount() ?>" max="<?= $env->getMaximumSimulationAmount() ?>" class="uppercase" placeholder=' ' required>
+                        <input type="text" id="valorImovel" class="mask-money" min="<?= $env->getMinimumSimulationAmount() ?>" max="<?= $env->getMaximumSimulationAmount() ?>" class="uppercase" placeholder=' ' required>
                         <label for="valorImovel" class="uppercase">valor do imóvel </label>
                     </div>
                     <div class="col label-float large-4">
-                        <input type="number" id="entrada" class="mask-money" placeholder=' '  onfocus="(this.type='number')" onblur="(this.type='text')">
+                        <input type="text" id="entrada" class="mask-money" placeholder=' '  onfocus="(this.type='number')" onblur="(this.type='text')">
                         <label for="entrada" class="uppercase">valor de entrada + fgts <span class="lowercase">(Mínimo de 10% do valor do imóvel)</span></label>
                     </div>
                     <div class="col label-float large-6">

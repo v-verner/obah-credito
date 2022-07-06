@@ -1,6 +1,6 @@
 <section class="section dark hero">
     <div class="col large-12">  
-        <div class="row row-large">
+        <div class="row row-large align-middle sim-row">
             <div class="col large-3">
                 <p>Analise qual a diferença das taxas dos bancos</p>
                 <p>Indentifique a menor parcela</p>
@@ -21,10 +21,17 @@
 
                     </div>
                     <div class="col close-col large-6">
-                        <h3 class="uppercase">fechar análise</h3>
+                        <button class="button mb-0 pb-0">
+                            <i class="icon-angle-left"></i>
+                            <i class="fa fa-xmark"></i>
+                           <span>fechar análise</span>
+                        </button>
                     </div>
                     <div class="col banks-col large-6">
-                        <h3 class="uppercase">selecione o banco para seguir com análise de credito</h3>
+                        <button class="button mb-0 pb-0">
+                            <span>selecione o banco para seguir com análise de credito</span>
+                            <i class="icon-angle-right"></i>
+                        </button>
                     </div>
                 </div>
             </div>    

@@ -19,4 +19,24 @@
     text-align: end;
 }
 
+.sim-row button.button.mb-0.pb-0 {
+    background: none;
+    border: none;
+    color: black;
+}
+
+.sim-row button:hover{
+    box-shadow: none !important;
+}
+
+.sim-row i.icon-angle-right {
+    color: white;
+    background: #04d9b2;
+    border-radius: 100px;
+    padding-right: 15px;
+    padding-left: 15px;
+    padding-top: 9px;
+    padding-bottom: 9px;
+}
+
 
