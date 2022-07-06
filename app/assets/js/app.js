@@ -13,3 +13,19 @@ const OBAH_SIMULATOR = {
     getMinimumInitialPayment: totalAmount => totalAmount * OBAH_SIMULATOR._defs.minInitialPaymentRatio,
     hasAgeInRange: age => age >= OBAH_SIMULATOR._defs.minAge && age <= OBAH_SIMULATOR._defs.maxAge
 }
+
+
+
+jQuery(function($){
+
+    $('.mask-cpf').mask('000.000.000-00', {reverse: false});
+
+    $('.mask-phone').mask('(00) 0 0000-0000');
+
+    $('.money').mask('000.000.000.000.000,00', {reverse: true});
+})
+
+
+
+   
+ 
