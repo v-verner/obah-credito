@@ -45,7 +45,7 @@ class Assets
 
     public function getImageFileUrl(string $filename): string
     {
-        return $this->getUrl('img', $filename);
+        return $this->baseUrl . 'img/' . $filename;
     }
 
     public function getCssFileUrl(string $filename): string
