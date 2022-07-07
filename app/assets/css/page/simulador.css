@@ -1,6 +1,6 @@
 .hero{
     min-height: 901px;
-    background: linear-gradient(180deg,#007bff,#04d9b2);
+    background: linear-gradient(180deg,rgba(17, 165, 208),rgba(78, 214, 196) );
 }
 
 .sim-col{
@@ -8,15 +8,27 @@
     border-radius: 20px;
     padding-top: 30px !important;
     padding-bottom: 30px !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
 }
 
-.sim-col h2{
+.sim-col h3{
     color: black;
-    text-align: end;
+    text-align: center;
 }
-.sim-col p{
+.sim-col .edit{
     color: #04d9b2;
     text-align: end;
+    padding-right: 25px;
+    margin-top: -30px;
+}
+
+.sim-row i.icon-checkmark {
+    background-color: white;
+color: rgb(19, 199, 151);
+font-size: 15px;
+padding: 10px;
+border-radius: 99px;
 }
 
 .sim-row button.button.mb-0.pb-0 {
@@ -32,11 +44,44 @@
 .sim-row i.icon-angle-right {
     color: white;
     background: #04d9b2;
+}
+
+.sim-row i.icon-angle-left {
+    color: white;
+    background: red;
+}
+
+.sim-row i.icon-angle-left,
+.sim-row i.icon-angle-right{
     border-radius: 100px;
     padding-right: 15px;
     padding-left: 15px;
     padding-top: 9px;
     padding-bottom: 9px;
+}
+
+.sim-col tr:nth-child(even) {
+    background: rgb(247, 247, 247);
+}
+
+.sim-col tr:nth-child(odd) {
+    background: rgb(229, 229, 229);
+}
+
+.sim-col td:nth-child(n + 2) {
+    border-right: 1px solid rgb(196, 196, 196);;
+}
+
+.sim-col .table-title{
+    color: black;
+}
+
+.sim-col td {    
+    max-width: 130px;
+}
+
+.sim-col input[type="radio"] {
+    margin: 0;
 }
 
 

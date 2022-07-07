@@ -1,19 +1,13 @@
 .hero{
-    min-height: 901px;
-    background: linear-gradient(180deg,#007bff,#04d9b2);
-    background-image: url("../../img/bg.jpg");
+    min-height: 901px; 
+    background-image: linear-gradient(180deg,rgba(17, 165, 208, 0.8),rgba(78, 214, 196, 0.8)), url("../../img/bg.jpg");
     background-size: cover !important;
     background-repeat: no-repeat !important;
-    background-position: 50% 50%;
+    background-position: 0 0;
 }
 
 .hero h2{
     text-align: center;
-}
-
-.hero .only-text h2{
-    text-align: center; 
-    padding-right: 125px;
 }
 
 .form-row input,
@@ -41,7 +35,7 @@
     min-height: unset;
 }
 
-.form-row .form-col{
+.form-col{
     background: white;
     border-radius: 20px;
     padding: 30px;
