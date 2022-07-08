@@ -86,8 +86,8 @@
                             </select>
                         </div>
                         <div class="col label-float large-6">
-                            <select name="" id="">
-                                <option value="" disbled selected>CONDIÇÃO DO IMÓVEL</option>
+                            <select name="property_condition" id="condition">
+                                <option value="condition" disbled selected>CONDIÇÃO DO IMÓVEL</option>
                                 <?php $imovelCondição = $env->getPropertyConditions() ?>
                                 <?php foreach($imovelCondição as $condição) :?>
                                     <option value=""><?= $condição->name ?></option>
