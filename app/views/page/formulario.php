@@ -76,23 +76,32 @@
                                 placeholder=' '>
                             <label for="segEmail" class="uppercase">e-mail</label>
                         </div>
-                        <div class="col label-float large-4">
+                        <div class="col label-float large-6">
                             <select name="property_type">
                                 <option value="" disabled selected>TIPO DE IMÓVEL</option>
                                 <?php $imovelTipos = $env->getUsageProfile() ?>
                                 <?php foreach($imovelTipos as $imovelTipo) :?>
-                                <option value=""><?= $imovelTipo->name ?></option>
+                                    <option value=""><?= $imovelTipo->name ?></option>
                                 <?php endforeach; ?>
                             </select>
                         </div>
-                        <div class="col label-float large-4">
+                        <div class="col label-float large-6">
+                            <select name="" id="">
+                                <option value="" disbled selected>CONDIÇÃO DO IMÓVEL</option>
+                                <?php $imovelCondição = $env->getPropertyCondition() ?>
+                                <?php foreach($imovelCondição as $condição) :?>
+                                    <option value=""><?= $condição->name ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                        <div class="col label-float large-6">
                             <input type="text" name="property_price" id="valorImovel" class="mask-money"
                                 min="<?= $env->getMinimumSimulationAmount() ?>"
                                 max="<?= $env->getMaximumSimulationAmount() ?>" class="uppercase" placeholder=' '
                                 required>
                             <label for="valorImovel" class="uppercase">valor do imóvel </label>
                         </div>
-                        <div class="col label-float large-4">
+                        <div class="col label-float large-6">
                             <input type="text" name="initial_payment" id="entrada" class="mask-money" placeholder=' '
                                 onfocus="(this.type='number')" onblur="(this.type='text')">
                             <label for="entrada" class="uppercase">valor de entrada + fgts <span
