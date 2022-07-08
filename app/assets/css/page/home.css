@@ -63,4 +63,8 @@
         padding: 5px;
     }
 
+    .home.hero{
+        background-position: 25%;
+    }
+
 }

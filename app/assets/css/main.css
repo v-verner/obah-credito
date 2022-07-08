@@ -4,6 +4,10 @@ img.header_logo.header-logo {
     min-height: 79px;
 }
 
+i.icon-menu {
+    color: rgb(4, 198, 167);
+}
+
 .header-social-icons i.icon-instagram{
     color: rgb(19, 199, 151); 
     font-size: 23px;

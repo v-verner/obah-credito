@@ -4,13 +4,13 @@
         <div class="col large-12">
             <div class="row align-bottom">
                 <div class="col dark text-center  large-3 small-12">
-                    <h2 class="thin-font">Inclua seus dados e obtenha</h2>
-                    <h2 class="thin-font">a simulação dos bancos</h2>
+                    <h3 class="thin-font">Inclua seus dados e obtenha</h3>
+                    <h3 class="thin-font">a simulação dos bancos</h3>
                 </div>
                 <div class="col form-col large-9">
                     <h2 class="uppercase mb">precisamos de alguns dados para fazer sua simulação personalizada</h2>
 
-                    <form class="align-middle form-row row-small row">
+                    <form id="create-simulation-form" class="align-middle form-row row-small row">
 
                         <div class="col label-float large-6">
                             <input type="text" name="full_name" id="nomeCompleto" class="uppercase" placeholder=" "
@@ -88,7 +88,7 @@
                         <div class="col label-float large-6">
                             <select name="" id="">
                                 <option value="" disbled selected>CONDIÇÃO DO IMÓVEL</option>
-                                <?php $imovelCondição = $env->getPropertyCondition() ?>
+                                <?php $imovelCondição = $env->getPropertyConditions() ?>
                                 <?php foreach($imovelCondição as $condição) :?>
                                     <option value=""><?= $condição->name ?></option>
                                 <?php endforeach; ?>

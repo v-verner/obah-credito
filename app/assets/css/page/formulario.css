@@ -8,6 +8,8 @@
 
 .hero h2{
     text-align: center;
+    font-size: 20px;
+    color: black;
 }
 
 .form-row input,
