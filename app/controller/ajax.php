@@ -10,22 +10,23 @@ function ajaxCreateSimulation(): void
         wp_send_json_error('Os termos e a LGPD do site precisam ser aceitos.');
     endif;
 
-    $simulation        = new Cred99\Simulation();
-    $now               = new DateTime();
+    $simulation         = new Cred99\Simulation();
+    $now                = new DateTime();
 
-    $full_name         = $_POST['full_name'] ? sanitize_text_field($_POST['full_name']) : '';
-    $birthday          = $_POST['birthday'] ? sanitize_text_field($_POST['birthday']) : '';
-    $cpf               = $_POST['cpf'] ? sanitize_text_field($_POST['cpf']) : '';
-    $phone             = $_POST['phone'] ? sanitize_text_field($_POST['phone']) : '';
-    $email             = $_POST['email'] ? sanitize_email($_POST['email']) : '';
-    $gross_income      = $_POST['gross_income'] ? (float) $_POST['gross_income'] : 0;
-    $has_second_buyer  = $_POST['has_second_buyer'] === 'Sim' ? true : false;
-    $property_type     = $_POST['property_type'] ? sanitize_text_field($_POST['property_type']) : '';
-    $property_price    = $_POST['property_price'] ? (float) $_POST['property_price'] : 0;
-    $property_location = $_POST['property_location'] ? sanitize_text_field($_POST['property_location']) : '';
-    $initial_payment   = $_POST['initial_payment'] ? (float) $_POST['initial_payment'] : 0;
-    $include_itbi_fee  = $_POST['include_itbi_fee'] ? sanitize_text_field($_POST['include_itbi_fee']) : '';
-    $payment_length    = $_POST['payment_length'] ? (int) $_POST['payment_length'] : 0;
+    $full_name          = $_POST['full_name'] ? sanitize_text_field($_POST['full_name']) : '';
+    $birthday           = $_POST['birthday'] ? sanitize_text_field($_POST['birthday']) : '';
+    $cpf                = $_POST['cpf'] ? sanitize_text_field($_POST['cpf']) : '';
+    $phone              = $_POST['phone'] ? sanitize_text_field($_POST['phone']) : '';
+    $email              = $_POST['email'] ? sanitize_email($_POST['email']) : '';
+    $gross_income       = $_POST['gross_income'] ? (float) $_POST['gross_income'] : 0;
+    $has_second_buyer   = $_POST['has_second_buyer'] === 'Sim' ? true : false;
+    $property_type      = $_POST['property_type'] ? sanitize_text_field($_POST['property_type']) : '';
+    $property_price     = $_POST['property_price'] ? (float) $_POST['property_price'] : 0;
+    $property_location  = $_POST['property_location'] ? sanitize_text_field($_POST['property_location']) : '';
+    $property_condition = $_POST['property_condition'] ? sanitize_text_field($_POST['property_condition']) : '';
+    $initial_payment    = $_POST['initial_payment'] ? (float) $_POST['initial_payment'] : 0;
+    $include_itbi_fee   = $_POST['include_itbi_fee'] ? sanitize_text_field($_POST['include_itbi_fee']) : '';
+    $payment_length     = $_POST['payment_length'] ? (int) $_POST['payment_length'] : 0;
 
     if ($has_second_buyer) :
         $second_buyer_full_name = $_POST['second_buyer_full_name'] ? sanitize_text_field($_POST['second_buyer_full_name']) : '';
@@ -55,7 +56,7 @@ function ajaxCreateSimulation(): void
 
     $simulation->set('uf', $property_location);
     $simulation->set('perfil', $property_type);
-    $simulation->set('condicao', '1');
+    $simulation->set('condicao', $property_condition);
 
     $simulation->set('idade', $age);
     $simulation->set('valor', $property_price);
