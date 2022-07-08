@@ -19,7 +19,7 @@
 
 .sim-col h4{
     font-size: 18px;
-    
+    color: black;
 }
 
 .sim-col .edit{
@@ -93,5 +93,16 @@ border-radius: 99px;
 .sim-col input[type="radio"] {
     margin: 0;
 }
+
+.form_edit_simulation  .mfp-content{
+    width: 650px;
+    max-width: 100%;
+}
+
+#modal-form_edit_simulation img {
+    width: 309px;
+    height: 79px;
+}
+
 
 

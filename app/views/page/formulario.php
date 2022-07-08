@@ -4,8 +4,8 @@
         <div class="col large-12">
             <div class="row align-bottom">
                 <div class="col dark text-center  large-3 small-12">
-                    <h3 class="thin-font">Inclua seus dados e obtenha</h3>
-                    <h3 class="thin-font">a simulação dos bancos</h3>
+                    <h3 class="mb-0">Inclua seus dados e obtenha</h3>
+                    <h3>a simulação dos bancos</h3>
                 </div>
                 <div class="col form-col large-9">
                     <h2 class="uppercase mb">precisamos de alguns dados para fazer sua simulação personalizada</h2>

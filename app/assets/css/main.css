@@ -8,6 +8,10 @@ i.icon-menu {
     color: rgb(4, 198, 167);
 }
 
+.mfp-content a{
+    justify-content: center;
+}
+
 .header-social-icons i.icon-instagram{
     color: rgb(19, 199, 151); 
     font-size: 23px;

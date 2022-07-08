@@ -79,8 +79,8 @@
             <div class="col sim-col large-9">
                 <div class="row">
                     <div class="col large-12 pb-half">
-                        <h4 class="uppercase text-center">simulação concluida</h4> 
-                        <p class="edit uppercase">editar dados</p>
+                        <h4 class="uppercase text-center">simulação concluida</h4>
+                        <a href="#" data-open="#modal-form_edit_simulation" data-pos="left" data-bg="main-menu-overlay" data-color="form_edit_simulation"><p class="edit uppercase"><i class="icon-pen-alt-fill"></i> editar dados</p></a>
                     </div>                    
                     <div class="col large-12">
                         <table>
@@ -172,3 +172,4 @@
         </div>
     </div>
 </section>
+<?php VVerner\Views::getInstance()->getComponent('modal-form_edit_simulation') ?>
