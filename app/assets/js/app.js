@@ -15,17 +15,25 @@ const OBAH_SIMULATOR = {
 }
 
 
-
 jQuery(function($){
+    const $createSimulationForm = $('#create-simulation-form');
 
     $('.mask-cpf').mask('000.000.000-00', {reverse: false});
-
     $('.mask-phone').mask('(00) 0 0000-0000');
-
     $('.mask-money').mask('000.000.000.000.000,00', {reverse: false});
+
+    // CREATE OBAH SIMULATION
+    $createSimulationForm.on('submit', function(e){
+        e.preventDefault();
+
+        $.post(app_data.url, $createSimulationForm.serialize(), function(res){
+            if(res.success) {
+                alert('Dados enviados com sucesso!');
+
+            } else {
+                alert('Algo deu errado. Por favor, tente novamente ou contato nosso suporte.');
+
+            }
+        })
+    });
 })
-
-
-
-   
- 

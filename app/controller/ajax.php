@@ -66,11 +66,14 @@ function ajaxCreateSimulation(): void
     $simulation->set('fone', preg_replace('/\D/', '', $phone));
     $simulation->set('email', $email);
 
-    // $result = $simulation->simulate();
+    error_log(print_r($simulation, true));
 
-    // error_log(print_r($result, true));
 
-    wp_send_json_success();
+    $result = $simulation->simulate();
+
+    error_log(print_r($result, true));
+
+    wp_send_json_success('Tudo bem, simulação feita!');
 }
 
 add_action('wp_ajax_obah/update_simulation', 'ajaxUpdateSimulation');
