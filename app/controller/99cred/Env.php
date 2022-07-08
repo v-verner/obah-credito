@@ -185,7 +185,7 @@ class Env
         ];
     }
     
-    public function getPropertyCondition(): array
+    public function getPropertyConditions(): array
     {
         return [
             $this->getSimpleObject(1, 'Novo'),
