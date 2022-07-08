@@ -1,141 +1,122 @@
 <?php $env = new Cred99\Env(); ?>
-<section class="section dark hero">
-    <div class="col large-12">  
-        <div class="row align-bottom align-left">
-            <div class="col only-text large-3">
-                <h2>Inclua seus dados e obtenha</h2>
-                <h2>a simulação dos bancos</h2>
-            </div>
-            <div class="col form-col large-9">
-                <div class="row row-small align-middle form-row">
-                    <h2 class="uppercase mb">precisamos de alguns dados para fazer sua simulação personalizada</h2>
-                    
-                    <form>   
-                        <div class="row"> 
-                            <?php $redStar = '* ' ?>
-                            <div class="col large-6">
-                                <input type="text" class="uppercase red-star" placeholder='nome completo <?= $redStar ?>' required>
+<section class="section hero">
+    <div class="hero-overlay absolute-fill">    
+        <div class="col large-12">  
+                <div class="row align-bottom align-left">
+                    <div class="col dark text-center  large-3 small-12">
+                        <h2>Inclua seus dados e obtenha</h2>
+                        <h2>a simulação dos bancos</h2>
+                    </div>
+                    <div class="col form-col large-9">                
+                        <h2 class="uppercase mb">precisamos de alguns dados para fazer sua simulação personalizada</h2>
+                        
+                        <form class="align-middle form-row row-small row">
+                            
+                            <div class="col label-float large-6">
+                                <input type="text" id="nomeCompleto" class="uppercase" placeholder=" " required>
+                                <label for="nomeCompleto" class="uppercase">nome completo </label>
+                            </div>
+                            <div class="col label-float large-6">
+                                <input type="text" id="birthDate" class="uppercase" placeholder=" " onfocus="(this.type='date')" onblur="(this.type='text')" required>
+                                <label for="birthDate" class="uppercase">data de nascimento </label>   
+                            </div>
+                            <div class="col label-float large-4">
+                                <input type="text" id="cpf" class="mask-cpf uppercase" placeholder=' ' inputmode="numeric">   
+                                <label for="cpf" class="uppercase">cpf</label>
+                            </div>
+                            <div class="col label-float large-4">
+                                <input type="text" id="phone" class="mask-phone uppercase" placeholder=' ' inputmode="numeric" required>
+                                <label for="phone" class="uppercase">Telefone +55 </label>
+                            </div>
+                            <div class="col label-float large-4">
+                                <input type="email" id="email" class="uppercase" placeholder=' ' required>
+                                <label for="email" class="uppercase">e-mail </label>
+                            </div>
+                            <div class="col label-float large-6">
+                                <input type="text" id="renda" class="uppercase mask-money" placeholder=' ' inputmode="numeric">
+                                <label for="renda" class="uppercase">informe sua renda bruta </label>
                             </div>
                             <div class="col large-6">
-                                <input type="text" class="uppercase" placeholder='data de nascimento <?= $redStar ?>' onfocus="(this.type='date')" onblur="(this.type='text')">   
-                            </div>
-                            <div class="col large-4">
-                                <input type="text" class="uppercase mask-cpf" placeholder='cpf <?= $redStar ?>' inputmode="numeric">   
-                            </div>
-                            <div class="col large-4">
-                                <input type="text" class="uppercase mask-phone" placeholder='telefone <?= $redStar ?> +55' inputmode="numeric">
-                            </div>
-                            <div class="col large-4">
-                                <input type="email" class="uppercase" placeholder='e-mail <?= $redStar ?>'>
-                            </div>
-                            <div class="col large-6">
-                                <input type="number" class="uppercase" placeholder='informe sua renda bruta'>
-                            </div>
-                            <div class="col large-6">
-                                <select name="RendaConjunta" class="uppercase">
-                                    <option value="" disabled selected>Deseja compor renda com alguém?</option>
+                                <select name="RendaConjunta">
+                                    <option value="" disabled selected>DESEJA COMPOR RENDA COM ALGUÉM?</option>
                                     <option value="Sim">Sim</option>
                                     <option value="Não">Não</option>
                                 </select>
+                            </div>                        
+                            <div class="col label-float large-6">
+                                <input type="text" id="segNome" class="uppercase" placeholder=' '>
+                                <label for="segNome" class="uppercase">nome completo <span class="lowercase">(2º Proponente)</span></label>
                             </div>
-                            <?php $second = '(2º Proponente)'?>
-                            <div class="col large-6">
-                                <label for="xxx" class="sr-only hidden" aria-label="xxxx">Nome </label>
-                                <input type="text" class="uppercase" id="xxxx" placeholder='nome completo <?= $second ?>'>
+                            <div class="col label-float large-6">
+                                <input type="text" id="segBD"  class="uppercase" placeholder=' ' onfocus="(this.type='date')" onblur="(this.type='text')">
+                                <label for="segBD" class="uppercase">data de nascimento <span class="lowercase">(2º Proponente)</span></label>
+
                             </div>
-                            <div class="col large-6">
-                                <input type="text" class="uppercase" placeholder='data de nascimento <?= $second ?>' onfocus="(this.type='date')" onblur="(this.type='text')">
+                            <div class="col label-float large-4">
+                                <input type="text" id="segCpf" class="mask-cpf uppercase" placeholder=' ' inputmode="numeric">
+                                <label for="segCpf" class="uppercase">cpf</label>
                             </div>
-                            <div class="col large-4">
-                                <input type="number" class="uppercase" placeholder='cpf' pattern="[0-9]{3}-[0-9]{3}-[0-9]{3}-[0-9]{2}">
+                            <div class="col label-float large-4">
+                                <input type="text" id="segPhone" class="mask-phone uppercase" placeholder=' ' inputmode="numeric">
+                                <label for="segPhone" class="uppercase">telefone +55</label>
                             </div>
-                            <div class="col large-4">
-                                <input type="tel" class="uppercase" placeholder='telefone +55' pattern="[0-9]{2}-[0-9]{5}-[0-9]{4}">
+                            <div class="col label-float large-4">
+                                <input type="email" id="segEmail"  class="uppercase" placeholder=' '>
+                                <label for="segEmail" class="uppercase">e-mail</label>
                             </div>
-                            <div class="col large-4">
-                                <input type="email" class="uppercase" placeholder='e-mail'>
-                            </div>
-                            <div class="col large-4">
-                                <select name="TipoImovel" class="uppercase">
-                                    <option value="" disabled selected>tipo de imóvel</option>
-                                    <option value="Apartamento">Apartamento</option>
-                                    <option value="Casa">Casa</option>
-                                    <option value="Casa em condominio">Casa em condomínio</option>
-                                    <option value="Terreno">Terreno</option>
-                                    <option value="Outro">Outro</option>
+                            <div class="col label-float large-4">
+                                <select name="TipoImovel">
+                                    <option value="" disabled selected>TIPO DE IMÓVEL</option>
+                                    <?php $imovelTipos = $env->getUsageProfile() ?>
+                                    <?php foreach($imovelTipos as $imovelTipo) :?>
+                                        <option value=""><?= $imovelTipo->name ?></option>
+                                    <?php endforeach; ?>
                                 </select>
                             </div>
-                            <div class="col large-4">
-                                <!-- getMinimumSimulationAmount -->
-                                <!-- getMaximumSimulationAmount -->
-                                <input type="number" class="uppercase" placeholder='valor do imóvel <?= $redStar ?>'>
+                            <div class="col label-float large-4">
+                                <input type="text" id="valorImovel" class="mask-money" min="<?= $env->getMinimumSimulationAmount() ?>" max="<?= $env->getMaximumSimulationAmount() ?>" class="uppercase" placeholder=' ' required>
+                                <label for="valorImovel" class="uppercase">valor do imóvel </label>
                             </div>
-                            <div class="col large-4">
-                                <input type="number" class="captilize" placeholder='valor de entrada + fgts (Mínimo de 10% do valor do imóvel)'  onfocus="(this.type='number')" onblur="(this.type='text')">
+                            <div class="col label-float large-4">
+                                <input type="text" id="entrada" class="mask-money" placeholder=' '  onfocus="(this.type='number')" onblur="(this.type='text')">
+                                <label for="entrada" class="uppercase">valor de entrada + fgts <span class="lowercase">(Mínimo de 10% do valor do imóvel)</span></label>
                             </div>
-                            <div class="col large-6">
-                                <select name="Financiar" class="captalize">
-                                    <option value="" disabled selected>financiar valor das taxas itbi e cartório no financiamento? (5% Do valor do imóvel)</option>
+                            <div class="col label-float large-6">
+                                <select name="Financiar">
+                                    <option value="" disabled selected>FINANCIAR VALOR DAS TAXAS ITBI E CARTÓRIO NO FINANCIAMENTO? (5% Do valor do imóvel)</option>
                                     <option value="">Teste</option>
                                 </select>
                             </div>
                             <div class="col large-6">
-                                <input type="checkbox" aria-invalid="false">
-                                <label>Ao clicar no botão de envio, concordo com os termos do site. <?= $redStar ?></label>
+                                <input type="checkbox" id="agree" value="1" required>
+                                <label for="agree">Ao clicar no botão de envio, concordo com os termos do site. <span style="color:red;">*</span></label>
                             </div>
                             <div class="col large-6">
-                                <select name="Localizacao" class="captalize">
-                                    <option value="" disabled selected>localização do imóvel (Estado)</option>
-                                    <option value="">Acre - AC;</option>
-                                    <option value="">Alagoas - AL;</option>
-                                    <option value="">Amapá - AP;</option>
-                                    <option value="">Amazonas - AM;</option>
-                                    <option value="">Bahia - BA;</option>
-                                    <option value="">Ceará - CE;</option>
-                                    <option value="">Distrito Federal - DF;</option>
-                                    <option value="">Espírito Santo - ES;</option>
-                                    <option value="">Goiás - GO;</option>
-                                    <option value="">Maranhão - MA;</option>
-                                    <option value="">Mato Grosso - MT;</option>
-                                    <option value="">Mato Grosso do Sul - MS;</option>
-                                    <option value="">Minas Gerais - MG;</option>
-                                    <option value="">Pará - PA;</option>
-                                    <option value="">Paraíba - PB;</option>
-                                    <option value="">Paraná - PR;</option>
-                                    <option value="">Pernambuco - PE;</option>
-                                    <option value="">Piauí - PI;</option>
-                                    <option value="">Rio de Janeiro - RJ;</option>
-                                    <option value="">Rio Grande do Norte - RN;</option>
-                                    <option value="">Rio Grande do Sul - RS;</option>
-                                    <option value="">Rondônia - RO;</option>
-                                    <option value="">Roraima - RR;</option>
-                                    <option value="">Santa Catarina - SC;</option>
-                                    <option value="">São Paulo - SP;</option>
-                                    <option value="">Sergipe - SE;</option>
-                                    <option value="">Tocantins - TO.</option>
+                                <select name="Localizacao">
+                                    <option value="" disabled selected>LOCALIZAÇÃO DO IMÓVEL (Estado)</option>
+                                    <?php $estados = $env->getBrazilianStates(); ?>
+                                    <?php foreach($estados as $estado) :?>
+                                        <option value=""><?= $estado->name ?></option>
+                                    <?php endforeach;?>
                                 </select>
                             </div>
                             <div class="col large-6">
                                 <input type="checkbox" id="aceito-lgpd" value="1" required>
-                                <label for="aceito-lgpd">Aceitar LGPD <?= $redStar ?></label>
+                                <label for="aceito-lgpd">Aceitar LGPD <span style="color:red;">*</span></label>
                             </div>
-                            <div class="col large-4">
-                                <input type="number" placeholder="Prazo" min="<?= $env->getMinimumSimulationDuration() ?>" max="<?= $env->getMaximumSimulationDuration() ?>" step="1">
+                            <div class="col label-float large-4">
+                                <input type="number" id="prazo" placeholder=" " min="<?= $env->getMinimumSimulationDuration() ?>" max="<?= $env->getMaximumSimulationDuration() ?>" step="1">
+                                <label for="prazo" class="uppercase">prazo</label>
                             </div>
                             <div class="col large-8" style="text-align: end;">
                                 <button class="button mb-0 mr-0">
                                     <span>Próximo</span>
                                     <i class="icon-angle-right"></i>
                                 </button>
-                            </div>
-                        </div>
-                    </form>
+                            </div>                        
+                        </form>                
+                    </div>
                 </div>
-            </div>
         </div>
-</div>
+    </div>
 </section>
-
-.form-row input[type="checkbox"] {
-    min-height: unset;
-}
