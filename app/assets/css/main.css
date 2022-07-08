@@ -4,13 +4,16 @@ img.header_logo.header-logo {
 }
 
 .header-social-icons i.icon-instagram{
-    color: rgb(19, 199, 151);   
+    color: rgb(19, 199, 151); 
+    font-size: 20px;
+
 }
 
 .header-social-icons i.icon-facebook{
     color: white;
     background: rgb(19, 199, 151);
     border-radius: 99px;
+    padding: 1px 3px 0 3px;
 }
 
 a.nav-top-link {
@@ -32,3 +35,9 @@ a.nav-top-link {
     max-height: 54px;
 }
 
+@media (max-width: 48em){
+    img.header_logo.header-logo {
+        min-width: 156px;
+        min-height: 40px;
+    }
+}

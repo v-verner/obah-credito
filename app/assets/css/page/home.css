@@ -1,3 +1,5 @@
+
+
 .home.hero{
     min-height: 901px;
     background-image: linear-gradient(90deg,rgba(17, 165, 208, 0.8),rgba(78, 214, 196, 0.8)), url("../../img/bg.jpg");
@@ -25,3 +27,15 @@ padding: 10px;
 border-radius: 99px;
 }
 
+@media (max-width:48em){
+
+    .home h1{
+        font-size: 24px;
+    }
+
+    .home img.banks-img{
+        width: 60.3571px;
+        height: 60.3571px;
+        border-radius: 10px;
+    }
+}

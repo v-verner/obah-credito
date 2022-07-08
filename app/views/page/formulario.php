@@ -2,7 +2,7 @@
 <section class="section hero">
     <div class="hero-overlay absolute-fill">    
         <div class="col large-12">  
-                <div class="row align-bottom align-left">
+                <div class="row align-bottom">
                     <div class="col dark text-center  large-3 small-12">
                         <h2>Inclua seus dados e obtenha</h2>
                         <h2>a simulação dos bancos</h2>
@@ -113,7 +113,9 @@
                                     <span>Próximo</span>
                                     <i class="icon-angle-right"></i>
                                 </button>
-                            </div>                        
+                            </div>
+                            <input type="hidden" name="action" value="obah/create_simulation">   
+                            <?php wp_nonce_field('obah/create_simulation') ?>                     
                         </form>                
                     </div>
                 </div>
