@@ -106,4 +106,25 @@
     padding-bottom: 9px;
 }
 
+.row.inside-form-row {
+    margin: 0 !important;
+}
+
+.row.inside-form-row .col.inside-form-col {
+    padding: 0;
+}
+
+.inside-form-col .col {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.inside-form-col .col.chk-col {
+    padding-top: 10px;
+}
+
+.inside-form-col .col.button-col {
+    padding-top: 35px;
+}
+
 

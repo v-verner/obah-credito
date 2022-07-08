@@ -12,7 +12,7 @@
                         </div>
                     </div>
                     <div class="icon-box-text last-reset">
-                        <h4>Analise qual a diferença das taxas dos bancos</h4>
+                        <h4 class="thin-font">Analise qual a diferença das taxas dos bancos</h4>
                     </div>
                 </div>
                 <div class="icon-box featured-box icon-box-left text-left">
@@ -24,7 +24,7 @@
                         </div>
                     </div>
                     <div class="icon-box-text last-reset">
-                        <h4>Indentifique a menor parcela</h4>
+                        <h4 class="thin-font">Indentifique a menor parcela</h4>
                     </div>
                 </div>
                 <div class="icon-box featured-box icon-box-left text-left">
@@ -36,7 +36,7 @@
                         </div>
                     </div>
                     <div class="icon-box-text last-reset">
-                        <h4>Prazo mínimo de 60 meses</h4>
+                        <h4 class="thin-font">Prazo mínimo de 60 meses</h4>
                     </div>
                 </div>
                 <div class="icon-box featured-box icon-box-left text-left">
@@ -48,7 +48,7 @@
                         </div>
                     </div>
                     <div class="icon-box-text last-reset">
-                        <h4>Prazo máximo de 420 meses(Caixa e Santander)</h4>
+                        <h4 class="thin-font">Prazo máximo de 420 meses(Caixa e Santander)</h4>
                     </div>
                 </div>
                 <div class="icon-box featured-box icon-box-left text-left">
@@ -60,7 +60,7 @@
                         </div>
                     </div>
                     <div class="icon-box-text last-reset">
-                        <h4>Sua idade pode alterar o valor das parcelas(preencha sempre idade do mais velho)</h4>
+                        <h4 class="thin-font">Sua idade pode alterar o valor das parcelas(preencha sempre idade do mais velho)</h4>
                     </div>
                 </div>
                 <div class="icon-box featured-box icon-box-left text-left">
@@ -72,14 +72,14 @@
                         </div>
                     </div>
                     <div class="icon-box-text last-reset">
-                        <h4>Você pode somar renda com até 04 pessoas</h4>
+                        <h4 class="thin-font">Você pode somar renda com até 04 pessoas</h4>
                     </div>
                 </div>  
             </div>    
             <div class="col sim-col large-9">
                 <div class="row">
                     <div class="col large-12 pb-half">
-                        <h3 class="uppercase">simulação concluida</h3> 
+                        <h4 class="uppercase text-center">simulação concluida</h4> 
                         <p class="edit uppercase">editar dados</p>
                     </div>                    
                     <div class="col large-12">

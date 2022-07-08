@@ -16,6 +16,12 @@
     color: black;
     text-align: center;
 }
+
+.sim-col h4{
+    font-size: 18px;
+    
+}
+
 .sim-col .edit{
     color: #04d9b2;
     text-align: end;
@@ -23,11 +29,15 @@
     margin-top: -27px;
 }
 
+.sim-row .icon-box-text.last-reset {
+    padding-left: 6px !important;
+}
+
 .sim-row i.icon-checkmark {
     background-color: white;
 color: rgb(19, 199, 151);
-font-size: 15px;
-padding: 10px;
+font-size: 10px;
+padding: 5px;
 border-radius: 99px;
 }
 

@@ -1,15 +1,18 @@
-
-
 .home.hero{
     min-height: 901px;
     background-image: linear-gradient(90deg,rgba(17, 165, 208, 0.8),rgba(78, 214, 196, 0.8)), url("../../img/bg.jpg");
     background-size: cover !important;
     background-repeat: no-repeat !important;
-    background-position: 50% 50%;
+    background-position-x: left;
+    background-position-y: top;
 }
 
 .home h1{
     font-size: 54px;
+}
+
+.home h3{
+    font-size: 25px;
 }
 
 .home img.banks-img{
@@ -17,20 +20,29 @@
     height: 93.2143px;
     background: white;
     border-radius: 20px;
+    margin-bottom: 30px;
 }
 
 .home i.icon-checkmark {
     background-color: white;
-color: rgb(19, 199, 151);
-font-size: 15px;
-padding: 10px;
-border-radius: 99px;
+    color: rgb(19, 199, 151);
+    font-size: 15px;
+    padding: 10px;
+    border-radius: 99px;
+}
+
+.home .icon-box.featured-box.icon-box-left.text-left {
+    padding-bottom: 60px;
 }
 
 @media (max-width:48em){
 
+    .hero .col.large-4 {
+        padding-bottom: 0;
+    }
+
     .home h1{
-        font-size: 24px;
+        font-size: 27px;
     }
 
     .home img.banks-img{
@@ -38,4 +50,17 @@ border-radius: 99px;
         height: 60.3571px;
         border-radius: 10px;
     }
+
+    .home h3{
+        font-size: 16px;
+    }
+
+    .home .icon-box.featured-box.icon-box-left.text-left {
+        padding-bottom: 30px;
+    }
+
+    .home i.icon-checkmark {
+        padding: 5px;
+    }
+
 }
