@@ -123,6 +123,19 @@ border-radius: 99px;
         padding-left: 20px;
     }
 
+    tr{
+        height: 72px;
+    }
+
+    .sim-col td:nth-child(n + 2) {
+        border-right: none;
+    }
+
+    .responsive-scroll.hide-for-large {
+        overflow-x: auto;
+        max-width: 100%;
+    }
+
 }
 
 
