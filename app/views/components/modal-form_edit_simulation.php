@@ -5,6 +5,7 @@ s<?php $env = new Cred99\Env(); ?>
 			<div class="col input-col large-12 text-center">            
                 <img class="" src="<?= VVerner\Assets::getInstance()->getImageFileUrl('LOGO.png') ?>" alt="Obah-Crédito">
 			</div>
+            <form id="update-simulation-form">
 			<div class="col input-col large-12">
 				<h4 class="uppercase text-center">editar dados da simulação</h4>
 			</div>
@@ -36,7 +37,7 @@ s<?php $env = new Cred99\Env(); ?>
                     <input type="checkbox" name="include_itbi_fee" id="include_itbi_fee">
                     <label class="flex align-middle" for="include_itbi_fee">
                         <span class="toggle-state"></span>
-                        <h2 class="uppercase mb-0 mt-0">incluir despesas(itbi) ? </h2>
+                        <h2 class="uppercase mt-0">incluir despesas(itbi) ? </h2>
                     </label>
                 </div>                
                 <h6 class="lowercase">Impostos ITBI e registro do contrato custam cerca de 5% do valor do imóvel.</h6>
@@ -50,7 +51,8 @@ s<?php $env = new Cred99\Env(); ?>
                 </button>
 			</div>
             <input type="hidden" name="action" value="obah/update_simulation">
-                                <?php wp_nonce_field('obah/update_simulation') ?>
+            <?php wp_nonce_field('obah/update_simulation') ?>
+            </form>
 		</div>   
 	</div>	
 </div>
