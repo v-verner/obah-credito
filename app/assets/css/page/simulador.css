@@ -82,7 +82,8 @@ border-radius: 99px;
     border-right: 1px solid rgb(196, 196, 196);;
 }
 
-.sim-col .table-title{
+.sim-col .table-title,
+span.scroll-for-more-text{
     color: black;
 }
 
@@ -95,13 +96,108 @@ border-radius: 99px;
 }
 
 .form_edit_simulation  .mfp-content{
-    width: 650px;
+    width: 548px;
     max-width: 100%;
 }
 
 #modal-form_edit_simulation img {
     width: 309px;
     height: 79px;
+}
+
+.edit-row input{
+    background-color: rgb(202, 225, 245);
+    min-height: 52px;
+    border-radius: 5px;
+    border: none;
+    color: rgba(0, 0, 0, 0.5);
+    padding-left: 20px;  
+    font-size: 12.5px;  
+    font-weight: 600;
+}
+
+.edit-row .input-col{
+    max-width: 426px;
+}
+
+.edit-row h4{
+    color: black;
+    padding-top: 30px;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+  
+.switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+  
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+  
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+  
+input:checked + .slider {
+    background-color: rgb(46, 189, 89);
+}
+   
+input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+  
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.edit-row button,
+.edit-row button:hover {
+    background: none;
+    color: black;
+    border: none;
+    box-shadow: none;
+}
+
+.edit-row i.icon-angle-right {
+    color: white;
+    background: #04d9b2;
+    border-radius: 100px;
+    padding-right: 15px;
+    padding-left: 15px;
+    padding-top: 9px;
+    padding-bottom: 9px;
 }
 
 
@@ -115,11 +211,24 @@ border-radius: 99px;
         font-size: 10px;
     }
 
+    .sim-col tr:first-child {
+        background-color: white !important;
+    }
+
+    .sim-col tr:nth-child(odd) {
+        background: rgb(247, 247, 247);
+    }
+    
+    .sim-col tr:nth-child(even) {
+        background: rgb(229, 229, 229);
+    }
+
     .sim-col .edit {
         margin-top: -20px;
     }
 
-    .col.hide-for-large th {
+    .col.hide-for-large th,
+    span.scroll-for-more-text {
         padding-left: 20px;
     }
 
@@ -134,7 +243,7 @@ border-radius: 99px;
     .responsive-scroll.hide-for-large {
         overflow-x: auto;
         max-width: 100%;
-    }
+    }    
 
 }
 

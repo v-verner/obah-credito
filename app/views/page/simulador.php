@@ -232,7 +232,10 @@
                         </table>
                     </div>
 
-                    <div class="col large-12 hide-for-large">
+                    <div class="col large-12 hide-for-large text-left">
+                        <span class="scroll-for-more-text">Arraste para o lado</span>
+                        <i class="icon-angle-right scroll-for-more"></i>
+
                         <div class="responsive-scroll hide-for-large">
                             <table>
                                 <tr>
