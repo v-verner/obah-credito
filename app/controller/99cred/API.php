@@ -43,7 +43,7 @@ class API
         return $result;
     }
 
-    private function parseToFloat( string $str ): float
+    public static function parseToFloat( string $str ): float
     {
         $str = str_replace('.', '', $str);
         $str = str_replace(',', '.', $str);

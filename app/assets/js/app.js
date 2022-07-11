@@ -20,7 +20,7 @@ jQuery(function($){
 
     $('.mask-cpf').mask('000.000.000-00', {reverse: false});
     $('.mask-phone').mask('(00) 0 0000-0000');
-    $('.mask-money').mask('000.000.000.000.000,00', {reverse: false});
+    $('.mask-money').mask("#.##0,00", {reverse: true});
 
     // CREATE OBAH SIMULATION
     $createSimulationForm.on('submit', function(e){

@@ -81,29 +81,28 @@
                                 <option value="" disabled selected>TIPO DE IMÓVEL</option>
                                 <?php $imovelTipos = $env->getUsageProfile() ?>
                                 <?php foreach($imovelTipos as $imovelTipo) :?>
-                                    <option value=""><?= $imovelTipo->name ?></option>
+                                    <option value="<?= $imovelTipo->id ?>"><?= $imovelTipo->name ?></option>
                                 <?php endforeach; ?>
                             </select>
                         </div>
                         <div class="col label-float large-6">
                             <select name="property_condition" id="condition">
                                 <option value="condition" disbled selected>CONDIÇÃO DO IMÓVEL</option>
-                                <?php $imovelCondição = $env->getPropertyConditions() ?>
-                                <?php foreach($imovelCondição as $condição) :?>
-                                    <option value=""><?= $condição->name ?></option>
+                                <?php $imovelCondicao = $env->getPropertyConditions() ?>
+                                <?php foreach($imovelCondicao as $condicao) :?>
+                                    <option value="<?= $condicao->id ?>"><?= $condicao->name ?></option>
                                 <?php endforeach; ?>
                             </select>
                         </div>
                         <div class="col label-float large-6">
                             <input type="text" name="property_price" id="valorImovel" class="mask-money"
                                 min="<?= $env->getMinimumSimulationAmount() ?>"
-                                max="<?= $env->getMaximumSimulationAmount() ?>" class="uppercase" placeholder=' '
+                                max="<?= $env->getMaximumSimulationAmount() ?>" class="uppercase" value="" placeholder=''
                                 required>
                             <label for="valorImovel" class="uppercase">valor do imóvel </label>
                         </div>
                         <div class="col label-float large-6">
-                            <input type="text" name="initial_payment" id="entrada" class="mask-money" placeholder=' '
-                                onfocus="(this.type='number')" onblur="(this.type='text')">
+                            <input type="text" name="initial_payment" id="entrada" class="mask-money" value="" placeholder=''>
                             <label for="entrada" class="uppercase">valor de entrada + fgts <span
                                     class="lowercase hide-for-small">(Mínimo de 10% do valor do imóvel)</span></label>
                         </div>
@@ -119,12 +118,12 @@
                                         <option value="" disabled selected>LOCALIZAÇÃO DO IMÓVEL (Estado)</option>
                                         <?php $estados = $env->getBrazilianStates(); ?>
                                         <?php foreach($estados as $estado) :?>
-                                        <option value=""><?= $estado->name ?></option>
+                                        <option value="<?= $estado->id ?>"><?= $estado->name ?></option>
                                         <?php endforeach;?>
                                     </select>
                                 </div>
                                 <div class="col label-float large-4">
-                                    <input type="number" name="payment_length" id="prazo" placeholder=" "
+                                    <input type="number" name="payment_length" value="" id="prazo" placeholder=" "
                                         min="<?= $env->getMinimumSimulationDuration() ?>"
                                         max="<?= $env->getMaximumSimulationDuration() ?>" step="1">
                                     <label for="prazo" class="uppercase">prazo</label>

@@ -11,6 +11,7 @@ function ajaxCreateSimulation(): void
     endif;
 
     $simulation         = new Cred99\Simulation();
+    $api                = new Cred99\API();
     $now                = new DateTime();
 
     $full_name          = $_POST['full_name'] ? sanitize_text_field($_POST['full_name']) : '';
@@ -18,13 +19,13 @@ function ajaxCreateSimulation(): void
     $cpf                = $_POST['cpf'] ? sanitize_text_field($_POST['cpf']) : '';
     $phone              = $_POST['phone'] ? sanitize_text_field($_POST['phone']) : '';
     $email              = $_POST['email'] ? sanitize_email($_POST['email']) : '';
-    $gross_income       = $_POST['gross_income'] ? (float) $_POST['gross_income'] : 0;
+    $gross_income       = $_POST['gross_income'] ? $api::parseToFloat($_POST['gross_income']) : 0;
     $has_second_buyer   = $_POST['has_second_buyer'] === 'Sim' ? true : false;
     $property_type      = $_POST['property_type'] ? sanitize_text_field($_POST['property_type']) : '';
-    $property_price     = $_POST['property_price'] ? (float) $_POST['property_price'] : 0;
-    $property_location  = $_POST['property_location'] ? sanitize_text_field($_POST['property_location']) : '';
+    $property_price     = $_POST['property_price'] ? $api::parseToFloat($_POST['property_price']) : 0;
+    $property_location  = $_POST['property_location'] ? (int) $_POST['property_location'] : '';
     $property_condition = $_POST['property_condition'] ? sanitize_text_field($_POST['property_condition']) : '';
-    $initial_payment    = $_POST['initial_payment'] ? (float) $_POST['initial_payment'] : 0;
+    $initial_payment    = $_POST['initial_payment'] ? $api::parseToFloat($_POST['initial_payment']) : 0;
     $include_itbi_fee   = $_POST['include_itbi_fee'] ? sanitize_text_field($_POST['include_itbi_fee']) : '';
     $payment_length     = $_POST['payment_length'] ? (int) $_POST['payment_length'] : 0;
 
@@ -46,9 +47,9 @@ function ajaxCreateSimulation(): void
     // Ao finalizar a simulação, salvar ela no post-type "simulation" e retornar no ajax o ID dela futuras atualizações (saveSimulation())
 
     // TODO
-    // 1 - gerar simulação no 99cred
+    // 1 - gerar simulação no 99cred -------
     // 2 - enviar lead para o bitrix (aguardar)
-    // 3 - salvar simulação
+    // 3 - salvar simulação --------
     // 4 - gerar hash (base64_encode) do ID da simulação salva
     // 5 - retornar url da página "simulador" com o hash gerado 
         // 5.1 - criar rewrite para hashes no simulador
@@ -66,12 +67,12 @@ function ajaxCreateSimulation(): void
     $simulation->set('fone', preg_replace('/\D/', '', $phone));
     $simulation->set('email', $email);
 
-    error_log(print_r($simulation, true));
+    $result          = $simulation->simulate();
+    $simulation_id   = saveSimulation($simulation);
+    $simulation_hash = str_replace('=', '', base64_encode($simulation_id));
 
+    error_log($simulation_hash);
 
-    $result = $simulation->simulate();
-
-    error_log(print_r($result, true));
 
     wp_send_json_success('Tudo bem, simulação feita!');
 }
