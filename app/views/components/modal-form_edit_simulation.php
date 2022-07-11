@@ -19,7 +19,7 @@ s<?php $env = new Cred99\Env(); ?>
 			<div class="col input-col large-12">
                 <label for="entrada" class="uppercase">valor da entrada</label>
                 <input type="text" name="initial_payment" id="entrada" class="mask-money" placeholder=' '
-                onfocus="(this.type='number')" onblur="(this.type='text')">
+                >
 			</div>
 			<div class="col input-col large-12">
                 <label for="birthDate" class="uppercase">quando você nasceu</label>
