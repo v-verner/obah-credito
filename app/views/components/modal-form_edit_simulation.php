@@ -23,8 +23,7 @@ s<?php $env = new Cred99\Env(); ?>
 			</div>
 			<div class="col input-col large-12">
                 <label for="birthDate" class="uppercase">quando você nasceu</label>
-                <input type="text" name="birthday" id="birthDate" class="uppercase" placeholder=" "
-                onfocus="(this.type='date')" onblur="(this.type='text')" required>
+                <input type="text" name="birthday" id="birthDate" class="uppercase" placeholder=" " required>
 			</div>
 			<div class="col input-col large-12">
                 <label for="prazo" class="uppercase">prazo <span class="lowercase">(em meses)</span></label>
