@@ -39,3 +39,6 @@ define('OBAH_SIMULATOR_FIELDS', [
     'accept_terms'           => 'Aceite de termos do site',
     'accept_lgpd'            => 'Aceite de LGPD'
 ]);
+
+// SIMULAÇÂO
+define('SIMULATION_HASH_KEY', 'simulation_hash');

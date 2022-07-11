@@ -43,22 +43,9 @@ function ajaxCreateSimulation(): void
     $birthdate = new DateTime($birthday);
     $age       = $now->format('Y') - $birthdate->format('Y');
 
-    // NOTE
-    // Ao finalizar a simulação, salvar ela no post-type "simulation" e retornar no ajax o ID dela futuras atualizações (saveSimulation())
-
-    // TODO
-    // 1 - gerar simulação no 99cred -------
-    // 2 - enviar lead para o bitrix (aguardar)
-    // 3 - salvar simulação --------
-    // 4 - gerar hash (base64_encode) do ID da simulação salva
-    // 5 - retornar url da página "simulador" com o hash gerado 
-        // 5.1 - criar rewrite para hashes no simulador
-
-
     $simulation->set('uf', $property_location);
     $simulation->set('perfil', $property_type);
     $simulation->set('condicao', $property_condition);
-
     $simulation->set('idade', $age);
     $simulation->set('valor', $property_price);
     $simulation->set('valor_financ', $property_price - $initial_payment);
@@ -67,14 +54,25 @@ function ajaxCreateSimulation(): void
     $simulation->set('fone', preg_replace('/\D/', '', $phone));
     $simulation->set('email', $email);
 
-    $result          = $simulation->simulate();
-    $simulation_id   = saveSimulation($simulation);
-    $simulation_hash = str_replace('=', '', base64_encode($simulation_id));
+    $result    = $simulation->simulate();
 
-    error_log($simulation_hash);
+    error_log(print_r($result, true));
 
+    if (is_wp_error($result)) :
+        return;
+    endif;
 
-    wp_send_json_success('Tudo bem, simulação feita!');
+    $simulationID   = saveSimulation($simulation);
+
+    $simulationHash = createSimulationHash($simulationID);
+
+    saveSimulationHash($simulationHash, $simulationID);
+    saveSimulationResults($simulationID, $result);
+
+    $url  = trailingslashit(get_permalink(getObahPageId('Simulador')));
+    $url .= $simulationHash;
+
+    wp_send_json_success($url);
 }
 
 add_action('wp_ajax_obah/update_simulation', 'ajaxUpdateSimulation');
@@ -83,6 +81,12 @@ function ajaxUpdateSimulation(): void
 {
     check_ajax_referer('obah/update_simulation');
 
+    // $simulationURL = $_POST['_wp_http_referer'];
+    // $simulationID  = array_pop($simulationURL);
+    // $simulation    = loadSimulation($simulationID);
+
+
+    
     // NOTE
     // Carregar os dados da simulação anterior para uso na simulação (loadSimulation())
     // Ao finalizar a simulação, salvar o novo resultado nela (saveSimulationResults())
@@ -90,3 +94,5 @@ function ajaxUpdateSimulation(): void
 
     wp_send_json_success();
 }
+
+// add_action('wp_content', ajaxUpdateSimulation());

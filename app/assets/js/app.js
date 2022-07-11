@@ -28,11 +28,19 @@ jQuery(function($){
 
         $.post(app_data.url, $createSimulationForm.serialize(), function(res){
             if(res.success) {
-                alert('Dados enviados com sucesso!');
-
+                Swal.fire(
+                    'Dados enviados com sucesso!',
+                    'Você será redirecionado para o simulador.',
+                    'success'
+                ).then(() => {
+                    window.location.href='https://obah-credito.dev/simulador/';
+                })
             } else {
-                alert('Algo deu errado. Por favor, tente novamente ou contato nosso suporte.');
-
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Algo deu errado!',
+                    text: 'Tente novamente por favor, caso o erro persista entre em contato conosco.'
+                });
             }
         })
     });
