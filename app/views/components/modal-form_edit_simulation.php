@@ -32,12 +32,16 @@ s<?php $env = new Cred99\Env(); ?>
                 max="<?= $env->getMaximumSimulationDuration() ?>" step="1">
 			</div>
 			<div class="col input-col large-12">
-                <label class="switch">
-                    <input type="checkbox">
-                    <div class="slider round"></div>
-                </label> 
-                <h2 class="uppercase">incluir despesas(itbi) ? </h2>
+                <div class="toggle-container">
+                    <input type="checkbox" name="include_itbi_fee" id="include_itbi_fee">
+                    <label class="flex align-middle" for="include_itbi_fee">
+                        <span class="toggle-state"></span>
+                        <h2 class="uppercase mb-0 mt-0">incluir despesas(itbi) ? </h2>
+                    </label>
+                </div>                
                 <h6 class="lowercase">Impostos ITBI e registro do contrato custam cerca de 5% do valor do imóvel.</h6>
+
+                
 			</div>
 			<div class="col text-right large-12">
                 <button class="button mb-0 mr-0">
