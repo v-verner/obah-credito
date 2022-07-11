@@ -17,9 +17,14 @@
                                 required>
                             <label for="nomeCompleto" class="uppercase">nome completo </label>
                         </div>
-                        <div class="col label-float large-6">
+                        <!-- <div class="col label-float large-6">
                             <input type="text" name="birthday" id="birthDate" class="uppercase" placeholder=" "
                                 onfocus="(this.type='date')" onblur="(this.type='text')" required>
+                            <label for="birthDate" class="uppercase">data de nascimento </label>
+                        </div> -->
+                        <div class="col label-float large-6">
+                            <input type="text" name="birthday" id="birthDate" class="uppercase" placeholder=" "
+                                onfocus="(this.type='date')" required>
                             <label for="birthDate" class="uppercase">data de nascimento </label>
                         </div>
                         <div class="col label-float large-4">
@@ -56,7 +61,7 @@
                         </div>
                         <div class="col label-float large-6">
                             <input type="text" name="second_buyer_birthday" id="segBD" class="uppercase" placeholder=' '
-                                onfocus="(this.type='date')" onblur="(this.type='text')">
+                                onfocus="(this.type='date')">
                             <label for="segBD" class="uppercase">data de nascimento <span class="lowercase">(2º
                                     Proponente)</span></label>
 
@@ -97,12 +102,12 @@
                         <div class="col label-float large-6">
                             <input type="text" name="property_price" id="valorImovel" class="mask-money"
                                 min="<?= $env->getMinimumSimulationAmount() ?>"
-                                max="<?= $env->getMaximumSimulationAmount() ?>" class="uppercase" value="" placeholder=''
+                                max="<?= $env->getMaximumSimulationAmount() ?>" class="uppercase" value="" placeholder=' '
                                 required>
                             <label for="valorImovel" class="uppercase">valor do imóvel </label>
                         </div>
                         <div class="col label-float large-6">
-                            <input type="text" name="initial_payment" id="entrada" class="mask-money" value="" placeholder=''>
+                            <input type="text" name="initial_payment" id="entrada" class="mask-money" value="" placeholder=' '>
                             <label for="entrada" class="uppercase">valor de entrada + fgts <span
                                     class="lowercase hide-for-small">(Mínimo de 10% do valor do imóvel)</span></label>
                         </div>

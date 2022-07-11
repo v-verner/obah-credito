@@ -151,6 +151,10 @@ span.scroll-for-more-text{
     transform: translatex(40px);
 }
 
+#include_itbi_fee{
+    display: none;
+}
+
 .edit-row button,
 .edit-row button:hover {
     background: none;

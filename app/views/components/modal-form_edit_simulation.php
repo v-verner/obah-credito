@@ -49,6 +49,8 @@ s<?php $env = new Cred99\Env(); ?>
                     <i class="icon-angle-right"></i>
                 </button>
 			</div>
+            <input type="hidden" name="action" value="obah/update_simulation">
+                                <?php wp_nonce_field('obah/update_simulation') ?>
 		</div>   
 	</div>	
 </div>
