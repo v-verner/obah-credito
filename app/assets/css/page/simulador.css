@@ -105,4 +105,24 @@ border-radius: 99px;
 }
 
 
+@media (max-width:48em){
+    h4.hide-for-large {
+        padding-left: 20px;
+        font-size: 15px;
+    }
+
+    .edit{
+        font-size: 10px;
+    }
+
+    .sim-col .edit {
+        margin-top: -20px;
+    }
+
+    .col.hide-for-large th {
+        padding-left: 20px;
+    }
+
+}
+
 
