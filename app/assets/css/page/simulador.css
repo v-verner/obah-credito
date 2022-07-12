@@ -101,6 +101,13 @@ border-radius: 99px;
 span.scroll-for-more-text{
     color: black;
 }
+.scroll-for-more-text + i{
+    border-radius: 100px;
+    padding-right: 15px;
+    padding-left: 15px;
+    padding-top: 9px;
+    padding-bottom: 9px;
+}
 
 .sim-col td {    
     max-width: 130px;
@@ -147,9 +154,10 @@ span.scroll-for-more-text{
     width: 75px;
     display: block;
     height: 34px;
-    background: rgb(46, 189, 89);
+    background: gray;
     border-radius: 99px;
     position: relative;
+    padding-right: 70px;
 }
 
 .toggle-container .toggle-state:after {
@@ -167,6 +175,11 @@ span.scroll-for-more-text{
 
 .toggle-container input:checked + label .toggle-state:after {
     transform: translatex(40px);
+}
+
+.toggle-container input:checked + label .toggle-state{
+    
+    background: rgb(46, 189, 89);
 }
 
 #include_itbi_fee{

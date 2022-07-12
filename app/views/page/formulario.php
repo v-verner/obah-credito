@@ -10,26 +10,21 @@
                 <div class="col form-col large-9">
                     <h2 class="uppercase mb">precisamos de alguns dados para fazer sua simulação personalizada</h2>
 
-                    <form id="create-simulation-form" class="align-middle form-row row-small row">
+                    <form id="create-simulation-form" class="align-top form-row row-small row">
 
                         <div class="col label-float large-6">
-                            <input type="text" name="full_name" id="nomeCompleto" class="uppercase" placeholder=" "
+                            <input type="text" name="full_name" id="full_name" class="uppercase" placeholder=" "
                                 required>
-                            <label for="nomeCompleto" class="uppercase">nome completo </label>
+                            <label for="full_name" class="uppercase">nome completo </label>
                         </div>
-                        <!-- <div class="col label-float large-6">
-                            <input type="text" name="birthday" id="birthDate" class="uppercase" placeholder=" "
-                                onfocus="(this.type='date')" onblur="(this.type='text')" required>
-                            <label for="birthDate" class="uppercase">data de nascimento </label>
-                        </div> -->
                         <div class="col label-float large-6">
-                            <input type="text" name="birthday" id="birthDate" class="uppercase" placeholder=" "
+                            <input type="text" name="birthday" id="birthday" class="uppercase" placeholder=" "
                                 onfocus="(this.type='date')" required>
-                            <label for="birthDate" class="uppercase">data de nascimento </label>
+                            <label for="birthday" class="uppercase">data de nascimento </label>
                         </div>
                         <div class="col label-float large-4">
                             <input type="text" name="cpf" id="cpf" class="mask-cpf uppercase" placeholder=' '
-                                inputmode="numeric">
+                                inputmode="numeric"  required>
                             <label for="cpf" class="uppercase">cpf</label>
                         </div>
                         <div class="col label-float large-4">
@@ -42,9 +37,9 @@
                             <label for="email" class="uppercase">e-mail </label>
                         </div>
                         <div class="col label-float large-6">
-                            <input type="text" name="gross_income" id="renda" class="uppercase mask-money"
-                                placeholder=' ' inputmode="numeric">
-                            <label for="renda" class="uppercase">informe sua renda bruta </label>
+                            <input type="text" name="gross_income" id="gross_income" class="uppercase mask-money"
+                                placeholder=' ' inputmode="numeric" required>
+                            <label for="gross_income" class="uppercase">informe sua renda bruta </label>
                         </div>
                         <div class="col large-6">
                             <select name="has_second_buyer">
@@ -54,44 +49,47 @@
                             </select>
                         </div>
                         <div class="col label-float large-6">
-                            <input type="text" name="second_buyer_full_name" id="segNome" class="uppercase"
+                            <input type="text" name="second_buyer_full_name" id="second_buyer_full_name" class="uppercase"
                                 placeholder=' '>
-                            <label for="segNome" class="uppercase">nome completo <span class="lowercase">(2º
+                            <label for="second_buyer_full_name" class="uppercase">nome completo <span class="lowercase">(2º
                                     Proponente)</span></label>
                         </div>
                         <div class="col label-float large-6">
-                            <input type="text" name="second_buyer_birthday" id="segBD" class="uppercase" placeholder=' '
+                            <input type="text" name="second_buyer_birthday" id="second_buyer_birthday" class="uppercase" placeholder=' '
                                 onfocus="(this.type='date')">
-                            <label for="segBD" class="uppercase">data de nascimento <span class="lowercase">(2º
+                            <label for="second_buyer_birthday" class="uppercase">data de nascimento <span class="lowercase">(2º
                                     Proponente)</span></label>
 
                         </div>
                         <div class="col label-float large-4">
-                            <input type="text" name="second_buyer_cpf" id="segCpf" class="mask-cpf uppercase"
+                            <input type="text" name="second_buyer_cpf" id="second_buyer_cpf" class="mask-cpf uppercase"
                                 placeholder=' ' inputmode="numeric">
-                            <label for="segCpf" class="uppercase">cpf</label>
+                            <label for="second_buyer_cpf" class="uppercase">cpf <span class="lowercase">(2º
+                                    Proponente)</span></label>
                         </div>
                         <div class="col label-float large-4">
-                            <input type="text" name="second_buyer_phone" id="segPhone" class="mask-phone uppercase"
+                            <input type="text" name="second_buyer_phone" id="second_buyer_phone" class="mask-phone uppercase"
                                 placeholder=' ' inputmode="numeric">
-                            <label for="segPhone" class="uppercase">telefone +55</label>
+                            <label for="second_buyer_phone" class="uppercase">telefone <span class="lowercase">(2º
+                                    Proponente) </span> +55 </label>
                         </div>
                         <div class="col label-float large-4">
-                            <input type="email" name="second_buyer_email" id="segEmail" class="uppercase"
+                            <input type="email" name="second_buyer_email" id="second_buyer_email" class="uppercase"
                                 placeholder=' '>
-                            <label for="segEmail" class="uppercase">e-mail</label>
+                            <label for="second_buyer_email" class="uppercase">e-mail <span class="lowercase">(2º
+                                    Proponente)</span></label>
                         </div>
-                        <div class="col label-float large-6">
-                            <select name="property_type">
-                                <option value="" disabled selected>TIPO DE IMÓVEL</option>
+                        <div class="col label-float large-4">
+                            <select name="property_type" id="property_type"  required>
+                                <option value="" disabled selected>TIPO DE IMÓVEL </option>
                                 <?php $imovelTipos = $env->getUsageProfile() ?>
                                 <?php foreach($imovelTipos as $imovelTipo) :?>
                                     <option value="<?= $imovelTipo->id ?>"><?= $imovelTipo->name ?></option>
                                 <?php endforeach; ?>
                             </select>
                         </div>
-                        <div class="col label-float large-6">
-                            <select name="property_condition" id="condition">
+                        <div class="col label-float large-4">
+                            <select name="property_condition" id="property_condition"  required>
                                 <option value="condition" disbled selected>CONDIÇÃO DO IMÓVEL</option>
                                 <?php $imovelCondicao = $env->getPropertyConditions() ?>
                                 <?php foreach($imovelCondicao as $condicao) :?>
@@ -99,62 +97,57 @@
                                 <?php endforeach; ?>
                             </select>
                         </div>
-                        <div class="col label-float large-6">
-                            <input type="text" name="property_price" id="valorImovel" class="mask-money"
+
+                        <div class="col label-float large-4">
+                            <select name="property_location" id="property_location"  required>
+                                <option value="" disabled selected>LOCALIZAÇÃO DO IMÓVEL (Estado)</option>
+                                <?php $estados = $env->getBrazilianStates(); ?>
+                                <?php foreach($estados as $estado) :?>
+                                <option value="<?= $estado->id ?>"><?= $estado->name ?></option>
+                                <?php endforeach;?>
+                            </select>
+                        </div>                
+
+                        <div class="col label-float large-4">
+                            <input type="text" name="property_price" id="property_price" class="mask-money"
                                 min="<?= $env->getMinimumSimulationAmount() ?>"
                                 max="<?= $env->getMaximumSimulationAmount() ?>" class="uppercase" value="" placeholder=' '
                                 required>
-                            <label for="valorImovel" class="uppercase">valor do imóvel </label>
+                            <label for="property_price" class="uppercase">valor do imóvel </label>
                         </div>
-                        <div class="col label-float large-6">
-                            <input type="text" name="initial_payment" id="entrada" class="mask-money" value="" placeholder=' '>
-                            <label for="entrada" class="uppercase">valor de entrada + fgts <span
-                                    class="lowercase hide-for-small">(Mínimo de 10% do valor do imóvel)</span></label>
+                        <div class="col label-float large-4">
+                            <input type="text" name="initial_payment" id="initial_payment" class="mask-money mb-0" value="" placeholder=' '  required>
+                            <label for="initial_payment" class="uppercase">valor de entrada + fgts</label>
+                            <span class="lowercase hide-for-small">(Mínimo de 10% do valor do imóvel)</span>
                         </div>
-                        <div class="row inside-form-row">
-                            <div class="col inside-form-col large-8">
-                                <div class="col large-12">
-                                    <input type="checkbox" name="include_itbi_fee" id="financiar" value="1">
-                                    <label for="financiar">FINANCIAR VALOR DAS TAXAS ITBI E CARTÓRIO NO FINANCIAMENTO?
-                                        (5% Do valor do imóvel)</label>
-                                </div>
-                                <div class="col large-12">
-                                    <select name="property_location">
-                                        <option value="" disabled selected>LOCALIZAÇÃO DO IMÓVEL (Estado)</option>
-                                        <?php $estados = $env->getBrazilianStates(); ?>
-                                        <?php foreach($estados as $estado) :?>
-                                        <option value="<?= $estado->id ?>"><?= $estado->name ?></option>
-                                        <?php endforeach;?>
-                                    </select>
-                                </div>
-                                <div class="col label-float large-4">
-                                    <input type="number" name="payment_length" value="" id="prazo" placeholder=" "
-                                        min="<?= $env->getMinimumSimulationDuration() ?>"
-                                        max="<?= $env->getMaximumSimulationDuration() ?>" step="1">
-                                    <label for="prazo" class="uppercase">prazo</label>
-                                </div>
-                            </div>
-                            <div class="col inside-form-col large-4">
-                                <div class="col large-12">
-                                    <input type="checkbox" name="accept_terms" id="agree" value="1" required>
-                                    <label for="agree">Ao clicar no botão de envio, concordo com os termos do site.
-                                        <span style="color:red;">*</span></label>
-                                </div>
-                                <div class="col chk-col large-12">
-                                    <input type="checkbox" name="accept_lgpd" id="aceito-lgpd" value="1" required>
-                                    <label for="aceito-lgpd">Aceitar LGPD <span style="color:red;">*</span></label>
-                                </div>
-                                <div class="col button-col large-12 text-right" >
-                                    <button class="button mb-0 mr-0">
-                                        <span>Próximo</span>
-                                        <i class="icon-angle-right"></i>
-                                    </button>
-                                </div>
-                                <input type="hidden" name="action" value="obah/create_simulation">
-                                <?php wp_nonce_field('obah/create_simulation') ?>
-
-                            </div>
+                        <div class="col label-float large-4">
+                            <input type="number" name="payment_length" value="" id="payment_length" placeholder=" "
+                                min="<?= $env->getMinimumSimulationDuration() ?>"
+                                max="<?= $env->getMaximumSimulationDuration() ?>" step="1"  required>
+                            <label for="payment_length" class="uppercase">prazo</label>
+                        </div>                          
+                        <div class="col large-12">
+                            <input type="checkbox" name="include_itbi_fee" id="include_itbi_fee" value="1">
+                            <label for="include_itbi_fee">FINANCIAR VALOR DAS TAXAS ITBI E CARTÓRIO NO FINANCIAMENTO?
+                                (5% Do valor do imóvel)</label>
+                        </div>           
+                        <div class="col large-12">
+                            <input type="checkbox" name="accept_terms" id="accept_terms" value="1" required>
+                            <label for="accept_terms">Ao clicar no botão de envio, concordo com os termos do site.
+                                <span style="color:red;">*</span></label>
                         </div>
+                        <div class="col chk-col large-12">
+                            <input type="checkbox" name="accept_lgpd" id="accept_lgpd" value="1" required>
+                            <label for="accept_lgpd">Aceitar LGPD <span style="color:red;">*</span></label>
+                        </div>
+                        <div class="col button-col large-12 text-right" >
+                            <button class="button mb-0 mr-0">
+                                <span>Próximo</span>
+                                <i class="icon-angle-right"></i>
+                            </button>
+                        </div>
+                        <input type="hidden" name="action" value="obah/create_simulation">
+                        <?php wp_nonce_field('obah/create_simulation') ?>
                     </form>
                     
                 </div>
