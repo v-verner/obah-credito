@@ -80,6 +80,7 @@ function ajaxUpdateSimulation(): void
     check_ajax_referer('obah/update_simulation');
 
     $api             = new Cred99\API();
+    $env             = new Cred99\Env();
     $simulationURL   = explode('/', trailingslashit($_POST['_wp_http_referer']));
     $simulationHash  = array_reverse($simulationURL)[1];
     $simulationID    = getSimulationIdByHash($simulationHash);
@@ -103,7 +104,14 @@ function ajaxUpdateSimulation(): void
     endif;
 
     if ($initial_payment) :
-        $simulation->set('valor_financ', $property_price - $initial_payment);
+        $calc = $property_price - $initial_payment;
+
+        if ($calc >= $env->getMinimumSimulationAmount() && $calc <= $env->getMaximumSimulationAmount() && $property_price > $calc) :
+            $simulation->set('valor_financ', $calc);
+        else :
+            wp_send_json_error('A sua simulação está imcompatível com nossa regra. Por favor, verifique seus dados.');
+        endif;
+
     endif;
 
     if ($payment_length) :
@@ -117,11 +125,14 @@ function ajaxUpdateSimulation(): void
     endif;
 
     saveSimulationResults($simulationID, $result);
+
+    $view = VVerner\Views::getInstance()->getComponent('COMP. TABELA', ['simulation_results' => $result]);
+
+
     
     // NOTE
     // Carregar os dados da simulação anterior para uso na simulação (loadSimulation())
     // Ao finalizar a simulação, salvar o novo resultado nela (saveSimulationResults())
 
-
-    wp_send_json_success();
+    wp_send_json_success($view);
 }

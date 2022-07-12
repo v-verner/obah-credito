@@ -11,10 +11,11 @@ s<?php $env = new Cred99\Env(); ?>
 			</div>
 			<div class="col input-col large-12">
                 <label for="valorImovel" class="uppercase">valor do imóvel </label>
-                <input type="text" name="property_price" id="valorImovel" class="mask-money"
+                <input type="text" name="property_price" id="valorImovel" class="mb-0 mask-money"
                 min="<?= $env->getMinimumSimulationAmount() ?>"
                 max="<?= $env->getMaximumSimulationAmount() ?>" class="uppercase" placeholder=' '
                 >
+                <small class="initial-payment-rule-text">Insira o valor do imóvel desejado.</small>
 			</div>
 			<div class="col input-col large-12">
                 <label for="entrada" class="uppercase">valor da entrada</label>

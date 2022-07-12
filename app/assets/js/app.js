@@ -18,6 +18,7 @@ const OBAH_SIMULATOR = {
 jQuery(function($){
     const $createSimulationForm = $('#create-simulation-form');
     const $updateSimulationForm = $('#update-simulation-form');
+    const $propertyPriceInput   = $('#valorImovel');
 
     $('.mask-cpf').mask('000.000.000-00', {reverse: false});
     $('.mask-phone').mask('(00) 0 0000-0000');
@@ -58,8 +59,9 @@ jQuery(function($){
                     'Os dados da sua simulação foram atualizados! A página será recarregada.',
                     'success'
                 ).then(() => {
-                    window.location.reload();
+                    // FAZER UM REPLACE DO TEMPLATE (COMPONENT QUE SERÁ CRIADO)
                 })
+                
 
             } else {
                 Swal.fire({
@@ -67,7 +69,19 @@ jQuery(function($){
                     title: 'Algo deu errado!',
                     text: res.data
                 });
+                console.log(res)
             }
         })
+    })
+
+    // INITIAL PAYMENT MINIMUM ACCEPTED VALUE MESSAGE
+    $propertyPriceInput.on('change', function(){
+        const pricePieces  = $(this).val().split(',');
+        const currentPrice = pricePieces[0].replace(/[.,\s]/g, '');
+        const minInitialPayment = OBAH_SIMULATOR.getMinimumInitialPayment(currentPrice);
+
+        $('#entrada').attr('min', minInitialPayment);
+        $('.initial-payment-rule-text').text('O valor mínimo de entrada deve ser ' + minInitialPayment.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}));
+        
     })
 })
