@@ -17,6 +17,7 @@ const OBAH_SIMULATOR = {
 
 jQuery(function($){
     const $createSimulationForm = $('#create-simulation-form');
+    const $updateSimulationForm = $('#update-simulation-form');
 
     $('.mask-cpf').mask('000.000.000-00', {reverse: false});
     $('.mask-phone').mask('(00) 0 0000-0000');
@@ -33,7 +34,7 @@ jQuery(function($){
                     'Você será redirecionado para o simulador.',
                     'success'
                 ).then(() => {
-                    window.location.href='https://obah-credito.dev/simulador/';
+                    window.location.href=res.data;
                 })
             } else {
                 Swal.fire({
@@ -44,4 +45,27 @@ jQuery(function($){
             }
         })
     });
+
+    // EDIT OBAH SIMULATION
+    $updateSimulationForm.on('submit', function(e){
+        e.preventDefault();
+        
+        $.post(app_data.url, $updateSimulationForm.serialize(), function(res){
+            console.log(res);
+            // if(res.success) {
+            //     Swal.fire(
+            //         'Dados atualizados com sucesso!',
+            //         'Você já pode continuar a visualizar a simulação.',
+            //         'success'
+            //     )
+
+            // } else {
+            //     Swal.fire({
+            //         icon: 'error',
+            //         title: 'Algo deu errado!',
+            //         text: res.data
+            //     });
+            // }
+        })
+    })
 })

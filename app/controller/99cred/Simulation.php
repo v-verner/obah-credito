@@ -130,6 +130,15 @@ class Simulation
     
     private function validateAmount(): bool
     {
+        error_log(print_r([
+            '$this->valor_financ' => $this->valor_financ,
+            '$this->env->getMinimumSimulationAmount()'  => $this->env->getMinimumSimulationAmount(),
+            '$this->env->getMaximumSimulationAmount()'  => $this->env->getMaximumSimulationAmount(),
+            '$this->valor' => $this->valor
+        ], true));
+
+        wp_send_json_error();
+
         return  $this->valor_financ >= $this->env->getMinimumSimulationAmount() && 
                 $this->valor_financ <= $this->env->getMaximumSimulationAmount() && 
                 $this->valor > $this->valor_financ;

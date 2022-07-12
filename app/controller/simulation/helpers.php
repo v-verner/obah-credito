@@ -49,7 +49,7 @@ function getSimulationStoredResults( int $simulationId ): array
     return get_post_meta($simulationId, OBAH_99_META_KEY_PREFIX . 'resultados');
 }
 
-function getSimulationByHash( string $hash ): ?Cred99\Simulation
+function getSimulationIdByHash ( string $hash ): int
 {
     global $wpdb;
     $key = sanitize_text_field($hash);
@@ -57,6 +57,14 @@ function getSimulationByHash( string $hash ): ?Cred99\Simulation
     $q = $wpdb->prepare($q, SIMULATION_HASH_KEY, $key);
 
     $ID = (int) $wpdb->get_var($q);
+
+    return $ID;
+}
+
+function getSimulationByHash( string $hash ): ?Cred99\Simulation
+{
+    $ID = getSimulationIdByHash($hash);    
+
     return  $ID ? loadSimulation($ID) : null;
 }
 

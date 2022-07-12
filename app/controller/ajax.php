@@ -26,7 +26,7 @@ function ajaxCreateSimulation(): void
     $property_location  = $_POST['property_location'] ? (int) $_POST['property_location'] : '';
     $property_condition = $_POST['property_condition'] ? sanitize_text_field($_POST['property_condition']) : '';
     $initial_payment    = $_POST['initial_payment'] ? $api::parseToFloat($_POST['initial_payment']) : 0;
-    $include_itbi_fee   = $_POST['include_itbi_fee'] ? sanitize_text_field($_POST['include_itbi_fee']) : '';
+    // $include_itbi_fee   = $_POST['include_itbi_fee'] ? sanitize_text_field($_POST['include_itbi_fee']) : '';
     $payment_length     = $_POST['payment_length'] ? (int) $_POST['payment_length'] : 0;
 
     if ($has_second_buyer) :
@@ -56,8 +56,6 @@ function ajaxCreateSimulation(): void
 
     $result    = $simulation->simulate();
 
-    error_log(print_r($result, true));
-
     if (is_wp_error($result)) :
         return;
     endif;
@@ -81,11 +79,44 @@ function ajaxUpdateSimulation(): void
 {
     check_ajax_referer('obah/update_simulation');
 
-    // $simulationURL = $_POST['_wp_http_referer'];
-    // $simulationID  = array_pop($simulationURL);
-    // $simulation    = loadSimulation($simulationID);
+    $api             = new Cred99\API();
+    $simulationURL   = explode('/', trailingslashit($_POST['_wp_http_referer']));
+    $simulationHash  = array_reverse($simulationURL)[1];
+    $simulationID    = getSimulationIdByHash($simulationHash);
+    $simulation      = getSimulationByHash($simulationHash);
 
+    if (!$simulation) :
+        wp_send_json_error('Você precisa de uma simulação para atualizar.');
+    endif;
 
+    $birthday        = $_POST['birthday'] ? sanitize_text_field($_POST['birthday']) : '';
+    $property_price  = $_POST['property_price'] ? $api::parseToFloat($_POST['property_price']) : 0;
+    $initial_payment = $_POST['initial_payment'] ? $api::parseToFloat($_POST['initial_payment']) : 0;
+    $payment_length  = $_POST['payment_length'] ? (int) $_POST['payment_length'] : 0;
+
+    if ($birthday) :
+        // ATUALIZAR A MB DE BIRTHDAY
+    endif;
+
+    if ($property_price) :
+        $simulation->set('valor', $property_price);
+    endif;
+
+    if ($initial_payment) :
+        $simulation->set('valor_financ', $property_price - $initial_payment);
+    endif;
+
+    if ($payment_length) :
+        $simulation->set('prazo', $payment_length);
+    endif;
+
+    $result = $simulation->simulate();
+
+    if (is_wp_error($result)) :
+        wp_send_json_error('As informações não batem, por favor tente novamente.');
+    endif;
+
+    saveSimulationResults($simulationID, $result);
     
     // NOTE
     // Carregar os dados da simulação anterior para uso na simulação (loadSimulation())
@@ -94,5 +125,3 @@ function ajaxUpdateSimulation(): void
 
     wp_send_json_success();
 }
-
-// add_action('wp_content', ajaxUpdateSimulation());
