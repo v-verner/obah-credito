@@ -26,26 +26,36 @@ jQuery(function($){
 
     // CREATE OBAH SIMULATION
     $createSimulationForm.on('submit', function(e){
+        const userBirth = $(this).find('#birthday').val();
+        const userAge = OBAH_SIMULATOR.calculateAge(userBirth);
+
         e.preventDefault();
 
-        $.post(app_data.url, $createSimulationForm.serialize(), function(res){
-            console.log(res)
-            if(res.success) {
-                Swal.fire(
-                    'Dados enviados com sucesso!',
-                    'Você será redirecionado para o simulador.',
-                    'success'
-                ).then(() => {
-                    window.location.href=res.data;
-                })
-            } else {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Algo deu errado!',
-                    text: res.data
-                });
-            }
-        })
+        if (OBAH_SIMULATOR.hasAgeInRange(userAge)) {
+            $.post(app_data.url, $createSimulationForm.serialize(), function(res){
+                if(res.success) {
+                    Swal.fire(
+                        'Dados enviados com sucesso!',
+                        'Você será redirecionado para o simulador.',
+                        'success'
+                    ).then(() => {
+                        window.location.href=res.data;
+                    })
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Algo deu errado!',
+                        text: res.data
+                    });
+                }
+            })
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Parece que sua idade não está dentro da idade aceita para realizar uma simulação em nossa plataforma.'
+            });
+        }
     });
 
     // EDIT OBAH SIMULATION
@@ -84,4 +94,5 @@ jQuery(function($){
         $('.initial-payment-rule-text').text('O valor mínimo de entrada deve ser ' + minInitialPayment.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}));
         
     })
+    
 })
