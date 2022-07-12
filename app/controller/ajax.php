@@ -57,7 +57,7 @@ function ajaxCreateSimulation(): void
     $result    = $simulation->simulate();
 
     if (is_wp_error($result)) :
-        return;
+        wp_send_json_error($result->get_error_message());
     endif;
 
     $simulationID   = saveSimulation($simulation);

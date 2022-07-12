@@ -9,6 +9,7 @@ defined('ABSPATH') || exit();
 class API
 {
     private $env;
+    private $simulationData = [];
 
     public function __construct()
     {
@@ -17,7 +18,9 @@ class API
 
     public function getSimulationResult( array $simulation ): array
     {
-        $qs      = http_build_query($simulation);
+        $this->simulationData = $simulation;
+
+        $qs      = http_build_query( $this->simulationData );
         $url     = $this->getApiUrl() . $qs;
         $results = $this->fetch('GET', $url);
 
@@ -39,6 +42,10 @@ class API
         $result->Taxa_Incial = isset($result->Taxa_Incial) ? $this->parseToFloat( $result->Taxa_Incial ) : 0;
         $result->Tarifa_Mensal = isset($result->Tarifa_Mensal) ? $this->parseToFloat( $result->Tarifa_Mensal ) : 0;
         $result->id_simulacao = isset($result->id_simulacao) ? (int) $result->id_simulacao : 0;
+        
+        $result->_Prazo = $this->simulationData['prazo'];
+        $result->_Valor_Financiado = $this->simulationData['valor_financ'];
+        $result->_Valor_Entrada = $this->simulationData['valor'] - $this->simulationData['valor_financ'];
 
         return $result;
     }

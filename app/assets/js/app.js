@@ -28,6 +28,7 @@ jQuery(function($){
         e.preventDefault();
 
         $.post(app_data.url, $createSimulationForm.serialize(), function(res){
+            console.log(res)
             if(res.success) {
                 Swal.fire(
                     'Dados enviados com sucesso!',
@@ -40,7 +41,7 @@ jQuery(function($){
                 Swal.fire({
                     icon: 'error',
                     title: 'Algo deu errado!',
-                    text: 'Tente novamente por favor, caso o erro persista entre em contato conosco.'
+                    text: res.data
                 });
             }
         })
@@ -54,9 +55,11 @@ jQuery(function($){
             if(res.success) {
                 Swal.fire(
                     'Dados atualizados com sucesso!',
-                    'Você já pode continuar a visualizar a simulação.',
+                    'Os dados da sua simulação foram atualizados! A página será recarregada.',
                     'success'
-                )
+                ).then(() => {
+                    window.location.reload();
+                })
 
             } else {
                 Swal.fire({
