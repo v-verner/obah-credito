@@ -51,21 +51,20 @@ jQuery(function($){
         e.preventDefault();
         
         $.post(app_data.url, $updateSimulationForm.serialize(), function(res){
-            console.log(res);
-            // if(res.success) {
-            //     Swal.fire(
-            //         'Dados atualizados com sucesso!',
-            //         'Você já pode continuar a visualizar a simulação.',
-            //         'success'
-            //     )
+            if(res.success) {
+                Swal.fire(
+                    'Dados atualizados com sucesso!',
+                    'Você já pode continuar a visualizar a simulação.',
+                    'success'
+                )
 
-            // } else {
-            //     Swal.fire({
-            //         icon: 'error',
-            //         title: 'Algo deu errado!',
-            //         text: res.data
-            //     });
-            // }
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Algo deu errado!',
+                    text: res.data
+                });
+            }
         })
     })
 })
