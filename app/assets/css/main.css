@@ -8,7 +8,8 @@ i.icon-menu {
     color: rgb(4, 198, 167);
 }
 
-.mfp-content a{
+.mfp-content a,
+.mfp-content div > a{
     justify-content: center;
 }
 

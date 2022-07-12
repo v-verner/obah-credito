@@ -14,7 +14,7 @@ s<?php $env = new Cred99\Env(); ?>
                 <input type="text" name="property_price" id="valorImovel" class="mask-money"
                 min="<?= $env->getMinimumSimulationAmount() ?>"
                 max="<?= $env->getMaximumSimulationAmount() ?>" class="uppercase" placeholder=' '
-                required>
+                >
 			</div>
 			<div class="col input-col large-12">
                 <label for="entrada" class="uppercase">valor da entrada</label>
@@ -23,7 +23,7 @@ s<?php $env = new Cred99\Env(); ?>
 			</div>
 			<div class="col input-col large-12">
                 <label for="birthDate" class="uppercase">quando você nasceu</label>
-                <input type="text" name="birthday" id="birthDate" class="uppercase" placeholder=" " required>
+                <input type="text" name="birthday" id="birthDate" class="uppercase" placeholder=" " >
 			</div>
 			<div class="col input-col large-12">
                 <label for="prazo" class="uppercase">prazo <span class="lowercase">(em meses)</span></label>

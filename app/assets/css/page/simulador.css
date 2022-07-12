@@ -3,6 +3,10 @@
     background: linear-gradient(180deg,rgba(17, 165, 208),rgba(78, 214, 196) );
 }
 
+.hero >.col {
+    padding-bottom: 0;
+}
+
 .sim-col{
     background: white;
     border-radius: 20px;
@@ -56,18 +60,29 @@ border-radius: 99px;
     background: #04d9b2;
 }
 
-.sim-row i.icon-angle-left {
+.sim-row i.icon-plus {
     color: white;
     background: red;
 }
 
-.sim-row i.icon-angle-left,
-.sim-row i.icon-angle-right{
+.sim-row i.icon-plus{
     border-radius: 100px;
     padding-right: 15px;
     padding-left: 15px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    font-size: 26px;
+    transform: rotate(45deg);
+}
+
+.sim-row .banks-col i.icon-angle-right,
+.edit-row i.icon-angle-right{
+    border-radius: 100px;
+    padding-right: 22px;
+    padding-left: 22px;
     padding-top: 9px;
     padding-bottom: 9px;
+    font-size: 30px;
 }
 
 .sim-col tr:nth-child(even) {
@@ -103,6 +118,9 @@ span.scroll-for-more-text{
 #modal-form_edit_simulation img {
     width: 309px;
     height: 79px;
+}
+#modal-form_edit_simulation{
+    background: white;
 }
 
 .edit-row input{
@@ -165,16 +183,20 @@ span.scroll-for-more-text{
 
 .edit-row i.icon-angle-right {
     color: white;
-    background: #04d9b2;
-    border-radius: 100px;
-    padding-right: 15px;
-    padding-left: 15px;
-    padding-top: 9px;
-    padding-bottom: 9px;
+    background: #04d9b2;    
 }
 
 .flex{
     display: flex !important;
+}
+
+.sub-text{
+    font-size: 15px;
+}
+
+.toggle-state + h2 {
+    padding-top: 13px;
+    padding-left: 15px;
 }
 
 
@@ -182,6 +204,11 @@ span.scroll-for-more-text{
     h4.hide-for-large {
         padding-left: 20px;
         font-size: 15px;
+    }
+    
+    .icon-box-text h4{
+        font-size: 14px;
+        line-height: 30px;
     }
 
     .edit{
@@ -220,8 +247,50 @@ span.scroll-for-more-text{
     .responsive-scroll.hide-for-large {
         overflow-x: auto;
         max-width: 100%;
-    }    
+    }  
+    
+    .col-bot{
+        padding-top: 40px;
+        padding-right: 18px;
+        padding-bottom: 0;
+    }
 
+    .sub-text{
+        font-size: 13px;
+        line-height: 1;
+        padding-bottom: 10px;
+    }
+
+    .sim-row .banks-col span{
+        text-align: right;
+            font-size: 14px;
+    }
+    
+    .sim-row .close-col span{
+        text-align: left;
+            font-size: 14px;
+    }
+    
+    
+    .sim-row .banks-col button{
+        display: flex;
+        padding-left: 0;
+    }
+    
+    .sim-row .close-col button{
+        display: flex;
+        padding-right: 0;
+        margin-top: 30px;
+    }
+
+    .sim-row .banks-col i.icon-angle-right{
+        margin-top: 30px;
+    }
+
+    #modal-form_edit_simulation img {
+        width: 240px;
+        height: 60px;
+    }
 }
 
 

@@ -87,7 +87,7 @@
                             <p class="edit uppercase"><i class="icon-pen-alt-fill"></i> editar dados</p>
                         </a>
                     </div>
-                    <div class="col large-12 hide-for-small">
+                    <div class="col large-12  hide-for-medium hide-for-small">
                         <table>
                             <tr class="table-title">
                                 <th class="text-center">seleção</th>
@@ -324,13 +324,13 @@
                     </div>
                         
 
-                    <div class="col pb-0 close-col large-6 small-6">
+                    <div class="col pb-0 close-col large-6 small-6" style="padding-right:0;">
                         <button class="button mb-0 pb-0">
-                            <i class="icon-angle-left"></i>
+                            <i class="icon-plus"></i>
                             <span>fechar análise</span>
                         </button>
                     </div>
-                    <div class="col pb-0 text-right banks-col large-6 small-6">
+                    <div class="col pb-0 text-right banks-col large-6 small-6"  style="padding-left:0;">
                         <button class="button mb-0 pb-0">
                             <span>selecione o banco para seguir com análise de credito</span>
                             <i class="icon-angle-right"></i>
@@ -341,14 +341,14 @@
         </div>
         <div class="row row-large">
             <div class="col col-bot dark large-12">
-                <h5 class="thin-font">Data desta Simulação: 19/05/2022 12:08:32</h5>
-                <h5 class="thin-font">As taxas aqui apresentadas são do tipo "balcão" e correção de parcelas com taxa
+                <h5 class="thin-font sub-text">Data desta Simulação: 19/05/2022 12:08:32</h5>
+                <h5 class="thin-font sub-text">As taxas aqui apresentadas são do tipo "balcão" e correção de parcelas com taxa
                     Pré-Fixada. No decorrer do processo, condições melhores poderão ser obtidas.</h5>
-                <h5 class="thin-font">Info: As taxas apresentadas acima poderão sofrer alterações no decorrer do
+                <h5 class="thin-font sub-text">Info: As taxas apresentadas acima poderão sofrer alterações no decorrer do
                     processo, por iniciativa dos Bancos conveniadas.</h5>
-                <h5 class="thin-font">Info: De acordo com as contingências de mercado, os Bancos conveniados poderão
+                <h5 class="thin-font sub-text">Info: De acordo com as contingências de mercado, os Bancos conveniados poderão
                     excluir ou alterar os produtos de financiamentos disponibilizados neste simulador.</h5>
-                <h5 class="thin-font">IMPORTANTE: Os resultados obtidos no presente website não constituem qualquer
+                <h5 class="thin-font sub-text" style="line-height:1;">IMPORTANTE: Os resultados obtidos no presente website não constituem qualquer
                     forma de proposta financeira bem como não vinculam quaisquer partes e/ou instituições financeiras
                     anunciadas. Consideram condições de BALCÃO e são referenciais para negociação inicial com o Cliente.
                     Eventuais diferenças em relação aos simuladores das instituições financeiras devido a critérios de
