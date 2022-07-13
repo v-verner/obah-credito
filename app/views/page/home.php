@@ -60,7 +60,7 @@
                     </div>
                 </div>
                 <button class="button go-to-simulation-button">
-                    <a href="http://localhost/obah/formulario/">Faça uma simulação</a>
+                    <a href="<?= get_permalink(getObahPageId('formulário')) ?>">Faça uma simulação</a>
                 </button>
             </div>
             <div class="col large-4">

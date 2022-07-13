@@ -100,7 +100,7 @@
                         </button>
                     </div>
                     <div class="col pb-0 text-right banks-col large-6 small-6"  style="padding-left:0;">
-                        <button class="button mb-0 pb-0">
+                        <button class="button mb-0 pb-0 text-right">
                             <span>selecione o banco para seguir com análise de credito</span>
                             <i class="icon-angle-right"></i>
                         </button>

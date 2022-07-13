@@ -29,8 +29,9 @@ $maxAgeDate->modify('- '. $env->getMaximumAgeForSimulation() .' years');
                 >
 			</div>
 			<div class="col input-col large-12">
-                <label for="birthDate" class="uppercase">quando você nasceu</label>
-                <input type="text" name="birthDate" id="birthDate" class="uppercase" placeholder=" "  min="<?= $maxAgeDate->format('Y-m-d') ?>" max="<?= $minAgeDate->format('Y-m-d') ?>">
+                <label for="birthday" class="uppercase">quando você nasceu</label>
+            <input type="text" name="birthday" id="birthday" class="uppercase" placeholder=" "
+                                onfocus="(this.type='date')" min="<?= $maxAgeDate->format('Y-m-d') ?>" max="<?= $minAgeDate->format('Y-m-d') ?>" required>
 			</div>
 			<div class="col input-col large-12">
                 <label for="payment_length" class="uppercase">prazo <span class="lowercase">(em meses)</span></label>

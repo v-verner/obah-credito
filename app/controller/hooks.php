@@ -20,7 +20,7 @@ add_filter('query_vars', function($vars) {
 });
 
 add_action('template_redirect', function(){
-    global $wp_query, $currentSimulation;
+    global $wp_query, $currentSimulation, $currentSimulationId;
 
     $hash = get_query_var('simulation_hash');
     if (!$hash) :
@@ -34,4 +34,5 @@ add_action('template_redirect', function(){
     endif;
 
     $currentSimulation = $simulation;
+    $currentSimulationId = getSimulationIdByHash($hash);
 });
