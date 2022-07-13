@@ -1,6 +1,3 @@
-<?php global $currentSimulationId; ?>
-<?php $lastResults = getSimulationStoredResults($currentSimulationId) ?>
-
 <div class="col large-12  hide-for-medium hide-for-small">
         <div class="responsive-scroll">
             <table>
