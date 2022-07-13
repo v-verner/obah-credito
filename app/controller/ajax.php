@@ -14,22 +14,22 @@ function ajaxCreateSimulation(): void
     $api                = new Cred99\API();
     $now                = new DateTime();
 
-    $full_name          = $_POST['full_name'] ? sanitize_text_field($_POST['full_name']) : '';
-    $birthday           = $_POST['birthday'] ? sanitize_text_field($_POST['birthday']) : '';
-    $cpf                = $_POST['cpf'] ? sanitize_text_field($_POST['cpf']) : '';
-    $phone              = $_POST['phone'] ? sanitize_text_field($_POST['phone']) : '';
-    $email              = $_POST['email'] ? sanitize_email($_POST['email']) : '';
-    $gross_income       = $_POST['gross_income'] ? $api::parseToFloat($_POST['gross_income']) : 0;
-    $has_second_buyer   = $_POST['has_second_buyer'] === 'Sim' ? true : false;
-    $property_type      = $_POST['property_type'] ? sanitize_text_field($_POST['property_type']) : '';
-    $property_price     = $_POST['property_price'] ? $api::parseToFloat($_POST['property_price']) : 0;
-    $property_location  = $_POST['property_location'] ? (int) $_POST['property_location'] : '';
-    $property_condition = $_POST['property_condition'] ? sanitize_text_field($_POST['property_condition']) : '';
-    $initial_payment    = $_POST['initial_payment'] ? $api::parseToFloat($_POST['initial_payment']) : 0;
-    // $include_itbi_fee   = $_POST['include_itbi_fee'] ? sanitize_text_field($_POST['include_itbi_fee']) : '';
-    $payment_length     = $_POST['payment_length'] ? (int) $_POST['payment_length'] : 0;
+    $full_name          = isset($_POST['full_name']) ? sanitize_text_field($_POST['full_name']) : '';
+    $birthday           = isset($_POST['birthday']) ? sanitize_text_field($_POST['birthday']) : '';
+    $cpf                = isset($_POST['cpf']) ? sanitize_text_field($_POST['cpf']) : '';
+    $phone              = isset($_POST['phone']) ? sanitize_text_field($_POST['phone']) : '';
+    $email              = isset($_POST['email']) ? sanitize_email($_POST['email']) : '';
+    $gross_income       = isset($_POST['gross_income']) ? $api::parseToFloat($_POST['gross_income']) : 0;
+    $has_second_buyer   = isset($_POST['has_second_buyer']) === 'Sim' ? 'Sim' : 'Não';
+    $property_type      = isset($_POST['property_type']) ? sanitize_text_field($_POST['property_type']) : '';
+    $property_price     = isset($_POST['property_price']) ? $api::parseToFloat($_POST['property_price']) : 0;
+    $property_location  = isset($_POST['property_location']) ? (int) $_POST['property_location'] : '';
+    $property_condition = isset($_POST['property_condition']) ? sanitize_text_field($_POST['property_condition']) : '';
+    $initial_payment    = isset($_POST['initial_payment']) ? $api::parseToFloat($_POST['initial_payment']) : 0;
+    $include_itbi_fee   = isset($_POST['include_itbi_fee']) ? 'Sim' : 'Não';
+    $payment_length     = isset($_POST['payment_length']) ? (int) $_POST['payment_length'] : 0;
 
-    if ($has_second_buyer) :
+    if ($has_second_buyer === 'Sim') :
         $second_buyer_full_name = $_POST['second_buyer_full_name'] ? sanitize_text_field($_POST['second_buyer_full_name']) : '';
         $second_buyer_birthday  = $_POST['second_buyer_birthday'] ? sanitize_text_field($_POST['second_buyer_birthday']) : '';
         $second_buyer_cpf       = $_POST['second_buyer_cpf'] ? sanitize_text_field($_POST['second_buyer_cpf']) : '';
@@ -56,11 +56,25 @@ function ajaxCreateSimulation(): void
 
     $result    = $simulation->simulate();
 
+
     if (is_wp_error($result)) :
         wp_send_json_error($result->get_error_message());
     endif;
 
     $simulationID   = saveSimulation($simulation);
+
+    update_post_meta($simulationID, 'cpf', $cpf);
+    update_post_meta($simulationID, 'gross_income', $gross_income);
+    // update_post_meta($simulationID, 'include_itbi_fee', $include_itbi_fee);
+    update_post_meta($simulationID, 'has-second_buyer', $has_second_buyer);
+
+    if ($has_second_buyer === 'Sim') :
+        update_post_meta($simulationID, 'second_buyer-name', $second_buyer_full_name);
+        update_post_meta($simulationID, 'second_buyer-cpf', $second_buyer_cpf);
+        update_post_meta($simulationID, 'second_buyer-phone', $second_buyer_phone);
+        update_post_meta($simulationID, 'second_buyer-email', $second_buyer_email);
+        update_post_meta($simulationID, 'second_buyer-age', $second_buyer_age);
+    endif;
 
     $simulationHash = createSimulationHash($simulationID);
 
