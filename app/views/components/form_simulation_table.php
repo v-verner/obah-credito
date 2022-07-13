@@ -1,3 +1,8 @@
+<?php global  $currentSimulationId; ?>
+<?php $simulationResults = getSimulationStoredResults($currentSimulationId) ?>
+<?php $currentSimulation = $simulationResults[0] ?>
+<?php var_dump($currentSimulation) ?>
+
 <div class="col large-12  hide-for-medium hide-for-small">
         <div class="responsive-scroll">
             <table>
@@ -28,34 +33,38 @@
                     </th>
                     <th class="text-center">taxa efetiva</th>
                 </tr>
-                <tr class="bank01">
-                    <td class="text-center"><input type="radio" name="bank-select" id=""></td>
-                    <td class="bank-img"><img width="62" height="62"
-                            src="<?= VVerner\Assets::getInstance()->getImageFileUrl('logo-caixa-economica-federal.png') ?>"
-                            alt="Caixa"><span class="uppercase"> bradesco</span></td>
-                    <td class="text-center">
-                        <p>R$120.000</p>
-                    </td>
-                    <td class="text-center">
-                        <p>R$120.000</p>
-                    </td>
-                    <td class="text-center">
-                        <p>320</p>
-                    </td>
-                    <td class="text-center">
-                        <p>R$120.000</p>
-                    </td>
-                    <td class="text-center">
-                        <p>R$120.000</p>
-                    </td>
-                    <td class="text-center">
-                        <p>R$120.000</p>
-                    </td>
-                    <td class="text-center">
-                        <p>SAC</p>
-                    </td>
-                    <td class="text-center">8,89% A.A</td>
-                </tr>                                
+                
+                <?php foreach($currentSimulation as $bank) :?>
+                    <tr class="bank01">
+                        <td class="text-center"><input type="radio" name="bank-select" id=""></td>
+                        <td class="bank-img"><img width="62" height="62"
+                                src="<?= VVerner\Assets::getInstance()->getImageFileUrl('logo-caixa-economica-federal.png') ?>"
+                                alt="Caixa"><span class="uppercase"> bradesco</span></td>
+                        <td class="text-center">
+                            <p>R$120.000</p>
+                        </td>
+                        <td class="text-center">
+                            <p>R$120.000</p>
+                        </td>
+                        <td class="text-center">
+                            <p>320</p>
+                        </td>
+                        <td class="text-center">
+                            <p>R$120.000</p>
+                        </td>
+                        <td class="text-center">
+                            <p>R$120.000</p>
+                        </td>
+                        <td class="text-center">
+                            <p>R$120.000</p>
+                        </td>
+                        <td class="text-center">
+                            <p>SAC</p>
+                        </td>
+                        <td class="text-center">8,89% A.A</td>
+                    </tr>    
+                <?php endforeach;?>  
+                                              
             </table>
         </div>
     </div>
