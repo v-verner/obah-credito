@@ -61,6 +61,8 @@ jQuery(function($){
     // EDIT OBAH SIMULATION
     $updateSimulationForm.on('submit', function(e){
         e.preventDefault();
+
+        $('.send-obah-simulation').addClass('loading');
         
         $.post(app_data.url, $updateSimulationForm.serialize(), function(res){
             if(res.success) {

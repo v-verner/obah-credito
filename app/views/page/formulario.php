@@ -150,7 +150,7 @@ $maxAgeDate->modify('- '. $env->getMaximumAgeForSimulation() .' years');
                             <label for="accept_lgpd">Aceitar LGPD <span style="color:red;">*</span></label>
                         </div>
                         <div class="col button-col large-12 text-right" >
-                            <button class="button mb-0 mr-0">
+                            <button class="button send-obah-simulation-btn mb-0 mr-0">
                                 <span>Próximo</span>
                                 <i class="icon-angle-right"></i>
                             </button>
