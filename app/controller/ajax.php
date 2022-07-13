@@ -140,7 +140,7 @@ function ajaxUpdateSimulation(): void
 
     saveSimulationResults($simulationID, $result);
 
-    $view = VVerner\Views::getInstance()->getComponent('COMP. TABELA', ['simulation_results' => $result]);
+    $view = VVerner\Views::getInstance()->getComponent('modal-form_simulation_table', ['simulation_results' => $result]);
 
 
     
