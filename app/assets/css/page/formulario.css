@@ -84,10 +84,18 @@
     -moz-transition: all .3s ease-out;
     padding-left:30px;
 }
+
+.label-float select:required + option::after{
+    content: "*";
+    color: red;
+    display: inline-block;
+    position: absolute;
+  }
+
     
 .form-row .label-float input:required:invalid + label::after{
     content: '*';
-      color:red;
+    color:red;
 }
 
 .form-row .label-float input:focus + label,

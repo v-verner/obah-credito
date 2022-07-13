@@ -1,4 +1,10 @@
-<?php $env = new Cred99\Env(); ?>
+<?php 
+$env = new Cred99\Env();
+$minAgeDate = new DateTime(current_time('Y-m-d'));
+$minAgeDate->modify('- '. $env->getMinimumAgeForSimulation() .' years');
+$maxAgeDate = new DateTime(current_time('Y-m-d'));
+$maxAgeDate->modify('- '. $env->getMaximumAgeForSimulation() .' years');
+?>
 <section class="section hero">
     <div class="hero-overlay absolute-fill">
         <div class="col large-12">
@@ -19,7 +25,7 @@
                         </div>
                         <div class="col label-float large-6">
                             <input type="text" name="birthday" id="birthday" class="uppercase" placeholder=" "
-                                onfocus="(this.type='date')" required>
+                                onfocus="(this.type='date')" min="<?= $maxAgeDate->format('Y-m-d') ?>" max="<?= $minAgeDate->format('Y-m-d') ?>" required>
                             <label for="birthday" class="uppercase">data de nascimento </label>
                         </div>
                         <div class="col label-float large-4">
@@ -56,7 +62,7 @@
                         </div>
                         <div class="col label-float large-6">
                             <input type="text" name="second_buyer_birthday" id="second_buyer_birthday" class="uppercase" placeholder=' '
-                                onfocus="(this.type='date')">
+                                onfocus="(this.type='date')" min="<?= $maxAgeDate->format('Y-m-d') ?>" max="<?= $minAgeDate->format('Y-m-d') ?>">
                             <label for="second_buyer_birthday" class="uppercase">data de nascimento <span class="lowercase">(2º
                                     Proponente)</span></label>
 
@@ -81,7 +87,7 @@
                         </div>
                         <div class="col label-float large-4">
                             <select name="property_type" id="property_type"  required>
-                                <option value="" disabled selected>TIPO DE IMÓVEL </option>
+                                <option value="" disabled selected>TIPO DE IMÓVEL *</option>
                                 <?php $imovelTipos = $env->getUsageProfile() ?>
                                 <?php foreach($imovelTipos as $imovelTipo) :?>
                                     <option value="<?= $imovelTipo->id ?>"><?= $imovelTipo->name ?></option>
@@ -89,8 +95,8 @@
                             </select>
                         </div>
                         <div class="col label-float large-4">
-                            <select name="property_condition" id="property_condition"  required>
-                                <option value="condition" disbled selected>CONDIÇÃO DO IMÓVEL</option>
+                            <select name="property_condition" id="property_condition" class="property_condition" required>
+                                <option value="" disabled selected><span>CONDIÇÃO DO IMÓVEL <span class="required">*</span></span></option>
                                 <?php $imovelCondicao = $env->getPropertyConditions() ?>
                                 <?php foreach($imovelCondicao as $condicao) :?>
                                     <option value="<?= $condicao->id ?>"><?= $condicao->name ?></option>
@@ -100,7 +106,7 @@
 
                         <div class="col label-float large-4">
                             <select name="property_location" id="property_location"  required>
-                                <option value="" disabled selected>LOCALIZAÇÃO DO IMÓVEL (Estado)</option>
+                                <option value="" disabled selected>LOCALIZAÇÃO DO IMÓVEL (Estado) *</option>
                                 <?php $estados = $env->getBrazilianStates(); ?>
                                 <?php foreach($estados as $estado) :?>
                                 <option value="<?= $estado->id ?>"><?= $estado->name ?></option>
@@ -109,22 +115,25 @@
                         </div>                
 
                         <div class="col label-float large-4">
-                            <input type="text" name="property_price" id="property_price" class="mask-money"
+                            <input type="text" name="property_price" id="property_price" class="mask-money mb-0"
                                 min="<?= $env->getMinimumSimulationAmount() ?>"
                                 max="<?= $env->getMaximumSimulationAmount() ?>" class="uppercase" value="" placeholder=' '
                                 required>
                             <label for="property_price" class="uppercase">valor do imóvel </label>
+
                         </div>
                         <div class="col label-float large-4">
                             <input type="text" name="initial_payment" id="initial_payment" class="mask-money mb-0" value="" placeholder=' '  required>
-                            <label for="initial_payment" class="uppercase">valor de entrada + fgts</label>
-                            <span class="lowercase hide-for-small">(Mínimo de 10% do valor do imóvel)</span>
+                            <label for="initial_payment" class="uppercase">valor de entrada + fgts </label>
+                            <small class="initial-payment-rule-text"></small>
                         </div>
                         <div class="col label-float large-4">
-                            <input type="number" name="payment_length" value="" id="payment_length" placeholder=" "
+                            <input type="number" name="payment_length" value="" id="payment_length" class="mb-0" placeholder=" "
                                 min="<?= $env->getMinimumSimulationDuration() ?>"
                                 max="<?= $env->getMaximumSimulationDuration() ?>" step="1"  required>
-                            <label for="payment_length" class="uppercase">prazo</label>
+                            <label for="payment_length" class="uppercase">prazo </label>
+                            <p class="mb-0">Prazo mínimo de <?= $env->getMinimumSimulationDuration() ?> meses</p>
+                            <p class="mb-0">Prazo mínimo de <?= $env->getMaximumSimulationDuration() ?> meses</p>
                         </div>                          
                         <div class="col large-12">
                             <input type="checkbox" name="include_itbi_fee" id="include_itbi_fee" value="1">

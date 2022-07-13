@@ -46,6 +46,15 @@ a.nav-top-link {
     max-height: 54px;
 }
 
+b.footer-privacy-policy:hover {
+    color: black;
+}
+
+.footer-secondary.pull-right {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
 @media (max-width: 48em){
     img.header_logo.header-logo {
         min-width: 156px;

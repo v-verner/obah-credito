@@ -41,6 +41,11 @@
     border-radius: 99px;
 }
 
+.go-to-simulation-button{
+    background-color: rgb(19, 199, 151);
+    border-radius: 20px;
+}
+
 .home .icon-box.featured-box.icon-box-left.text-left {
     padding-bottom: 60px;
 }

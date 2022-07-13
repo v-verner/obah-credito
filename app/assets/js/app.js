@@ -18,7 +18,7 @@ const OBAH_SIMULATOR = {
 jQuery(function($){
     const $createSimulationForm = $('#create-simulation-form');
     const $updateSimulationForm = $('#update-simulation-form');
-    const $propertyPriceInput   = $('#valorImovel');
+    const $propertyPriceInput   = $('#property_price');
 
     $('.mask-cpf').mask('000.000.000-00', {reverse: false});
     $('.mask-phone').mask('(00) 0 0000-0000');
@@ -90,7 +90,7 @@ jQuery(function($){
         const currentPrice = pricePieces[0].replace(/[.,\s]/g, '');
         const minInitialPayment = OBAH_SIMULATOR.getMinimumInitialPayment(currentPrice);
 
-        $('#entrada').attr('min', minInitialPayment);
+        $('#initial_payment').attr('min', minInitialPayment);
         $('.initial-payment-rule-text').text('O valor mínimo de entrada deve ser ' + minInitialPayment.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}));
         
     })
