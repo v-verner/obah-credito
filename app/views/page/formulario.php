@@ -133,7 +133,7 @@ $maxAgeDate->modify('- '. $env->getMaximumAgeForSimulation() .' years');
                                 max="<?= $env->getMaximumSimulationDuration() ?>" step="1"  required>
                             <label for="payment_length" class="uppercase">prazo </label>
                             <p class="mb-0">Prazo mínimo de <?= $env->getMinimumSimulationDuration() ?> meses</p>
-                            <p class="mb-0">Prazo mínimo de <?= $env->getMaximumSimulationDuration() ?> meses</p>
+                            <p class="mb-0">Prazo máximo de <?= $env->getMaximumSimulationDuration() ?> meses</p>
                         </div>                          
                         <div class="col large-12">
                             <input type="checkbox" name="include_itbi_fee" id="include_itbi_fee" value="1">
