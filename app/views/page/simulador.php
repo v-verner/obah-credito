@@ -36,7 +36,7 @@
                         </div>
                     </div>
                     <div class="icon-box-text last-reset">
-                        <h4 class="thin-font">Prazo mínimo de 60 meses</h4>
+                        <h4 class="thin-font">Prazo mínimo de <?= $env->getMinimumSimulationDuration() ?> meses</h4>
                     </div>
                 </div>
                 <div class="icon-box featured-box icon-box-left text-left">
@@ -48,7 +48,7 @@
                         </div>
                     </div>
                     <div class="icon-box-text last-reset">
-                        <h4 class="thin-font">Prazo máximo de 420 meses(Caixa e Santander)</h4>
+                        <h4 class="thin-font">Prazo máximo de <?= $env->getMaximumSimulationDuration() ?> meses(Caixa e Santander)</h4>
                     </div>
                 </div>
                 <div class="icon-box featured-box icon-box-left text-left">
@@ -88,12 +88,12 @@
                         </a>
                     </div>
                     
-                    <?= VVerner\Views::getInstance()->getComponent('modal-form_simulation_table') ?>
+                    <?= VVerner\Views::getInstance()->getComponent('form_simulation_table') ?>
                         
 
                     <div class="col pb-0 close-col large-6 small-6" style="padding-right:0;">
                         <button class="button mb-0 pb-0">
-                        <a href="http://localhost/obah/formulario/">
+                        <a href="<?= get_permalink(getObahPageId('formulário')) ?>">
                             <i class="icon-plus"></i>
                             <span>fechar análise</span>
                         </a>

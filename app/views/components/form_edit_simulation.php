@@ -40,7 +40,7 @@ $maxAgeDate->modify('- '. $env->getMaximumAgeForSimulation() .' years');
                 max="<?= $env->getMaximumSimulationDuration() ?>" step="1">
 			</div>
 			<div class="col input-col large-12">
-                <div class="toggle-sssssssssss">
+                <div class="toggle-container">
                     <input type="checkbox" name="include_itbi_fee" id="include_itbi_fee">
                     <label class="flex align-middle" for="include_itbi_fee">
                         <span class="toggle-state"></span>
