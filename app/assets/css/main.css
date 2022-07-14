@@ -1,3 +1,8 @@
+.button.loading:after {
+    border-color: #04d9b2;
+    left: 0%;
+}
+
 img.header_logo.header-logo {
     min-width: 309px;
     min-height: 79px;

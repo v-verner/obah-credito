@@ -1,3 +1,4 @@
+<?php global $currentSimulationId; ?>
 <?php $env = new Cred99\Env(); ?>
 <section class="section hero">
     <div class="col large-12">
@@ -117,7 +118,7 @@
         </div>
         <div class="row row-large">
             <div class="col col-bot dark large-12">
-                <h5 class="thin-font sub-text">Data desta Simulação: 19/05/2022 12:08:32</h5>
+                <h5 class="thin-font sub-text">Data desta Simulação: <?= get_the_date('d/m/Y H:i', $currentSimulationId) ?></h5>
                 <h5 class="thin-font sub-text">As taxas aqui apresentadas são do tipo "balcão" e correção de parcelas com taxa
                     Pré-Fixada. No decorrer do processo, condições melhores poderão ser obtidas.</h5>
                 <h5 class="thin-font sub-text">Info: As taxas apresentadas acima poderão sofrer alterações no decorrer do

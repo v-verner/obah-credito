@@ -29,7 +29,7 @@ jQuery(function($){
         const userBirth = $(this).find('#birthday').val();
         const userAge = OBAH_SIMULATOR.calculateAge(userBirth);
 
-        $('.send-obah-simulation').addClass('loading');
+        $(this).find('.send-obah-simulation').addClass('loading');
 
         e.preventDefault();
 
@@ -72,7 +72,6 @@ jQuery(function($){
                     'success'
                 ).then(() => {
                     $('#container-form_simulation_table').html( res.data )
-                    console.log(res)
                 })
 
             } else {
