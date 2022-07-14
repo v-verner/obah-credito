@@ -64,6 +64,13 @@ b.footer-privacy-policy:hover {
     padding: 0 !important;
 }
 
+.flashing-alert {
+    border: solid 2px !important;
+    border-color: red !important;
+    background: #ff000024 !important;
+}
+
+/* MOBILE */
 @media (max-width: 48em){
     img.header_logo.header-logo {
         min-width: 156px;
