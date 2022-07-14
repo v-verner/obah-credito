@@ -68,11 +68,9 @@ jQuery(function($){
             if(res.success) {
                 Swal.fire(
                     'Dados atualizados com sucesso!',
-                    'Os dados da sua simulação foram atualizados! A página será recarregada.',
+                    'Os dados da sua simulação foram atualizados.',
                     'success'
-                ).then(() => {
-                    // FAZER UM REPLACE DO TEMPLATE (COMPONENT QUE SERÁ CRIADO)
-                })
+                )
                 
 
             } else {

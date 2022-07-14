@@ -64,8 +64,9 @@ function ajaxCreateSimulation(): void
     $simulationID   = saveSimulation($simulation);
 
     update_post_meta($simulationID, 'cpf', $cpf);
+    update_post_meta($simulationID, 'birthday', $birthday);
     update_post_meta($simulationID, 'gross_income', $gross_income);
-    // update_post_meta($simulationID, 'include_itbi_fee', $include_itbi_fee);
+    update_post_meta($simulationID, 'include_itbi_fee', $include_itbi_fee);
     update_post_meta($simulationID, 'has-second_buyer', $has_second_buyer);
 
     if ($has_second_buyer === 'Sim') :
@@ -104,17 +105,22 @@ function ajaxUpdateSimulation(): void
         wp_send_json_error('Você precisa de uma simulação para atualizar.');
     endif;
 
-    $birthday        = $_POST['birthday'] ? sanitize_text_field($_POST['birthday']) : '';
-    $property_price  = $_POST['property_price'] ? $api::parseToFloat($_POST['property_price']) : 0;
-    $initial_payment = $_POST['initial_payment'] ? $api::parseToFloat($_POST['initial_payment']) : 0;
-    $payment_length  = $_POST['payment_length'] ? (int) $_POST['payment_length'] : 0;
+    $birthday         = isset($_POST['birthday']) ? sanitize_text_field($_POST['birthday']) : '';
+    $property_price   = isset($_POST['property_price']) ? $api::parseToFloat($_POST['property_price']) : 0;
+    $initial_payment  = isset($_POST['initial_payment']) ? $api::parseToFloat($_POST['initial_payment']) : 0;
+    $payment_length   = isset($_POST['payment_length']) ? (int) $_POST['payment_length'] : 0;
+    $include_itbi_fee = isset($_POST['include_itbi_fee']) ? 'Sim' : 'Não';
 
     if ($birthday) :
-        // ATUALIZAR A MB DE BIRTHDAY
+        update_post_meta($simulationID, 'birthday', $birthday);
     endif;
 
     if ($property_price) :
         $simulation->set('valor', $property_price);
+    endif;
+
+    if ($include_itbi_fee) :
+        update_post_meta($simulationID, 'include_itbi_fee', $include_itbi_fee);
     endif;
 
     if ($initial_payment) :
@@ -140,7 +146,7 @@ function ajaxUpdateSimulation(): void
 
     saveSimulationResults($simulationID, $result);
 
-    $view = VVerner\Views::getInstance()->getComponent('modal-form_simulation_table', ['simulation_results' => $result]);
+    $view = VVerner\Views::getInstance()->getComponent('form_simulation_table', ['simulation_results' => $result]);
 
 
     

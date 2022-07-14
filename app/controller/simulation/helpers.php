@@ -78,4 +78,10 @@ function saveSimulationHash( string $simulation_hash, int $simulation_id ): void
     update_post_meta($simulation_id, SIMULATION_HASH_KEY, $simulation_hash);
 }
 
+function getLastSimulationResult( int $simulationId ): array
+{
+    $storedResults = array_reverse(getSimulationStoredResults($simulationId));
+    $currentResult = $storedResults[0];
 
+    return $currentResult;
+}
