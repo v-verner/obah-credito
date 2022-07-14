@@ -2,7 +2,6 @@
 <?php $simulationResults = getSimulationStoredResults($currentSimulationId) ?>
 <?php $currentSimulation = $simulationResults[0] ?>
 
-<<<<<<< HEAD
 <div class="hide-for-medium hide-for-small">
         <div class="responsive-scroll">
             <table>
@@ -113,7 +112,6 @@
                 <tr>
                     <th>entrada</th>
                     <td class="text-center"><p>R$120.000</p>
-=======
 <div class="col large-12  hide-for-medium hide-for-small">
     <div class="responsive-scroll">
         <table>
@@ -158,7 +156,6 @@
                     </td>  
                     <td class="text-center">
                         <p>R$<?= number_format($bank->_Valor_Financiado, '2', ',' , '.') ?></p>
->>>>>>> ae4e3c27a7843058a34b591c994f5a023e129104
                     </td>
                     <td class="text-center">
                         <p>R$<?= number_format($bank->_Valor_Entrada, '2', ',' , '.') ?></p>
