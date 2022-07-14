@@ -1,7 +1,11 @@
-
 img.header_logo.header-logo {
     min-width: 309px;
     min-height: 79px;
+}
+
+.header-wrapper.stuck img.header_logo.header-logo {
+    min-width: 240px;
+    min-height: auto;
 }
 
 i.icon-menu {
