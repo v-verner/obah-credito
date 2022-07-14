@@ -20,19 +20,22 @@ add_filter('query_vars', function($vars) {
 });
 
 add_action('template_redirect', function(){
-    global $wp_query, $currentSimulation, $currentSimulationId;
+    if (get_the_ID() === getObahPageId('Simulador')) :
+        global $wp_query, $currentSimulation, $currentSimulationId;
 
-    $hash = get_query_var('simulation_hash');
-    if (!$hash) :
-        return;
+        $hash = get_query_var('simulation_hash');
+        if (!$hash) :
+            $wp_query->set_404();
+        endif;
+
+        $simulation = getSimulationByHash($hash);
+
+        if (!$simulation) :
+            $wp_query->set_404();
+        endif;
+
+        $currentSimulation = $simulation;
+        $currentSimulationId = getSimulationIdByHash($hash);
     endif;
-
-    $simulation = getSimulationByHash($hash);
-
-    if (!$simulation) :
-        $wp_query->set_404();
-    endif;
-
-    $currentSimulation = $simulation;
-    $currentSimulationId = getSimulationIdByHash($hash);
 });
+
