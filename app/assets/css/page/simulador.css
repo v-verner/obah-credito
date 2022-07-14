@@ -32,7 +32,8 @@
     color: #04d9b2;
     text-align: end;
     padding-right: 25px;
-    margin-top: -27px;
+    margin-top: -50px;
+    text-align: right;
 }
 
 .sim-row .icon-box-text.last-reset {
@@ -254,7 +255,7 @@ span.scroll-for-more-text{
     }
 
     .sim-col .edit {
-        margin-top: -20px;
+        margin-top: -50px;
     }
 
     .col.hide-for-large th,

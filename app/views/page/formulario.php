@@ -31,7 +31,7 @@ $maxAgeDate->modify('- '. $env->getMaximumAgeForSimulation() .' years');
                         <div class="col label-float large-4">
                             <input type="text" name="cpf" id="cpf" class="mask-cpf uppercase" placeholder=' '
                                 inputmode="numeric"  required>
-                            <label for="cpf" class="uppercase">cpf</label>
+                            <label for="cpf" class="uppercase">cpf </label>
                         </div>
                         <div class="col label-float large-4">
                             <input type="text" name="phone" id="phone" class="mask-phone uppercase" placeholder=' '
@@ -132,8 +132,7 @@ $maxAgeDate->modify('- '. $env->getMaximumAgeForSimulation() .' years');
                                 min="<?= $env->getMinimumSimulationDuration() ?>"
                                 max="<?= $env->getMaximumSimulationDuration() ?>" step="1"  required>
                             <label for="payment_length" class="uppercase">prazo </label>
-                            <p class="mb-0">Prazo mínimo de <?= $env->getMinimumSimulationDuration() ?> meses</p>
-                            <p class="mb-0">Prazo máximo de <?= $env->getMaximumSimulationDuration() ?> meses</p>
+                            <p class="mb-0" style="font-size:12px;">Prazo mínimo de <?= $env->getMinimumSimulationDuration() ?> meses / Prazo máximo de <?= $env->getMaximumSimulationDuration() ?> meses</p>
                         </div>                          
                         <div class="col large-12">
                             <input type="checkbox" name="include_itbi_fee" id="include_itbi_fee" value="1">
@@ -150,6 +149,7 @@ $maxAgeDate->modify('- '. $env->getMaximumAgeForSimulation() .' years');
                             <label for="accept_lgpd">Aceitar LGPD <span style="color:red;">*</span></label>
                         </div>
                         <div class="col button-col large-12 text-right" >
+                            <p class="text-left">Os campos com <span style="color:red;">*</span> são obrigatórios</p>
                             <button class="button send-obah-simulation-btn mb-0 mr-0">
                                 <span>Próximo</span>
                                 <i class="icon-angle-right"></i>

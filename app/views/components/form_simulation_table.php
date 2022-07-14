@@ -1,7 +1,8 @@
 <?php global  $currentSimulationId; ?>
 <?php $simulationResults = getSimulationStoredResults($currentSimulationId) ?>
 <?php $currentSimulation = $simulationResults[0] ?>
-<?php var_dump($currentSimulation) ?>
+<!-- <?php var_dump($currentSimulation) ?> -->
+
 
 <div class="col large-12  hide-for-medium hide-for-small">
         <div class="responsive-scroll">
@@ -35,33 +36,38 @@
                 </tr>
                 
                 <?php foreach($currentSimulation as $bank) :?>
-                    <tr class="bank01">
+                    <?php $title = explode('-', trim($bank->Titulo)); ?>
+                    <?php $title = trim(array_shift($title)); ?>
+                    <tr class="bank">
                         <td class="text-center"><input type="radio" name="bank-select" id=""></td>
-                        <td class="bank-img"><img width="62" height="62"
-                                src="<?= VVerner\Assets::getInstance()->getImageFileUrl('logo-caixa-economica-federal.png') ?>"
-                                alt="Caixa"><span class="uppercase"> bradesco</span></td>
+                        <td style="text-transform: uppercase">
+                        <img width="62" height="62"
+                                src="<?= $bank->logo_banco ?>"
+                                alt="Caixa">
+                        <span title="<?= $bank->Titulo ?>"><?= $title ?></span>
+                        </td>  
                         <td class="text-center">
-                            <p>R$120.000</p>
+                            <p>R$<?= number_format($bank->_Valor_Financiado, '2', ',' , '.') ?></p>
                         </td>
                         <td class="text-center">
-                            <p>R$120.000</p>
+                            <p>R$<?= number_format($bank->_Valor_Entrada, '2', ',' , '.') ?></p>
                         </td>
                         <td class="text-center">
-                            <p>320</p>
+                            <p><?= $bank->_Prazo ?></p>
                         </td>
                         <td class="text-center">
-                            <p>R$120.000</p>
+                            <p>R$<?= number_format($bank->Valor_Primeira_Parcela, '2', ',' , '.') ?></p>
                         </td>
                         <td class="text-center">
-                            <p>R$120.000</p>
+                            <p>R$<?= number_format($bank->Valor_Ultima_Parcela, '2', ',' , '.') ?></p>
                         </td>
                         <td class="text-center">
-                            <p>R$120.000</p>
+                            <p>R$<?= number_format($bank->Valor_Renda_Minima, '2', ',' , '.') ?></p>
                         </td>
                         <td class="text-center">
-                            <p>SAC</p>
+                            <p><?= $bank->Modalidade ?></p>
                         </td>
-                        <td class="text-center">8,89% A.A</td>
+                        <td class="text-center"><?= $bank->Taxa_Nominal ?>% A.A</td>
                     </tr>    
                 <?php endforeach;?>  
                                               

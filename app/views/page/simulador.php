@@ -79,12 +79,12 @@
             </div>
             <div class="col sim-col large-9">
                 <div class="row">
-                    <div class="col large-12 pb-half">
+                    <div class="col large-12 pb-half text-right">
                         <h4 class="uppercase hide-for-small hide-for-medium text-center">simulação concluida</h4>
-                        <h4 class="uppercase hide-for-large">simulação concluida</h4>
+                        <h4 class="uppercase hide-for-large text-left">simulação concluida</h4>
                         <a class="obah-edit-simulation-button" href="#" data-open="#modal-form_edit_simulation" data-pos="left" data-bg="main-menu-overlay"
                             data-color="form_edit_simulation">
-                            <p class="edit uppercase"><i class="icon-pen-alt-fill"></i> editar dados</p>
+                            <button class="button is-link edit uppercase"><i class="icon-pen-alt-fill"></i> editar dados</button>
                         </a>
                     </div>
                     
