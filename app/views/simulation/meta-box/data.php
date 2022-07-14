@@ -41,7 +41,7 @@ $simulation = loadSimulation( get_the_ID() );
             Data de Nascimento
         </th>
         <td>
-            <input type="text" name="birthday" value=" <?= get_post_meta(get_the_ID(), 'birthday')[0] ?> " id="birthday" readonly class="large-text">
+            <input type="text" name="birthday" value=" <?= formatBirthday(get_the_ID()) ?> " id="birthday" readonly class="large-text">
         </td>
     </tr>
     <tr>

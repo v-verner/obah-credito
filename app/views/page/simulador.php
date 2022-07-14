@@ -88,7 +88,14 @@
                         </a>
                     </div>
                     
-                    <?= VVerner\Views::getInstance()->getComponent('form_simulation_table') ?>
+
+                    <div class="col pb-0 small-12">
+                        <div class="col-inner" id="container-form_simulation_table">
+                            <?= VVerner\Views::getInstance()->getComponent('form_simulation_table') ?>
+                        </div>
+                    </div>
+
+                    
                         
 
                     <div class="col pb-0 close-col large-6 small-6" style="padding-right:0;">

@@ -29,6 +29,8 @@ jQuery(function($){
         const userBirth = $(this).find('#birthday').val();
         const userAge = OBAH_SIMULATOR.calculateAge(userBirth);
 
+        $('.send-obah-simulation').addClass('loading');
+
         e.preventDefault();
 
         if (OBAH_SIMULATOR.hasAgeInRange(userAge)) {
@@ -62,16 +64,16 @@ jQuery(function($){
     $updateSimulationForm.on('submit', function(e){
         e.preventDefault();
 
-        $('.send-obah-simulation').addClass('loading');
-        
         $.post(app_data.url, $updateSimulationForm.serialize(), function(res){
             if(res.success) {
                 Swal.fire(
                     'Dados atualizados com sucesso!',
                     'Os dados da sua simulação foram atualizados.',
                     'success'
-                )
-                
+                ).then(() => {
+                    $('#container-form_simulation_table').html( res.data )
+                    console.log(res)
+                })
 
             } else {
                 Swal.fire({
@@ -79,7 +81,6 @@ jQuery(function($){
                     title: 'Algo deu errado!',
                     text: res.data
                 });
-                console.log(res)
             }
         })
     })

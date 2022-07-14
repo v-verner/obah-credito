@@ -85,3 +85,11 @@ function getLastSimulationResult( int $simulationId ): array
 
     return $currentResult;
 }
+
+function formatBirthday( int $simulationId ): string
+{
+    $birthday  = get_post_meta($simulationId, 'birthday');
+    $birthdate = new DateTime($birthday[0]);
+
+    return $birthdate->format('d/m/Y');
+}

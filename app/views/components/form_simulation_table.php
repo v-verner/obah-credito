@@ -1,10 +1,8 @@
 <?php global  $currentSimulationId; ?>
 <?php $simulationResults = getSimulationStoredResults($currentSimulationId) ?>
 <?php $currentSimulation = $simulationResults[0] ?>
-<!-- <?php var_dump($currentSimulation) ?> -->
 
-
-<div class="col large-12  hide-for-medium hide-for-small">
+<div class="hide-for-medium hide-for-small">
         <div class="responsive-scroll">
             <table>
                 <tr class="table-title">

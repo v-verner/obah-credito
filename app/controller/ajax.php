@@ -94,14 +94,16 @@ function ajaxUpdateSimulation(): void
 {
     check_ajax_referer('obah/update_simulation');
 
+    global $currentSimulation, $currentSimulationId;
+
     $api             = new Cred99\API();
     $env             = new Cred99\Env();
     $simulationURL   = explode('/', trailingslashit($_POST['_wp_http_referer']));
     $simulationHash  = array_reverse($simulationURL)[1];
-    $simulationID    = getSimulationIdByHash($simulationHash);
-    $simulation      = getSimulationByHash($simulationHash);
+    $currentSimulationId    = getSimulationIdByHash($simulationHash);
+    $currentSimulation      = getSimulationByHash($simulationHash);
 
-    if (!$simulation) :
+    if (!$currentSimulation) :
         wp_send_json_error('Você precisa de uma simulação para atualizar.');
     endif;
 
@@ -112,22 +114,22 @@ function ajaxUpdateSimulation(): void
     $include_itbi_fee = isset($_POST['include_itbi_fee']) ? 'Sim' : 'Não';
 
     if ($birthday) :
-        update_post_meta($simulationID, 'birthday', $birthday);
+        update_post_meta($currentSimulationId, 'birthday', $birthday);
     endif;
 
     if ($property_price) :
-        $simulation->set('valor', $property_price);
+        $currentSimulation->set('valor', $property_price);
     endif;
 
     if ($include_itbi_fee) :
-        update_post_meta($simulationID, 'include_itbi_fee', $include_itbi_fee);
+        update_post_meta($currentSimulationId, 'include_itbi_fee', $include_itbi_fee);
     endif;
 
     if ($initial_payment) :
         $calc = $property_price - $initial_payment;
 
         if ($calc >= $env->getMinimumSimulationAmount() && $calc <= $env->getMaximumSimulationAmount() && $property_price > $calc) :
-            $simulation->set('valor_financ', $calc);
+            $currentSimulation->set('valor_financ', $calc);
         else :
             wp_send_json_error('A sua simulação está imcompatível com nossa regra. Por favor, verifique seus dados.');
         endif;
@@ -135,24 +137,19 @@ function ajaxUpdateSimulation(): void
     endif;
 
     if ($payment_length) :
-        $simulation->set('prazo', $payment_length);
+        $currentSimulation->set('prazo', $payment_length);
     endif;
 
-    $result = $simulation->simulate();
+    $result = $currentSimulation->simulate();
 
     if (is_wp_error($result)) :
         wp_send_json_error('As informações não batem, por favor tente novamente.');
     endif;
 
-    saveSimulationResults($simulationID, $result);
+    saveSimulationResults($currentSimulationId, $result);
 
-    $view = VVerner\Views::getInstance()->getComponent('form_simulation_table', ['simulation_results' => $result]);
+    ob_start();
+    VVerner\Views::getInstance()->getComponent('form_simulation_table', ['simulation_results' => $result]);
 
-
-    
-    // NOTE
-    // Carregar os dados da simulação anterior para uso na simulação (loadSimulation())
-    // Ao finalizar a simulação, salvar o novo resultado nela (saveSimulationResults())
-
-    wp_send_json_success($view);
+    wp_send_json_success(ob_get_clean());
 }
