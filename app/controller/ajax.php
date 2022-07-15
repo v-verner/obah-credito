@@ -10,6 +10,8 @@ function ajaxCreateSimulation(): void
         wp_send_json_error('Os termos e a LGPD do site precisam ser aceitos.');
     endif;
 
+    do_action('obah/create_lead', $_POST);
+
     $simulation         = new Cred99\Simulation();
     $api                = new Cred99\API();
     $now                = new DateTime();
@@ -55,7 +57,6 @@ function ajaxCreateSimulation(): void
     $simulation->set('email', $email);
 
     $result    = $simulation->simulate();
-
 
     if (is_wp_error($result)) :
         wp_send_json_error($result->get_error_message());

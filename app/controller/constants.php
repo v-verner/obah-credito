@@ -33,11 +33,13 @@ define('OBAH_SIMULATOR_FIELDS', [
     'property_type'          => 'Tipo de imóvel',
     'property_price'         => 'Valor do imóvel',
     'property_location'      => 'Local do imóvel',
+    'property_condition'     => 'Condição do imóvel',
     'initial_payment'        => 'Valor da entrada',
     'include_itbi_fee'       => 'Incluir despesas com tarifas (ITBI)',
     'payment_length'         => 'Prazo',
     'accept_terms'           => 'Aceite de termos do site',
-    'accept_lgpd'            => 'Aceite de LGPD'
+    'accept_lgpd'            => 'Aceite de LGPD',
+    '_opportunity_price'     => 'Valor financiado'
 ]);
 
 // SIMULAÇÂO

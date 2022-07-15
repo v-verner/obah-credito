@@ -11,7 +11,9 @@ add_filter('acf/settings/load_json', function($paths){
 
 // Mapeamento de campos - SIMULADOR
 add_filter('acf/load_field/key=field_62c49b2fde339', function($field){
-    $field['choices'] = OBAH_SIMULATOR_FIELDS;
+    $field['choices'] = array_merge([
+        'only_default_value' => 'Apenas valor padrão'  
+    ], OBAH_SIMULATOR_FIELDS);
     return $field;
 });
 
@@ -23,8 +25,6 @@ add_filter('acf/load_field/key=field_62c49b20de338', function($field){
     if (!$items) : 
         return $field;
     endif;
-
-    $field['choices'] = [];
 
     foreach ($items as $item) : 
         $field['choices'][ $item->key ] = $item->key . ' : ' . $item->name;

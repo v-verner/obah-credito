@@ -39,3 +39,43 @@ add_action('template_redirect', function(){
     endif;
 });
 
+add_action('obah/create_lead', function ($data){
+
+    $cred99 = new Cred99\Env();
+
+    $data['has_second_buyer'] === 'Não' ? '160' : '158';
+
+    // LOCATION
+    $stateId = (int) $data['property_location'];
+    foreach ($cred99->getBrazilianStates() as $item) :
+        if ($item->id === $stateId) : 
+            $data['property_location'] = $item->name;
+            break;
+        endif;
+    endforeach;
+
+    // CONDITION
+    $conditionId = (int) $data['property_type'];
+    foreach ($cred99->getPropertyConditions() as $item) :
+        if ($item->id === $conditionId) : 
+            $data['property_condition'] = $item->name;
+            break;
+        endif;
+    endforeach;
+
+    // USAGE
+    $usageId = (int) $data['property_type'];
+    foreach ($cred99->getUsageProfile() as $item) :
+        if ($item->id === $usageId) : 
+            $data['property_type'] = $item->name;
+            break;
+        endif;
+    endforeach;
+
+    $property_price     = isset($data['property_price']) ? Cred99\API::parseToFloat($data['property_price']) : 0;
+    $initial_payment    = isset($data['initial_payment']) ? Cred99\API::parseToFloat($data['initial_payment']) : 0;
+    $data['_opportunity_price'] = $property_price - $initial_payment;
+
+    $api = new Bitrix\API();
+    $response = $api->insertLead( $data );
+});

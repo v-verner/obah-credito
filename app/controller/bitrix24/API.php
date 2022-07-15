@@ -17,6 +17,26 @@ class API
         $this->api = new CRest();
     }
 
+    public function getLead( int $leadId )
+    {
+        return $this->api->call(
+            'crm.lead.get',
+            [
+                'id' => $leadId
+            ]
+        );     
+    }
+
+    public function getLeads()
+    {
+        return $this->api->call(
+            'crm.lead.list',
+            [
+                
+            ]
+        );     
+    }
+
     public function insertLead(array $lead)
     {
         return $this->api->call(
@@ -84,7 +104,7 @@ class API
 
             if (isset($lead[$simulatorKey]) && $lead[$simulatorKey]) : 
                 $normalizedLead[$bitrixKey] = $this->normalizeFieldValue( $lead[$simulatorKey], $field );
-            elseif ($defaultValue) :
+            elseif ($defaultValue || $simulatorKey === 'only_default_value' ) :
                 $normalizedLead[$bitrixKey] = $this->normalizeFieldValue( $defaultValue, $field );
             endif;
         endforeach;
@@ -117,14 +137,30 @@ class API
     {
         switch($field->type) : 
             case ('integer') : 
-                $value = str_replace('.', '', $value);
-                $value = str_replace(',', '.', $value);
-                $value = (int) $value; 
+                $value = (int) self::parseToFloat( $value ); 
                 break;
+            case ('string') : 
+                $value = sanitize_text_field($value); 
+                break;
+            case ('crm_multifield') : 
+                $value = [
+                    (object) [
+                        'VALUE' => $field->key === 'PHONE' ? preg_replace('/\D/', '', $value) : sanitize_email($value),
+                        'VALUE_TYPE' => 'WORK'
+                    ]
+                ]; 
+                break;
+            case ('money') : 
+                $value = round(self::parseToFloat( $value )) . '|BRL';
+                break;
+            case ('date') : 
+            case ('datetime') : 
+                $date = is_a($value, '\DateTime') ? $value : new \DateTime( $value );
+                $value = $date->format('Y-m-d\TH:i:s') . '+03:00'; 
+                break;
+            case ('float') : 
             case ('double') : 
-                $value = str_replace('.', '', $value);
-                $value = str_replace(',', '.', $value);
-                $value = (float) $value; 
+                $value = (float) self::parseToFloat( $value ); 
                 break;
             case ('enumeration') : 
                 $correctValue = null;
@@ -138,5 +174,12 @@ class API
                 break;
         endswitch;
         return $value;
+    }
+
+    public static function parseToFloat( string $str ): float
+    {
+        $str = str_replace('.', '', $str);
+        $str = str_replace(',', '.', $str);
+        return (float) $str;
     }
 }
