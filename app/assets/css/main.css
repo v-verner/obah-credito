@@ -1,6 +1,19 @@
-.button.loading:after {
-    border-color: #04d9b2;
-    left: 0%;
+.is-loading i {
+    color: #ffffff00 !important;
+}
+
+.is-loading i::after {
+    content: '';
+    width: 20px;
+    height: 20px;
+    border: solid 2px #fff;
+    display: block;
+    position: absolute;
+    top: 35%;
+    left: 33%;
+    border-radius: 99px;
+    border-width: 2px 2px 0 0;
+    animation: spin 500ms linear infinite;
 }
 
 img.header_logo.header-logo {
@@ -68,6 +81,11 @@ b.footer-privacy-policy:hover {
     border: solid 2px !important;
     border-color: red !important;
     background: #ff000024 !important;
+}
+
+.second-buyer-fields-container {
+    display: flex;
+    flex-wrap: wrap;
 }
 
 /* MOBILE */

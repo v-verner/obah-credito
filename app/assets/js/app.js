@@ -20,17 +20,19 @@ jQuery(function($){
     const $updateSimulationForm = $('#update-simulation-form');
     const $propertyPriceInput   = $('#property_price');
     const $initialPaymentInput  = $('#initial_payment');
+    const $hasSecondBuyerInput  = $('#has_second_buyer');
+    const $secondBuyerContainer = $('.second-buyer-fields-container');
 
     $('.mask-cpf').mask('000.000.000-00', {reverse: false});
     $('.mask-phone').mask('(00) 0 0000-0000');
     $('.mask-money').mask("#.##0,00", {reverse: true});
 
+    $secondBuyerContainer.hide();
+
     // CREATE OBAH SIMULATION
     $createSimulationForm.on('submit', function(e){
         const userBirth = $(this).find('#birthday').val();
         const userAge = OBAH_SIMULATOR.calculateAge(userBirth);
-
-        $(this).find('.send-obah-simulation').addClass('loading');
 
         e.preventDefault();
 
@@ -66,6 +68,9 @@ jQuery(function($){
                 text: 'Parece que sua idade não está dentro da idade aceita para realizar uma simulação em nossa plataforma.'
             });
         }
+
+        $('button.send-obah-simulation').addClass('is-loading');
+
     });
 
     // EDIT OBAH SIMULATION
@@ -146,6 +151,20 @@ jQuery(function($){
             $('.initial-payment-rule-text').text('O valor da entrada não pode ser maior que o valor do imóvel.');
         } else {
             $(this).removeClass('flashing-alert')
+        }
+        
+    })
+
+    // HIDE SECOND BUYER FIELDS BY INPUT VALUE
+    $hasSecondBuyerInput.on('change', function(){
+        const $currentVal   = $(this).val();
+
+        if ($currentVal === 'Não') {
+            $secondBuyerContainer.hide();
+        } else if ($currentVal === 'Sim') {
+            $secondBuyerContainer.show();
+        } else {
+            $secondBuyerContainer.hide();
         }
         
     })

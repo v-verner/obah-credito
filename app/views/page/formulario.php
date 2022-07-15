@@ -18,7 +18,7 @@ $maxAgeDate->modify('- '. $env->getMaximumAgeForSimulation() .' years');
                 <div class="col form-col large-9">
                     <h2 class="uppercase mb">precisamos de alguns dados para fazer sua simulação personalizada</h2>
 
-                    <form id="create-simulation-form" class="align-top form-row row-small row">
+                    <form id="create-simulation-form" class="align-center form-row row-small row">
 
                         <div class="col label-float large-6">
                             <input type="text" name="full_name" id="full_name" class="uppercase" placeholder=" "
@@ -50,42 +50,44 @@ $maxAgeDate->modify('- '. $env->getMaximumAgeForSimulation() .' years');
                             <label for="gross_income" class="uppercase">informe sua renda bruta </label>
                         </div>
                         <div class="col large-6">
-                            <select name="has_second_buyer">
+                            <select name="has_second_buyer" id="has_second_buyer">
                                 <option value="" disabled selected>DESEJA COMPOR RENDA COM ALGUÉM?</option>
                                 <option value="Sim">Sim</option>
                                 <option value="Não">Não</option>
                             </select>
                         </div>
-                        <div class="col label-float large-6">
-                            <input type="text" name="second_buyer_full_name" id="second_buyer_full_name" class="uppercase"
-                                placeholder=' '>
-                            <label for="second_buyer_full_name" class="uppercase">nome completo <span class="lowercase">(2º
-                                    Proponente)</span></label>
-                        </div>
-                        <div class="col label-float large-6">
-                            <input type="text" name="second_buyer_birthday" id="second_buyer_birthday" class="uppercase" placeholder=' '
-                                onfocus="(this.type='date')" min="<?= $maxAgeDate->format('Y-m-d') ?>" max="<?= $minAgeDate->format('Y-m-d') ?>">
-                            <label for="second_buyer_birthday" class="uppercase">data de nascimento <span class="lowercase">(2º
-                                    Proponente)</span></label>
+                        <div class="second-buyer-fields-container row-small">
+                            <div class="col label-float large-6">
+                                <input type="text" name="second_buyer_full_name" id="second_buyer_full_name" class="uppercase"
+                                    placeholder=' '>
+                                <label for="second_buyer_full_name" class="uppercase">nome completo <span class="lowercase">(2º
+                                        Proponente)</span></label>
+                            </div>
+                            <div class="col label-float large-6">
+                                <input type="text" name="second_buyer_birthday" id="second_buyer_birthday" class="uppercase" placeholder=' '
+                                    onfocus="(this.type='date')" min="<?= $maxAgeDate->format('Y-m-d') ?>" max="<?= $minAgeDate->format('Y-m-d') ?>">
+                                <label for="second_buyer_birthday" class="uppercase">data de nascimento <span class="lowercase">(2º
+                                        Proponente)</span></label>
 
-                        </div>
-                        <div class="col label-float large-4">
-                            <input type="text" name="second_buyer_cpf" id="second_buyer_cpf" class="mask-cpf uppercase"
-                                placeholder=' ' inputmode="numeric">
-                            <label for="second_buyer_cpf" class="uppercase">cpf <span class="lowercase">(2º
-                                    Proponente)</span></label>
-                        </div>
-                        <div class="col label-float large-4">
-                            <input type="text" name="second_buyer_phone" id="second_buyer_phone" class="mask-phone uppercase"
-                                placeholder=' ' inputmode="numeric">
-                            <label for="second_buyer_phone" class="uppercase">telefone <span class="lowercase">(2º
-                                    Proponente) </span> +55 </label>
-                        </div>
-                        <div class="col label-float large-4">
-                            <input type="email" name="second_buyer_email" id="second_buyer_email" class="uppercase"
-                                placeholder=' '>
-                            <label for="second_buyer_email" class="uppercase">e-mail <span class="lowercase">(2º
-                                    Proponente)</span></label>
+                            </div>
+                            <div class="col label-float large-4">
+                                <input type="text" name="second_buyer_cpf" id="second_buyer_cpf" class="mask-cpf uppercase"
+                                    placeholder=' ' inputmode="numeric">
+                                <label for="second_buyer_cpf" class="uppercase">cpf <span class="lowercase">(2º
+                                        Proponente)</span></label>
+                            </div>
+                            <div class="col label-float large-4">
+                                <input type="text" name="second_buyer_phone" id="second_buyer_phone" class="mask-phone uppercase"
+                                    placeholder=' ' inputmode="numeric">
+                                <label for="second_buyer_phone" class="uppercase">telefone <span class="lowercase">(2º
+                                        Proponente) </span> +55 </label>
+                            </div>
+                            <div class="col label-float large-4">
+                                <input type="email" name="second_buyer_email" id="second_buyer_email" class="uppercase"
+                                    placeholder=' '>
+                                <label for="second_buyer_email" class="uppercase">e-mail <span class="lowercase">(2º
+                                        Proponente)</span></label>
+                            </div>
                         </div>
                         <div class="col label-float large-4">
                             <select name="property_type" id="property_type"  required>
