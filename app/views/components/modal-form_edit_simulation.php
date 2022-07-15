@@ -23,12 +23,12 @@ $includeITBI = get_post_meta($currentSimulationId, 'include_itbi_fee');
 			<div class="col input-col large-12">
                 <label for="property_price" class="uppercase">valor do imóvel </label>
                 <input type="text" name="property_price" value="<?= number_format($propertyPrice, 2, ',', '.') ?>" id="property_price" class="mb-0 mask-money"
-                min="<?= $env->getMinimumSimulationAmount() ?>"
-                max="<?= $env->getMaximumSimulationAmount() ?>" class="uppercase" placeholder=' '>
+                data-min="<?= $env->getMinimumSimulationAmount() ?>"
+                data-max="<?= $env->getMaximumSimulationAmount() ?>" class="uppercase" placeholder=' '>
 			</div>
 			<div class="col input-col large-12">
                 <label for="initial_payment" class="uppercase">valor da entrada</label>
-                <input type="text" name="initial_payment" value="<?= number_format($lastSimulationRes->_Valor_Entrada, 2, ',', '.') ?>" id="initial_payment" class="mb-0 mask-money" placeholder=' '>
+                <input type="text" name="initial_payment" value="<?= number_format($lastSimulationRes->_Valor_Entrada, 2, ',', '.') ?>" data-min="" id="initial_payment" class="mb-0 mask-money" placeholder=' '>
                 <small class="initial-payment-rule-text"></small>
 			</div>
 			<div class="col input-col large-12">

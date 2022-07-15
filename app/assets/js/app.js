@@ -19,6 +19,7 @@ jQuery(function($){
     const $createSimulationForm = $('#create-simulation-form');
     const $updateSimulationForm = $('#update-simulation-form');
     const $propertyPriceInput   = $('#property_price');
+    const $initialPaymentInput  = $('#initial_payment');
 
     $('.mask-cpf').mask('000.000.000-00', {reverse: false});
     $('.mask-phone').mask('(00) 0 0000-0000');
@@ -51,6 +52,13 @@ jQuery(function($){
                     });
                 }
             })
+        } else if (!$(this).find('input').hasClass('flashing-alert')) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Algo deu errado!',
+                text: $(this).find('.initial-payment-rule-text').text().trim(),
+                footer: 'Confira suas informações e tente novamente, por favor.'
+            });
         } else {
             Swal.fire({
                 icon: 'error',
@@ -64,34 +72,81 @@ jQuery(function($){
     $updateSimulationForm.on('submit', function(e){
         e.preventDefault();
 
-        $.post(app_data.url, $updateSimulationForm.serialize(), function(res){
-            if(res.success) {
-                Swal.fire(
-                    'Dados atualizados com sucesso!',
-                    'Os dados da sua simulação foram atualizados.',
-                    'success'
-                ).then(() => {
-                    $('#container-form_simulation_table').html( res.data )
-                })
-
-            } else {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Algo deu errado!',
-                    text: res.data
-                });
-            }
-        })
+        if (!$(this).find('input').hasClass('flashing-alert')) {
+            $.post(app_data.url, $updateSimulationForm.serialize(), function(res){
+                if(res.success) {
+                    Swal.fire(
+                        'Dados atualizados com sucesso!',
+                        'Os dados da sua simulação foram atualizados.',
+                        'success'
+                    ).then(() => {
+                        $('#container-form_simulation_table').html( res.data )
+                    })
+    
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Algo deu errado!',
+                        text: res.data
+                    });
+                }
+            })
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Algo deu errado!',
+                text: $(this).find('.initial-payment-rule-text').text().trim(),
+                footer: 'Confira suas informações e tente novamente, por favor.'
+            });
+        }
     })
 
-    // INITIAL PAYMENT MINIMUM ACCEPTED VALUE MESSAGE
+    // PROPERTY PRICE GENERAL VALIDATION
     $propertyPriceInput.on('change', function(){
-        const pricePieces  = $(this).val().split(',');
+        const $currentVal   = $(this).val();
+        const pricePieces  = $currentVal.split(',');
         const currentPrice = pricePieces[0].replace(/[.,\s]/g, '');
         const minInitialPayment = OBAH_SIMULATOR.getMinimumInitialPayment(currentPrice);
+        const minAcceptedValue  = $(this).data('min');
+        const maxAcceptedValue  = $(this).data('max');
 
-        $('#initial_payment').attr('min', minInitialPayment);
-        $('.initial-payment-rule-text').text('O valor mínimo de entrada deve ser ' + minInitialPayment.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}));
+        if (!$currentVal) {
+            $(this).removeClass('flashing-alert')
+        } else if (currentPrice < minAcceptedValue) {
+            $(this).addClass('flashing-alert')
+            $('.initial-payment-rule-text').text('O valor do imóvel deve ser maior que ' + minAcceptedValue.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}));
+        } else if (currentPrice > maxAcceptedValue) {
+            $(this).addClass('flashing-alert')
+            $('.initial-payment-rule-text').text('O valor do imóvel deve ser menor que ' + maxAcceptedValue.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}));
+        } else {
+            $(this).removeClass('flashing-alert')
+            $('.initial-payment-rule-text').text('O valor mínimo de entrada deve ser ' + minInitialPayment.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}));
+        }
+
+        $initialPaymentInput.attr('data-min', minInitialPayment);
+        
+    })
+
+    // INITIAL PAYMENT GENERAL VALIDATION
+    $initialPaymentInput.on('change', function(){
+        const $currentVal   = $(this).val();
+        const pricePieces   = $currentVal.split(',');
+        const propertyPieces   = $propertyPriceInput.val().split(',');
+        const currentPrice     = pricePieces[0].replace(/[.,\s]/g, '');
+        const propertyPrice    = propertyPieces[0].replace(/[.,\s]/g, '');
+        const minAcceptedValue = OBAH_SIMULATOR.getMinimumInitialPayment(propertyPrice);
+
+        if (!$currentVal) {
+            $(this).removeClass('flashing-alert')
+        } else if (currentPrice < minAcceptedValue) {
+            $(this).addClass('flashing-alert')
+            $('.initial-payment-rule-text').text('O valor inserido deve ser maior que ' + minAcceptedValue.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}));
+        } else if ($currentVal > $propertyPriceInput.val()) {
+            $(this).addClass('flashing-alert')
+            $('.initial-payment-rule-text').text('O valor da entrada não pode ser maior que o valor do imóvel.');
+        } else {
+            $(this).removeClass('flashing-alert')
+        }
         
     })
     

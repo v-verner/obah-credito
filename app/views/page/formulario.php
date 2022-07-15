@@ -1,10 +1,12 @@
 <?php 
 $env = new Cred99\Env();
+$api = new Bitrix\API();
 $minAgeDate = new DateTime(current_time('Y-m-d'));
 $minAgeDate->modify('- '. $env->getMinimumAgeForSimulation() .' years');
 $maxAgeDate = new DateTime(current_time('Y-m-d'));
 $maxAgeDate->modify('- '. $env->getMaximumAgeForSimulation() .' years');
 ?>
+
 <section class="section hero">
     <div class="hero-overlay absolute-fill">
         <div class="col large-12">
@@ -116,8 +118,8 @@ $maxAgeDate->modify('- '. $env->getMaximumAgeForSimulation() .' years');
 
                         <div class="col label-float large-4">
                             <input type="text" name="property_price" id="property_price" class="mask-money mb-0"
-                                min="<?= $env->getMinimumSimulationAmount() ?>"
-                                max="<?= $env->getMaximumSimulationAmount() ?>" class="uppercase" value="" placeholder=' '
+                                data-min="<?= $env->getMinimumSimulationAmount() ?>"
+                                data-max="<?= $env->getMaximumSimulationAmount() ?>" class="uppercase" value="" placeholder=' '
                                 required>
                             <label for="property_price" class="uppercase">valor do imóvel </label>
 
