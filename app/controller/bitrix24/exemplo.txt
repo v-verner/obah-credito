@@ -1,0 +1,33 @@
+<?php defined('ABSPATH') || exit;
+
+add_action('the_content', function(){
+    echo '<pre>';
+
+    $lead = [
+        'full_name'              => 'VVerner',
+        'birthday'               => '13/02/1996',
+        'cpf'                    => '014.104.210-90',
+        'phone'                  => '54 996.37.1378',
+        'email'                  => 'contato@vverner.com',
+        'gross_income'           => '50.000,00',
+        'has_second_buyer'       => 'yes',
+        'second_buyer_full_name' => 'Teste',
+        'second_buyer_birthday'  => '13/03/1996',
+        'second_buyer_cpf'       => '014.104.210-91',
+        'second_buyer_phone'     => '54 996.37.1378',
+        'second_buyer_email'     => 'contato@vverner.com',
+        'property_type'          => 'Residencial',
+        'property_price'         => '500.000,00',
+        'property_location'      => '4',
+        'initial_payment'        => '250.000,00',
+        'include_itbi_fee'       => 'no',
+        'payment_length'         => '60',
+        'accept_terms'           => 'yes',
+        'accept_lgpd'            => 'yes'
+    ];
+
+    $api = new Bitrix\API();
+    var_dump($api->insertLead( $lead ));
+
+    echo '</pre>';
+});
