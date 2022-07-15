@@ -42,6 +42,7 @@ add_action('template_redirect', function(){
 add_action('obah/create_lead', function ($data){
 
     $cred99 = new Cred99\Env();
+    $api    = new Bitrix\API();
 
     $data['has_second_buyer'] === 'Não' ? '160' : '158';
 
@@ -76,6 +77,5 @@ add_action('obah/create_lead', function ($data){
     $initial_payment    = isset($data['initial_payment']) ? Cred99\API::parseToFloat($data['initial_payment']) : 0;
     $data['_opportunity_price'] = $property_price - $initial_payment;
 
-    $api = new Bitrix\API();
-    $response = $api->insertLead( $data );
+    $api->insertLead( $data );
 });
