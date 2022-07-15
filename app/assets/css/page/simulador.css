@@ -3,6 +3,10 @@
     background: linear-gradient(180deg,rgba(17, 165, 208),rgba(78, 214, 196) );
 }
 
+.hero >.col {
+    padding-bottom: 0;
+}
+
 .sim-col{
     background: white;
     border-radius: 20px;
@@ -16,18 +20,31 @@
     color: black;
     text-align: center;
 }
+
+.sim-col h4{
+    font-size: 18px;
+    color: black;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
 .sim-col .edit{
     color: #04d9b2;
     text-align: end;
     padding-right: 25px;
-    margin-top: -30px;
+    margin-top: -50px;
+    text-align: right;
+}
+
+.sim-row .icon-box-text.last-reset {
+    padding-left: 6px !important;
 }
 
 .sim-row i.icon-checkmark {
     background-color: white;
 color: rgb(19, 199, 151);
-font-size: 15px;
-padding: 10px;
+font-size: 10px;
+padding: 5px;
 border-radius: 99px;
 }
 
@@ -46,18 +63,29 @@ border-radius: 99px;
     background: #04d9b2;
 }
 
-.sim-row i.icon-angle-left {
+.sim-row i.icon-plus {
     color: white;
     background: red;
 }
 
-.sim-row i.icon-angle-left,
-.sim-row i.icon-angle-right{
+.sim-row i.icon-plus{
     border-radius: 100px;
     padding-right: 15px;
     padding-left: 15px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    font-size: 26px;
+    transform: rotate(45deg);
+}
+
+.sim-row .banks-col i.icon-angle-right,
+.edit-row i.icon-angle-right{
+    border-radius: 100px;
+    padding-right: 22px;
+    padding-left: 22px;
     padding-top: 9px;
     padding-bottom: 9px;
+    font-size: 30px;
 }
 
 .sim-col tr:nth-child(even) {
@@ -72,8 +100,16 @@ border-radius: 99px;
     border-right: 1px solid rgb(196, 196, 196);;
 }
 
-.sim-col .table-title{
+.sim-col .table-title,
+span.scroll-for-more-text{
     color: black;
+}
+.scroll-for-more-text + i{
+    border-radius: 100px;
+    padding-right: 15px;
+    padding-left: 15px;
+    padding-top: 9px;
+    padding-bottom: 9px;
 }
 
 .sim-col td {    
@@ -82,6 +118,201 @@ border-radius: 99px;
 
 .sim-col input[type="radio"] {
     margin: 0;
+}
+
+.form_edit_simulation  .mfp-content{
+    width: 548px;
+    max-width: 100%;
+}
+
+#modal-form_edit_simulation img {
+    width: 309px;
+    height: 79px;
+}
+#modal-form_edit_simulation{
+    background: white;
+}
+
+.edit-row input{
+    background-color: rgb(202, 225, 245);
+    min-height: 52px;
+    border-radius: 5px;
+    border: none;
+    color: rgba(0, 0, 0, 0.5);
+    padding-left: 20px;  
+    font-size: 12.5px;  
+    font-weight: 600;
+}
+
+.edit-row .input-col{
+    max-width: 426px;
+}
+
+.edit-row h4{
+    color: black;
+    padding-top: 30px;
+}
+
+.toggle-container .toggle-state {
+    width: 75px;
+    display: block;
+    height: 34px;
+    background: gray;
+    border-radius: 99px;
+    position: relative;
+    padding-right: 70px;
+}
+
+.toggle-container .toggle-state:after {
+    content: '';
+    height: 28px;
+    width: 28px;
+    display: block;
+    background: white;
+    border-radius: 99px;
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    transition: all 350ms ease-in-out;
+}
+
+.toggle-container input:checked + label .toggle-state:after {
+    transform: translatex(40px);
+}
+
+.toggle-container input:checked + label .toggle-state{
+    
+    background: rgb(46, 189, 89);
+}
+
+#include_itbi_fee{
+    display: none;
+}
+
+.edit-row button,
+.edit-row button:hover {
+    background: none;
+    color: black;
+    border: none;
+    box-shadow: none;
+}
+
+.edit-row i.icon-angle-right {
+    color: white;
+    background: #04d9b2;    
+}
+
+.flex{
+    display: flex !important;
+}
+
+.sub-text{
+    font-size: 15px;
+}
+
+.toggle-state + h2 {
+    padding-top: 13px;
+    padding-left: 15px;
+}
+
+.responsive-scroll {
+    overflow-x: auto !important;
+    max-width: 100% !important;
+} 
+
+
+.col.hide-for-large th,
+    span.scroll-for-more-text {
+        padding-left: 20px;
+    }
+
+
+@media (max-width:48em){
+    h4.hide-for-large {
+        padding-left: 20px;
+        font-size: 15px;
+    }
+    
+    .icon-box-text h4{
+        font-size: 14px;
+        line-height: 30px;
+    }
+
+    .edit{
+        font-size: 10px;
+    }
+
+    .sim-col tr:first-child {
+        background-color: white !important;
+    }
+
+    .sim-col tr:nth-child(odd) {
+        background: rgb(247, 247, 247);
+    }
+    
+    .sim-col tr:nth-child(even) {
+        background: rgb(229, 229, 229);
+    }
+
+    .sim-col .edit {
+        margin-top: -50px;
+    }
+
+    .col.hide-for-large th,
+    span.scroll-for-more-text {
+        padding-left: 20px;
+    }
+
+    tr{
+        height: 72px;
+    }
+
+    .sim-col td:nth-child(n + 2) {
+        border-right: none;
+    }     
+    
+    .col-bot{
+        padding-top: 40px;
+        padding-right: 18px;
+        padding-bottom: 0;
+    }
+
+    .sub-text{
+        font-size: 13px;
+        line-height: 1;
+        padding-bottom: 10px;
+    }
+
+    .sim-row .banks-col span{
+        text-align: right;
+            font-size: 14px;
+    }
+    
+    .sim-row .close-col span{
+        text-align: left;
+            font-size: 14px;
+    }
+    
+    
+    .sim-row .banks-col button{
+        display: flex;
+        padding-left: 0;
+    }
+    
+    .sim-row .close-col button{
+        display: flex;
+        padding-right: 0;
+        margin-top: 30px;
+    }
+
+    .sim-row .banks-col i.icon-angle-right{
+        margin-top: 30px;
+    }
+
+    #modal-form_edit_simulation img {
+        width: 240px;
+        height: 60px;
+    }
 }
 
 

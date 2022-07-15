@@ -31,7 +31,7 @@ class Simulation
     private const SANITIZE_SCHEMA = [
         'sanitize_email'        => ['email'],
         'sanitize_text_field'   => ['nome', 'fone'],
-        'intval'                => ['idade', 'prazo', 'uf', 'prefil', 'condicao'],
+        'intval'                => ['idade', 'prazo', 'uf', 'perfil', 'condicao'],
         'floatval'              => ['valor', 'valor_financ'],
     ];
 

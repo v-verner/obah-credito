@@ -185,15 +185,15 @@ class Env
         ];
     }
     
-    public function getPropertyCondition(): array
+    public function getPropertyConditions(): array
     {
         return [
             $this->getSimpleObject(1, 'Novo'),
             $this->getSimpleObject(2, 'Usado'),
             $this->getSimpleObject(3, 'Terreno'),
-            $this->getSimpleObject(4, 'Em Construção'),
-            $this->getSimpleObject(5, 'Reforma'),
-            $this->getSimpleObject(6, 'Ampliação'),
+            // $this->getSimpleObject(4, 'Em Construção'),
+            // $this->getSimpleObject(5, 'Reforma'),
+            // $this->getSimpleObject(6, 'Ampliação'),
             $this->getSimpleObject(7, 'Dinheiro com seu Imóvel')
         ];
     }

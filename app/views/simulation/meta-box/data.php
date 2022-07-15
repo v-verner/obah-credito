@@ -36,6 +36,14 @@ $simulation = loadSimulation( get_the_ID() );
             <input type="text" value=" <?= $simulation->get('idade') ?> " readonly class="large-text">
         </td>
     </tr>
+    <tr class="hidden">
+        <th>
+            Data de Nascimento
+        </th>
+        <td>
+            <input type="text" name="birthday" value=" <?= formatBirthday(get_the_ID()) ?> " id="birthday" readonly class="large-text">
+        </td>
+    </tr>
     <tr>
         <th>
             Valor

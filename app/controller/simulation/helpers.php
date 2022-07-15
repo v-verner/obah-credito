@@ -48,3 +48,48 @@ function getSimulationStoredResults( int $simulationId ): array
 {
     return get_post_meta($simulationId, OBAH_99_META_KEY_PREFIX . 'resultados');
 }
+
+function getSimulationIdByHash ( string $hash ): int
+{
+    global $wpdb;
+    $key = sanitize_text_field($hash);
+    $q = "SELECT post_id FROM {$wpdb->postmeta} WHERE meta_key = %s AND meta_value = %s";
+    $q = $wpdb->prepare($q, SIMULATION_HASH_KEY, $key);
+
+    $ID = (int) $wpdb->get_var($q);
+
+    return $ID;
+}
+
+function getSimulationByHash( string $hash ): ?Cred99\Simulation
+{
+    $ID = getSimulationIdByHash($hash);    
+
+    return  $ID ? loadSimulation($ID) : null;
+}
+
+function createSimulationHash(  ): string
+{
+    return strtoupper( bin2hex( random_bytes(4) ) );
+}
+
+function saveSimulationHash( string $simulation_hash, int $simulation_id ): void
+{
+    update_post_meta($simulation_id, SIMULATION_HASH_KEY, $simulation_hash);
+}
+
+function getLastSimulationResult( int $simulationId ): array
+{
+    $storedResults = array_reverse(getSimulationStoredResults($simulationId));
+    $currentResult = $storedResults[0];
+
+    return $currentResult;
+}
+
+function formatBirthday( int $simulationId ): string
+{
+    $birthday  = get_post_meta($simulationId, 'birthday');
+    $birthdate = new DateTime($birthday[0]);
+
+    return $birthdate->format('d/m/Y');
+}
