@@ -118,7 +118,7 @@ $maxAgeDate->modify('- '. $env->getMaximumAgeForSimulation() .' years');
                             </select>
                         </div>                
 
-                        <div class="col label-float large-4">
+                        <div class="col label-float large-6">
                             <input type="text" name="property_price" id="property_price" class="mask-money mb-0"
                                 data-min="<?= $env->getMinimumSimulationAmount() ?>"
                                 data-max="<?= $env->getMaximumSimulationAmount() ?>" class="uppercase" value="" placeholder=' '
@@ -126,12 +126,19 @@ $maxAgeDate->modify('- '. $env->getMaximumAgeForSimulation() .' years');
                             <label for="property_price" class="uppercase">valor do imóvel </label>
 
                         </div>
-                        <div class="col label-float large-4">
+                        <div class="col label-float large-6">
                             <input type="text" name="initial_payment" id="initial_payment" class="mask-money mb-0" value="" placeholder=' '  required>
                             <label for="initial_payment" class="uppercase">valor de entrada + fgts </label>
                             <small class="initial-payment-rule-text"></small>
                         </div>
-                        <div class="col label-float large-4">
+                        <div class="col label-float large-6">
+                            <select name="amortization_type" id="amortization_type"  required>
+                                <option value="" disabled selected>Tipo de amortização *</option>
+                                <option value="SAC">SAC</option>
+                                <option value="PRICE">PRICE</option>
+                            </select>
+                        </div>
+                        <div class="col label-float large-6">
                             <input type="number" name="payment_length" value="" id="payment_length" class="mb-0" placeholder=" "
                                 step="<?= $env->getSimulationDurationStep() ?>"
                                 min="<?= $env->getMinimumSimulationDuration() ?>"

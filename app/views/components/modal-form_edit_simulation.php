@@ -5,7 +5,8 @@ $minAgeDate = new DateTime(current_time('Y-m-d'));
 $maxAgeDate = new DateTime(current_time('Y-m-d'));
 $minAgeDate->modify('- '. $env->getMinimumAgeForSimulation() .' years');
 $maxAgeDate->modify('- '. $env->getMaximumAgeForSimulation() .' years');
-$lastSimulationRes = array_shift(getLastSimulationResult($currentSimulationId));
+$lastResult = getLastSimulationResult($currentSimulationId);
+$lastSimulationRes = isset($lastResult) ? array_shift($lastResult) : null;
 $propertyPrice = $lastSimulationRes->_Valor_Entrada + $lastSimulationRes->_Valor_Financiado;
 $includeITBI = get_post_meta($currentSimulationId, 'include_itbi_fee');
 ?>

@@ -11,10 +11,18 @@ $hasSecondBuyer = get_post_meta(get_the_ID(), 'has-second_buyer');?>
     </tr>
     <tr>
         <th>
+            Tipo de amortização
+        </th>
+        <td>
+            <input type="text" name="amortization_type" value="<?= get_post_meta(get_the_ID(), 'amortization_type')[0] ?>" readonly class="large-text" id="amortization_type">
+        </td>
+    </tr>
+    <tr>
+        <th>
             Renda
         </th>
         <td>
-            <input type="text" name="gross_income" value="<?= get_post_meta(get_the_ID(), 'gross_income')[0] ?>" readonly class="large-text" id="gross_income">
+            <input type="text" name="gross_income" value="R$ <?= number_format(get_post_meta(get_the_ID(), 'gross_income')[0], 2, ',', '.') ?>" readonly class="large-text" id="gross_income">
         </td>
     </tr>
     <tr>

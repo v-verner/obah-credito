@@ -30,6 +30,7 @@ function ajaxCreateSimulation(): void
     $initial_payment    = isset($_POST['initial_payment']) ? $api::parseToFloat($_POST['initial_payment']) : 0;
     $include_itbi_fee   = isset($_POST['include_itbi_fee']) ? 'Sim' : 'Não';
     $payment_length     = isset($_POST['payment_length']) ? (int) $_POST['payment_length'] : 0;
+    $amortization_type  = isset($_POST['amortization_type']) ? sanitize_text_field($_POST['amortization_type']) : '';
 
     if ($has_second_buyer === 'Sim') :
         $second_buyer_full_name = $_POST['second_buyer_full_name'] ? sanitize_text_field($_POST['second_buyer_full_name']) : '';
@@ -74,6 +75,7 @@ function ajaxCreateSimulation(): void
     update_post_meta($simulationID, 'gross_income', $gross_income);
     update_post_meta($simulationID, 'include_itbi_fee', $include_itbi_fee);
     update_post_meta($simulationID, 'has-second_buyer', $has_second_buyer);
+    update_post_meta($simulationID, 'amortization_type', $amortization_type);
 
     if ($has_second_buyer === 'Sim') :
         update_post_meta($simulationID, 'second_buyer-name', $second_buyer_full_name);
