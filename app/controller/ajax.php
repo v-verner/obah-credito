@@ -6,7 +6,7 @@ function ajaxCreateSimulation(): void
 {
     check_ajax_referer('obah/create_simulation');
 
-    if (!$_POST['accept_terms'] && !$_POST['accept_lgpd']) :
+    if (!isset($_POST['accept_terms']) && !isset($_POST['accept_lgpd'])) :
         wp_send_json_error('Os termos e a LGPD do site precisam ser aceitos.');
     endif;
 
@@ -63,6 +63,11 @@ function ajaxCreateSimulation(): void
     endif;
 
     $simulationID   = saveSimulation($simulation);
+
+    if (isset($_POST['accept_terms']) && isset($_POST['accept_lgpd'])) :
+        update_post_meta($simulationID, 'terms_acceptance', 'Sim');
+        update_post_meta($simulationID, 'lgpd_acceptance', 'Sim');
+    endif;
 
     update_post_meta($simulationID, 'cpf', $cpf);
     update_post_meta($simulationID, 'birthday', $birthday);

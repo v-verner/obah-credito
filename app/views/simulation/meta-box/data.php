@@ -92,4 +92,20 @@ $simulation = loadSimulation( get_the_ID() );
             <input type="text" value=" <?= $simulation->get('email') ?> " readonly class="large-text">
         </td>
     </tr>
+    <tr>
+        <th>
+            Usuário aceitou os termos do site?
+        </th>
+        <td>
+            <input type="text" name="terms_acceptance" value=" <?= get_post_meta(get_the_ID(), 'terms_acceptance')[0] ?> " id="terms_acceptance" readonly class="large-text">
+        </td>
+    </tr>
+    <tr>
+        <th>
+            Usuário aceitou a LGPD do site?
+        </th>
+        <td>
+            <input type="text" name="lgpd_acceptance" value=" <?= get_post_meta(get_the_ID(), 'lgpd_acceptance')[0] ?> " id="lgpd_acceptance" readonly class="large-text">
+        </td>
+    </tr>
 </table>
