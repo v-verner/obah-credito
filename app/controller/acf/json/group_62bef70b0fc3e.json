@@ -195,7 +195,7 @@
             "required": 1,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "50",
+                "width": "33.333",
                 "class": "",
                 "id": ""
             },
@@ -216,11 +216,32 @@
             "required": 1,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "50",
+                "width": "33.333",
                 "class": "",
                 "id": ""
             },
             "default_value": 420,
+            "placeholder": "",
+            "prepend": "",
+            "append": "meses",
+            "min": "",
+            "max": "",
+            "step": 1
+        },
+        {
+            "key": "field_62d6e1d0c4298",
+            "label": "Step para o prazo de financiamento",
+            "name": "99cred_api_duration_step",
+            "type": "number",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "33.333",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 60,
             "placeholder": "",
             "prepend": "",
             "append": "meses",
@@ -293,6 +314,7 @@
                         "id": ""
                     },
                     "choices": {
+                        "only_default_value": "Apenas valor padrão",
                         "full_name": "Nome completo",
                         "birthday": "Data de nascimento",
                         "cpf": "CPF",
@@ -308,11 +330,13 @@
                         "property_type": "Tipo de imóvel",
                         "property_price": "Valor do imóvel",
                         "property_location": "Local do imóvel",
+                        "property_condition": "Condição do imóvel",
                         "initial_payment": "Valor da entrada",
                         "include_itbi_fee": "Incluir despesas com tarifas (ITBI)",
                         "payment_length": "Prazo",
                         "accept_terms": "Aceite de termos do site",
-                        "accept_lgpd": "Aceite de LGPD"
+                        "accept_lgpd": "Aceite de LGPD",
+                        "_opportunity_price": "Valor financiado"
                     },
                     "default_value": false,
                     "allow_null": 0,
@@ -522,5 +546,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1657281496
+    "modified": 1658250398
 }

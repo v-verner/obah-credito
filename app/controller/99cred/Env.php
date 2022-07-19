@@ -18,6 +18,7 @@ class Env
 
     private $minDuration;
     private $maxDuration;
+    private $durationStep;
 
     private $minAmount;
     private $maxAmount;
@@ -29,8 +30,9 @@ class Env
         $this->apiKey = $this->getOption('key');
         $this->minAge = (int) $this->getOption('min_age');
         $this->maxAge = (int) $this->getOption('max_age');
-        $this->minDuration = (int) $this->getOption('min_duration');
-        $this->maxDuration = (int) $this->getOption('max_duration');
+        $this->minDuration  = (int) $this->getOption('min_duration');
+        $this->maxDuration  = (int) $this->getOption('max_duration');
+        $this->durationStep = (int) $this->getOption('duration_step');
 
         $this->minAmount = (int) $this->getOption('min_amount');
         $this->maxAmount = (int) $this->getOption('max_amount');
@@ -121,6 +123,11 @@ class Env
     public function getMaximumSimulationDuration(): int
     {
         return $this->maxDuration;
+    }
+
+    public function getSimulationDurationStep(): int
+    {
+        return $this->durationStep;
     }
 
     public function getMinimumSimulationAmount(): int

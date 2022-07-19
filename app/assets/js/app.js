@@ -146,7 +146,7 @@ jQuery(function($){
         } else if (currentPrice < minAcceptedValue) {
             $(this).addClass('flashing-alert')
             $('.initial-payment-rule-text').text('O valor inserido deve ser maior que ' + minAcceptedValue.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}));
-        } else if ($currentVal > $propertyPriceInput.val()) {
+        } else if ($currentVal > propertyPrice) {
             $(this).addClass('flashing-alert')
             $('.initial-payment-rule-text').text('O valor da entrada não pode ser maior que o valor do imóvel.');
         } else {

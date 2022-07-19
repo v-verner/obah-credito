@@ -133,6 +133,7 @@ $maxAgeDate->modify('- '. $env->getMaximumAgeForSimulation() .' years');
                         </div>
                         <div class="col label-float large-4">
                             <input type="number" name="payment_length" value="" id="payment_length" class="mb-0" placeholder=" "
+                                step="<?= $env->getSimulationDurationStep() ?>"
                                 min="<?= $env->getMinimumSimulationDuration() ?>"
                                 max="<?= $env->getMaximumSimulationDuration() ?>" step="1"  required>
                             <label for="payment_length" class="uppercase">prazo </label>

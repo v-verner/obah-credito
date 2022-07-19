@@ -3,7 +3,7 @@
 <section class="section hero">
     <div class="col large-12">
         <div class="row row-large align-middle sim-row">
-            <div class="col col-top dark large-3">
+            <div class="col pb-0 large-3 col-top dark">
                 <div class="icon-box featured-box icon-box-left text-left">
                     <div class="icon-box-img">
                         <div class="icon">
@@ -78,41 +78,36 @@
                     </div>
                 </div>
             </div>
-            <div class="col sim-col large-9">
-                <div class="row">
-                    <div class="col large-12 pb-half text-right">
-                        <h4 class="uppercase hide-for-small hide-for-medium text-center">simulação concluida</h4>
-                        <h4 class="uppercase hide-for-large text-left">simulação concluida</h4>
-                        <a class="obah-edit-simulation-button" href="#" data-open="#modal-form_edit_simulation" data-pos="left" data-bg="main-menu-overlay"
-                            data-color="form_edit_simulation">
-                            <button class="button is-link edit uppercase"><i class="icon-pen-alt-fill"></i> editar dados</button>
+            <div class="col pb-0 large-9 sim-col">
+                <div class="row row-small align-middle align-right simulation-results-table-header">
+                    <div class="col pb-0 large-6 small-9 text-center">
+                        <h4 class="uppercase mb-0">Simulação concluida</h4>
+                    </div>
+                    <div class="col pb-0 large-3 small-2 text-right align-right">
+                        <a class="obah-edit-simulation-button" href="#" data-open="#modal-form_edit_simulation" data-pos="left" data-bg="main-menu-overlay" data-color="form_edit_simulation">
+                            <button class="button is-link edit uppercase mb-0">
+                                <i class="icon-pen-alt-fill"></i>
+                                <span class="hide-for-small">Editar dados</span>
+                            </button>
                         </a>
                     </div>
-                    
-
+                </div>
+                <div class="row">
                     <div class="col pb-0 small-12">
                         <div class="col-inner" id="container-form_simulation_table">
                             <?= VVerner\Views::getInstance()->getComponent('form_simulation_table') ?>
                         </div>
                     </div>
-
-                    
-                        
-
+                </div>
+                <div class="row row-small align-middle simulation-results-table-footer">
                     <div class="col pb-0 close-col large-6 small-12" style="padding-right:0;">
                         <button class="button mb-0 pb-0">
-                        <a href="<?= get_permalink(getObahPageId('formulário')) ?>">
-                            <i class="icon-plus"></i>
-                            <span>fechar análise</span>
-                        </a>
+                            <a href="<?= get_permalink(getObahPageId('formulário')) ?>">
+                                <i class="icon-plus"></i>
+                                <span>fechar análise</span>
+                            </a>
                         </button>
                     </div>
-                    <!-- <div class="col pb-0 text-right banks-col large-6 small-6"  style="padding-left:0;">
-                        <button class="button mb-0 pb-0 text-right">
-                            <span>selecione o banco para seguir com análise de credito</span>
-                            <i class="icon-angle-right"></i>
-                        </button>
-                    </div> -->
                 </div>
             </div>
         </div>

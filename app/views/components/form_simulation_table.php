@@ -1,6 +1,5 @@
 <?php global  $currentSimulationId; ?>
-<?php $simulationResults = getSimulationStoredResults($currentSimulationId) ?>
-<?php $currentSimulation = $simulationResults[0] ?>
+<?php $currentSimulation = getLastSimulationResult($currentSimulationId) ?>
 
 <div class="hide-for-medium hide-for-small">
     <div class="responsive-scroll">
@@ -37,10 +36,10 @@
                 <?php $title = trim(array_shift($title)); ?>
                 <tr class="bank">
                     <td style="text-transform: uppercase">
-                    <img width="62" height="62"
-                            src="<?= $bank->logo_banco ?>"
-                            alt="Caixa">
-                    <span title="<?= $bank->Titulo ?>"><?= $title ?></span>
+                        <img width="62" height="62"
+                                src="<?= $bank->logo_banco ?>"
+                                alt="Caixa">
+                        <strong><span title="<?= $bank->Titulo ?>"><?= $title ?></span></strong>
                     </td>  
                     <td class="text-center">
                         <p>R$<?= number_format($bank->_Valor_Financiado, '2', ',' , '.') ?></p>
@@ -52,13 +51,13 @@
                         <p><?= $bank->_Prazo ?></p>
                     </td>
                     <td class="text-center">
-                        <p>R$<?= number_format($bank->Valor_Primeira_Parcela, '2', ',' , '.') ?></p>
+                        <p><strong>R$<?= number_format($bank->Valor_Primeira_Parcela, '2', ',' , '.') ?></strong></p>
                     </td>
                     <td class="text-center">
                         <p>R$<?= number_format($bank->Valor_Ultima_Parcela, '2', ',' , '.') ?></p>
                     </td>
                     <td class="text-center">
-                        <p>R$<?= number_format($bank->Valor_Renda_Minima, '2', ',' , '.') ?></p>
+                        <p><strong>R$<?= number_format($bank->Valor_Renda_Minima, '2', ',' , '.') ?></strong></p>
                     </td>
                     <td class="text-center">
                         <p><?= $bank->Modalidade ?></p>
