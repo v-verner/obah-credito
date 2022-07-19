@@ -71,8 +71,10 @@ class Env
         $bankName       = sanitize_title($bankName);
         $isAvailable    = false;
         foreach ( $this->getApiAvailableBanks() as $key ) : 
-            $isAvailable = strpos($bankName, $key) !== false;
-            if ($isAvailable) : 
+            $isBankAvailable = strpos($bankName, $key) !== false;
+            $hasStopWord     = strpos('poupan', $key) !== false;
+
+            if ($isBankAvailable && !$hasStopWord) : 
                 break;
             endif;
         endforeach;

@@ -82,6 +82,15 @@ function getLastSimulationResult( int $simulationId ): array
 {
     $storedResults = array_reverse(getSimulationStoredResults($simulationId));
     $currentResult = $storedResults[0];
+    $type          = get_post_meta($simulationId, 'amortization_type', true);
+
+    if (!$type || $type === '') :
+        $currentResult = $storedResults[0];
+    else :
+        $currentResult = array_filter($currentResult, function($row) use ($type) {
+            return $row->Modalidade === $type;
+        });
+    endif;
 
     return $currentResult;
 }

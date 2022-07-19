@@ -125,9 +125,9 @@
                     anunciadas. Consideram condições de BALCÃO e são referenciais para negociação inicial com o Cliente.
                     Eventuais diferenças em relação aos simuladores das instituições financeiras devido a critérios de
                     calculo, utilização de tabelas de seguradora, definição de Cliente principal, ou ajustes
-                    extemporÃ¢neo realizados nas linhas de financiamento destas instituições serão informadas para o
+                    extemporâneo realizados nas linhas de financiamento destas instituições serão informadas para o
                     Cliente ao ser inserida a proposta A formalização do crédito e financiamento estão sujeitos a
-                    anÃ¡lises e aprovações de crédito, a serem realizadas de forma independente pelas respectivas
+                    análises e aprovações de crédito, a serem realizadas de forma independente pelas respectivas
                     instituições financeiras.</h5>
             </div>
         </div>
