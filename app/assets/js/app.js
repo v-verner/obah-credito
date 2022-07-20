@@ -137,9 +137,12 @@ jQuery(function($){
         const $currentVal   = $(this).val();
         const pricePieces   = $currentVal.split(',');
         const propertyPieces   = $propertyPriceInput.val().split(',');
-        const currentPrice     = pricePieces[0].replace(/[.,\s]/g, '');
-        const propertyPrice    = propertyPieces[0].replace(/[.,\s]/g, '');
+        const currentPrice     = parseFloat( pricePieces[0].replace(/[.,\s]/g, '') );
+        const propertyPrice    = parseFloat( propertyPieces[0].replace(/[.,\s]/g, '') );
         const minAcceptedValue = OBAH_SIMULATOR.getMinimumInitialPayment(propertyPrice);
+
+        console.log(currentPrice);
+        console.log(propertyPrice);
 
         if (!$currentVal) {
             $(this).removeClass('flashing-alert')
