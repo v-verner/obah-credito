@@ -14,6 +14,11 @@ $features = [
             <div class="col large-9">
 
                 <div class="row">
+                    <div class="col pb-0 large-12" style="margin:30px 0!important">
+                        <button class="button go-to-simulation-button mb-0 mr-0 is-large">
+                            <a href="<?= get_permalink(getObahPageId('formulário')) ?>">Faça uma simulação</a>
+                        </button>
+                    </div>
                     <div class="col pb-0 large-12">
                         <h1>Obah Crédito Correspondente Bancário</h1>
                     </div>
@@ -28,11 +33,6 @@ $features = [
                     </div>
                     <div class="col pb-0 mb-half large-2 medium-2 small-3">
                         <img class="banks-img mb-0" src="<?= VVerner\Assets::getInstance()->getImageFileUrl('logo-bradesco.png') ?>" alt="Bradesco">
-                    </div>
-                    <div class="col pb-0 large-12" style="margin:30px 0!important">
-                        <button class="button go-to-simulation-button mb-0 mr-0 is-large">
-                            <a href="<?= get_permalink(getObahPageId('formulário')) ?>">Faça uma simulação</a>
-                        </button>
                     </div>
                 </div>
             </div>
