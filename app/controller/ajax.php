@@ -93,6 +93,9 @@ function ajaxCreateSimulation(): void
     $url  = trailingslashit(get_permalink(getObahPageId('Simulador')));
     $url .= $simulationHash;
 
+    // TODO FUTURE
+    // CRIAR ALGUM MODO DE SALVAR O LINK DA SIMULAÇÃO
+
     wp_send_json_success($url);
 }
 

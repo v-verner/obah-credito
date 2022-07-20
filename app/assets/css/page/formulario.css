@@ -46,11 +46,14 @@
 }
 
 .form-col{
-    background: white;
+    background: #fff;
     border-radius: 20px;
     padding: 30px;
     margin-top: 30px;
+    max-width: 1000px !important;
+    width: 100% !important;
 }
+
 
 
 .form-row .label-float{
