@@ -9,7 +9,10 @@ $features = [
 ];
 ?>
 <section class="section dark home hero">
-    <div class="col large-12">        
+    <div class="bg section-bg fill bg-fill bg-loaded">
+        <div class="section-bg-overlay hero-overlay absolute fill"></div>
+    </div>
+    <div class="section-content relative">
         <div class="row row-large">
             <div class="col large-9">
 

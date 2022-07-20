@@ -1,9 +1,3 @@
-.home.hero{
-    background-image: linear-gradient(90deg,rgb(17 165 208 / 82%),hwb(172deg 31% 16% / 77%)), url(../../img/obah-woman-bg.jpg) !important;
-    background-size: 105%;
-    background-position: 0 20% !important;
-}
-
 .hero >.col {
     padding-top: 100px;
 }
