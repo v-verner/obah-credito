@@ -11,7 +11,7 @@ $features = [
 <section class="section dark home hero">
     <div class="col large-12">        
         <div class="row row-large">
-            <div class="col large-8">
+            <div class="col large-9">
 
                 <div class="row">
                     <div class="col pb-0 large-12">

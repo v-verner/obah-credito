@@ -39,6 +39,7 @@
     font-size: 15px;
     padding: 10px;
     border-radius: 99px;
+    line-height: 1;
 }
 
 .go-to-simulation-button{
