@@ -35,7 +35,8 @@ $features = [
                         </button>
                     </div>
                 </div>
-
+            </div>
+            <div class="col pb-0 large-10">
                 <?php foreach ($features as $k => $v) : ?>
                     <?php if ($k % 2 === 0): ?>
                         <div class="row row-large">
@@ -69,7 +70,6 @@ $features = [
                 <?php if ($k % 2 === 0): ?>
                     </div> <!-- row row-large -->
                 <?php endif; ?>
-
             </div>
         </div>
     </div>
