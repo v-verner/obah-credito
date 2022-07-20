@@ -1,11 +1,10 @@
 <?php
 $features = [
     'Simulação on-line em todos os bancos.',
-    'Atendimento desde o crédito até o registro.',
-    'Foco no financiamento imobiliário, facilidades para compradores, vendedores e instituição financeira.',
     'Avaliamos seu crédito em até 24h',
+    'Atendimento desde o crédito até o registro.',
     'Consultores especializados',
-    'Consultores especializados',
+    'Foco no financiamento imobiliário, facilidades para compradores, vendedores e instituição financeira.',
     'Processo 100% gratuito'
 ];
 ?>
@@ -15,20 +14,25 @@ $features = [
             <div class="col large-8">
 
                 <div class="row">
-                    <div class="col large-12">
+                    <div class="col pb-0 large-12">
                         <h1>Obah Crédito Correspondente Bancário</h1>
                     </div>
-                    <div class="col large-2 medium-2 small-3">
+                    <div class="col pb-0 large-2 medium-2 small-3">
                         <img class="banks-img mb-half" src="<?= VVerner\Assets::getInstance()->getImageFileUrl('logo-itau.png') ?>" alt="Itaú">
                     </div>
-                    <div class="col large-2 medium-2 small-3">
+                    <div class="col pb-0 large-2 medium-2 small-3">
                         <img class="banks-img mb-half" src="<?= VVerner\Assets::getInstance()->getImageFileUrl('logo-santander.png') ?>" alt="Santander">
                     </div>
-                    <div class="col large-2 medium-2 small-3">
+                    <div class="col pb-0 large-2 medium-2 small-3">
                         <img class="banks-img mb-half" src="<?= VVerner\Assets::getInstance()->getImageFileUrl('logo-caixa-economica-federal.png') ?>" alt="Caixa">
                     </div>
-                    <div class="col large-2 medium-2 small-3">
+                    <div class="col pb-0 large-2 medium-2 small-3">
                         <img class="banks-img mb-half" src="<?= VVerner\Assets::getInstance()->getImageFileUrl('logo-bradesco.png') ?>" alt="Bradesco">
+                    </div>
+                    <div class="col pb-0 large-12">
+                        <button class="button go-to-simulation-button">
+                            <a href="<?= get_permalink(getObahPageId('formulário')) ?>">Faça uma simulação</a>
+                        </button>
                     </div>
                 </div>
 
