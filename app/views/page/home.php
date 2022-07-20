@@ -1,10 +1,10 @@
 <?php
 $features = [
-    'Simulação on-line em todos os bancos.',
+    'Simulação on-line em todos os bancos',
     'Avaliamos seu crédito em até 24h',
-    'Atendimento desde o crédito até o registro.',
+    'Atendimento desde o crédito até o registro',
     'Consultores especializados',
-    'Foco no financiamento imobiliário, facilidades para compradores, vendedores e instituição financeira.',
+    'Foco no financiamento imobiliário, facilidades para compradores, vendedores e instituição financeira',
     'Processo 100% gratuito'
 ];
 ?>
