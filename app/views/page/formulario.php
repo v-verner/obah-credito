@@ -88,7 +88,7 @@ $maxAgeDate->modify('- '. $env->getMaximumAgeForSimulation() .' years');
                                 Proponente)</span></label>
                     </div>
                 </div>
-                <div class="col label-float large-4">
+                <div class="col label-float large-3">
                     <select name="property_type" id="property_type"  required>
                         <option value="" disabled selected>TIPO DE IMÓVEL *</option>
                         <?php $imovelTipos = $env->getUsageProfile() ?>
@@ -97,7 +97,7 @@ $maxAgeDate->modify('- '. $env->getMaximumAgeForSimulation() .' years');
                         <?php endforeach; ?>
                     </select>
                 </div>
-                <div class="col label-float large-4">
+                <div class="col label-float large-3">
                     <select name="property_condition" id="property_condition" class="property_condition" required>
                         <option value="" disabled selected><span>CONDIÇÃO DO IMÓVEL <span class="required">*</span></span></option>
                         <?php $imovelCondicao = $env->getPropertyConditions() ?>
@@ -105,28 +105,6 @@ $maxAgeDate->modify('- '. $env->getMaximumAgeForSimulation() .' years');
                             <option value="<?= $condicao->id ?>"><?= $condicao->name ?></option>
                         <?php endforeach; ?>
                     </select>
-                </div>
-                <div class="col label-float large-4">
-                    <select name="property_location" id="property_location"  required>
-                        <option value="" disabled selected>LOCALIZAÇÃO DO IMÓVEL (Estado) *</option>
-                        <?php $estados = $env->getBrazilianStates(); ?>
-                        <?php foreach($estados as $estado) :?>
-                        <option value="<?= $estado->id ?>"><?= $estado->name ?></option>
-                        <?php endforeach;?>
-                    </select>
-                </div>                
-                <div class="col label-float large-3">
-                    <input type="text" name="property_price" id="property_price" class="mask-money mb-0"
-                        data-min="<?= $env->getMinimumSimulationAmount() ?>"
-                        data-max="<?= $env->getMaximumSimulationAmount() ?>" class="uppercase" value="" placeholder=' '
-                        required>
-                    <label for="property_price" class="uppercase">valor do imóvel </label>
-
-                </div>
-                <div class="col label-float large-3">
-                    <input type="text" name="initial_payment" id="initial_payment" class="mask-money mb-0" value="" placeholder=' '  required>
-                    <label for="initial_payment" class="uppercase">Valor de entrada</label>
-                    <small class="initial-payment-rule-text"></small>
                 </div>
                 <div class="col label-float large-3">
                     <select name="amortization_type" id="amortization_type"  required>
@@ -136,6 +114,28 @@ $maxAgeDate->modify('- '. $env->getMaximumAgeForSimulation() .' years');
                     </select>
                 </div>
                 <div class="col label-float large-3">
+                    <select name="property_location" id="property_location"  required>
+                        <option value="" disabled selected>LOCALIZAÇÃO DO IMÓVEL *</option>
+                        <?php $estados = $env->getBrazilianStates(); ?>
+                        <?php foreach($estados as $estado) :?>
+                        <option value="<?= $estado->id ?>"><?= $estado->name ?></option>
+                        <?php endforeach;?>
+                    </select>
+                </div>                
+                <div class="col label-float large-4">
+                    <input type="text" name="property_price" id="property_price" class="mask-money mb-0"
+                        data-min="<?= $env->getMinimumSimulationAmount() ?>"
+                        data-max="<?= $env->getMaximumSimulationAmount() ?>" class="uppercase" value="" placeholder=' '
+                        required>
+                    <label for="property_price" class="uppercase">valor do imóvel </label>
+
+                </div>
+                <div class="col label-float large-4">
+                    <input type="text" name="initial_payment" id="initial_payment" class="mask-money mb-0" value="" placeholder=' '  required>
+                    <label for="initial_payment" class="uppercase">Valor de entrada</label>
+                    <small class="initial-payment-rule-text"></small>
+                </div>
+                <div class="col label-float large-4">
                     <input type="number" name="payment_length" value="" id="payment_length" class="mb-0" placeholder=" "
                         step="<?= $env->getSimulationDurationStep() ?>"
                         min="<?= $env->getMinimumSimulationDuration() ?>"

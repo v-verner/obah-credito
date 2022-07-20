@@ -146,9 +146,12 @@ jQuery(function($){
         } else if (currentPrice < minAcceptedValue) {
             $(this).addClass('flashing-alert')
             $('.initial-payment-rule-text').text('O valor inserido deve ser maior que ' + minAcceptedValue.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}));
-        } else if ($currentVal > propertyPrice) {
+        } else if (currentPrice > propertyPrice) {
             $(this).addClass('flashing-alert')
             $('.initial-payment-rule-text').text('O valor da entrada não pode ser maior que o valor do imóvel.');
+        } else if (currentPrice === propertyPrice) {
+            $(this).addClass('flashing-alert')
+            $('.initial-payment-rule-text').text('O valor da entrada não pode ser igual ao valor do imóvel.');
         } else {
             $(this).removeClass('flashing-alert')
         }
