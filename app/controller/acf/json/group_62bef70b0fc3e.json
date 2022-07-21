@@ -64,10 +64,10 @@
         },
         {
             "key": "field_62bf045aff2af",
-            "label": "Bancos disponíveis",
+            "label": "IDs de Bancos disponíveis",
             "name": "99cred_api_available_banks",
             "type": "text",
-            "instructions": "Separe por vírgulas os bancos que serão apresentados na simulação",
+            "instructions": "Separe por vírgulas os IDs que serão apresentados na simulação (não esqueça do '#' no início)",
             "required": 1,
             "conditional_logic": 0,
             "wrapper": {
@@ -496,7 +496,11 @@
                         "UF_CRM_1636476833": "UF_CRM_1636476833 : Data de casamento",
                         "UF_CRM_1636552826614": "UF_CRM_1636552826614 : Novo campo",
                         "UF_CRM_1636552861517": "UF_CRM_1636552861517 : Novo arquivo",
-                        "UF_CRM_LEAD_1657204689443": "UF_CRM_LEAD_1657204689443 : UF_CRM_LEAD_1657204689443"
+                        "UF_CRM_LEAD_1657204689443": "UF_CRM_LEAD_1657204689443 : UF_CRM_LEAD_1657204689443",
+                        "UF_CRM_1658344152": "UF_CRM_1658344152 : Conjuge- email",
+                        "UF_CRM_1658344176": "UF_CRM_1658344176 : Conjuge- telefone",
+                        "UF_CRM_1658344244": "UF_CRM_1658344244 : email- 2° proponente",
+                        "UF_CRM_1658344262": "UF_CRM_1658344262 : telefone- 2° proponente"
                     },
                     "default_value": false,
                     "allow_null": 0,
@@ -546,5 +550,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1658250398
+    "modified": 1658435090
 }

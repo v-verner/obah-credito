@@ -32,14 +32,9 @@
             </tr>
             
             <?php foreach($currentSimulation as $bank) :?>
-                <?php $title = explode('-', trim($bank->Titulo)); ?>
-                <?php $title = trim(array_shift($title)); ?>
                 <tr class="bank">
                     <td style="text-transform: uppercase">
-                        <img width="62" height="62"
-                                src="<?= $bank->logo_banco ?>"
-                                alt="Caixa">
-                        <strong><span title="<?= $bank->Titulo ?>"><?= $title ?></span></strong>
+                        <img width="62" height="62" src="<?= $bank->logo_banco ?>" alt="<?= $bank->Titulo ?>" title="<?= $bank->Titulo ?>" >
                     </td>  
                     <td class="text-center">
                         <p>R$<?= number_format($bank->_Valor_Financiado, '2', ',' , '.') ?></p>
@@ -62,7 +57,7 @@
                     <td class="text-center">
                         <p><?= $bank->Modalidade ?></p>
                     </td>
-                    <td class="text-center"><?= $bank->Taxa_Nominal ?>% A.A</td>
+                    <td class="text-center"><?= $bank->Taxa_Nominal ?>% a.a</td>
                 </tr>    
             <?php endforeach;?>  
                                             
@@ -77,64 +72,89 @@
         <table>
             
             <tr>
-                <th>banco</th>
+                <th>Banco</th>
                 <?php foreach($currentSimulation as $bank) :?>
-                <?php $title = explode('-', trim($bank->Titulo)); ?>
-                <?php $title = trim(array_shift($title)); ?>
-                <td style="text-transform: uppercase">
-                    <img width="62" height="62"
-                            src="<?= $bank->logo_banco ?>"
-                            alt="Caixa">
-                    <span title="<?= $bank->Titulo ?>"><?= $title ?></span>
+                    <td>
+                        <img width="62" height="62" src="<?= $bank->logo_banco ?>" alt="<?= $bank->Titulo ?>" title="<?= $bank->Titulo ?>">
                     </td> 
-                        <?php endforeach;?>
-            </tr>
-            <tr>
-                <th><p class="mb-0">valor</p><p class="mb-0">financiado</p></th>
-                <?php foreach($currentSimulation as $bank) :?>
-                <td class="text-center"><p>R$<?= number_format($bank->_Valor_Financiado, '2', ',' , '.') ?></p></td>
                 <?php endforeach;?>
             </tr>
             <tr>
-                <th>entrada</th>
+                <th>
+                    <p class="mb-0">Valor</p>
+                    <p class="mb-0">Financiado</p>
+                </th>
                 <?php foreach($currentSimulation as $bank) :?>
-                <td class="text-center"><p>R$<?= number_format($bank->_Valor_Entrada, '2', ',' , '.') ?></p></td>
+                    <td class="text-center"><p>R$<?= number_format($bank->_Valor_Financiado, '2', ',' , '.') ?></p></td>
+                <?php endforeach;?>
+            </tr>
+            <tr>
+                <th>Entrada</th>
+                <?php foreach($currentSimulation as $bank) :?>
+                    <td class="text-center">
+                        <p>R$<?= number_format($bank->_Valor_Entrada, '2', ',' , '.') ?></p>
+                    </td>
                 <?php endforeach;?>
             </tr>
             <tr>
                 <th>prazo</th>
                 <?php foreach($currentSimulation as $bank) :?>
-                <td class="text-center"><p><?= $bank->_Prazo ?></p></td>
+                    <td class="text-center">
+                        <p><?= $bank->_Prazo ?></p>
+                    </td>
                 <?php endforeach;?>
             </tr>
             <tr>
-                <th><p class="mb-0">primeira</p><p class="mb-0">parcela</p></th>
+                <th>
+                    <p class="mb-0">primeira</p>
+                    <p class="mb-0">parcela</p>
+                </th>
                 <?php foreach($currentSimulation as $bank) :?>
-                <td class="text-center"><p>R$<?= number_format($bank->Valor_Primeira_Parcela, '2', ',' , '.') ?></p></td>
+                    <td class="text-center">
+                        <p>R$<?= number_format($bank->Valor_Primeira_Parcela, '2', ',' , '.') ?></p>
+                    </td>
                 <?php endforeach;?>
             </tr>
             <tr>
-                <th><p class="mb-0">última</p><p class="mb-0">parcela</p></th>
+                <th>
+                    <p class="mb-0">última</p>
+                    <p class="mb-0">parcela</p>
+                </th>
                 <?php foreach($currentSimulation as $bank) :?>
-                <td class="text-center"><p>R$<?= number_format($bank->Valor_Ultima_Parcela, '2', ',' , '.') ?></p></td>
+                    <td class="text-center">
+                        <p>R$<?= number_format($bank->Valor_Ultima_Parcela, '2', ',' , '.') ?></p>
+                    </td>
                 <?php endforeach;?>
             </tr>
             <tr>
-                <th><p class="mb-0">renda</p><p class="mb-0">mínima</p></th>
+                <th>
+                    <p class="mb-0">renda</p>
+                    <p class="mb-0">mínima</p>
+                </th>
                 <?php foreach($currentSimulation as $bank) :?>
-                <td class="text-center"><p>R$<?= number_format($bank->Valor_Renda_Minima, '2', ',' , '.') ?></p></td>
+                    <td class="text-center">
+                        <p>R$<?= number_format($bank->Valor_Renda_Minima, '2', ',' , '.') ?></p>
+                    </td>
                 <?php endforeach;?>
             </tr>
             <tr>
-                <th><p class="mb-0">taxa</p><p class="mb-0">efetiva</p></th>
+                <th>
+                    <p class="mb-0">taxa</p>
+                    <p class="mb-0">efetiva</p>
+                </th>
                 <?php foreach($currentSimulation as $bank) :?>
-                <td class="text-center"><?= $bank->Taxa_Nominal ?>% A.A</td>
+                    <td class="text-center"><?= $bank->Taxa_Nominal ?>% A.A</td>
                 <?php endforeach;?>
             </tr>
             <tr>
-                <th><p class="mb-0">sistema de</p><p class="mb-0">amortização</p></th>
+                <th>
+                    <p class="mb-0">sistema de</p>
+                    <p class="mb-0">amortização</p>
+                </th>
                 <?php foreach($currentSimulation as $bank) :?>
-                <td class="text-center"><p><?= $bank->Modalidade ?></p></td>
+                    <td class="text-center">
+                        <p><?= $bank->Modalidade ?></p>
+                    </td>
                 <?php endforeach;?>
             </tr>
 

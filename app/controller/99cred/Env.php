@@ -39,7 +39,7 @@ class Env
         $this->minInitialPaymentRatio = $this->getOption('min_initial_payment') / 100;
 
         $banks = $this->getOption('available_banks');
-        $banks = array_map('sanitize_title', explode(',', $banks));
+        $banks = array_map('trim', explode(',', $banks));
 
         $this->apiAvailableBanks = $banks;
     }
@@ -68,8 +68,9 @@ class Env
             return false;
         endif;
 
-        $bankName       = sanitize_title($bankName);
-        $isAvailable    = false;
+        $bankName    = trim($bankName);
+        $isAvailable = false;
+        
         foreach ( $this->getApiAvailableBanks() as $key ) : 
             $isBankAvailable = strpos($bankName, $key) !== false;
             $hasStopWord     = strpos('poupan', $key) !== false;
