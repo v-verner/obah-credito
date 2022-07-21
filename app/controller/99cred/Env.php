@@ -75,6 +75,7 @@ class Env
             $hasStopWord     = strpos('poupan', $key) !== false;
 
             if ($isBankAvailable && !$hasStopWord) : 
+                $isAvailable = true;
                 break;
             endif;
         endforeach;

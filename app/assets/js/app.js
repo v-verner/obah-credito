@@ -141,9 +141,6 @@ jQuery(function($){
         const propertyPrice    = parseFloat( propertyPieces[0].replace(/[.,\s]/g, '') );
         const minAcceptedValue = OBAH_SIMULATOR.getMinimumInitialPayment(propertyPrice);
 
-        console.log(currentPrice);
-        console.log(propertyPrice);
-
         if (!$currentVal) {
             $(this).removeClass('flashing-alert')
         } else if (currentPrice < minAcceptedValue) {
