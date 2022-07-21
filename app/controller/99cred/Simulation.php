@@ -21,7 +21,7 @@ class Simulation
     protected $fone;
     protected $email;
     protected $fmt      = 'JSON';
-    protected $infmail  = 'S';
+    protected $infmail  = 'N';
     protected $copiacli = 'N';
     protected $canal    = '';
 

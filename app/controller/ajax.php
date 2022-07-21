@@ -46,12 +46,14 @@ function ajaxCreateSimulation(): void
     $birthdate = new DateTime($birthday);
     $age       = $now->format('Y') - $birthdate->format('Y');
 
+    // $itbiFee   = $include_itbi_fee === 'Sim' ? ($property_price * $env->getItibFee()) : 0;
+
     $simulation->set('uf', $property_location);
     $simulation->set('perfil', $property_type);
     $simulation->set('condicao', $property_condition);
     $simulation->set('idade', $age);
     $simulation->set('valor', $property_price);
-    $simulation->set('valor_financ', $property_price - $initial_payment);
+$simulation->set('valor_financ', $property_price - $initial_payment/* + $itbiFee*/);
     $simulation->set('prazo', $payment_length);
     $simulation->set('nome', $full_name);
     $simulation->set('fone', preg_replace('/\D/', '', $phone));

@@ -1,7 +1,14 @@
 <?php defined('ABSPATH') || exit('No direct script access allowed'); 
 $simulation = loadSimulation( get_the_ID() );
 
+$url  = trailingslashit(get_permalink(getObahPageId('Simulador')));
+$url .= getSimulationHash();
+
 ?>
+
+<a href="<?= $url ?>" target="_blank" rel="noopener noreferrer" class="button">Acessar simulação no site</a>
+
+<br>
 
 <table class="form-table">
     <tr>
