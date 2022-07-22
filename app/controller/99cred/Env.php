@@ -213,7 +213,7 @@ class Env
 
     private function getOption(string $prop)
     {
-        return function_exists('get_field') ? get_field('99cred_api_' . $prop, 'option') : null;
+        return function_exists('get_field') ? get_field('99cred_api_' . $prop, 'option') : get_option('options_99cred_api_' . $prop);
     }
 
     private function getSimpleObject(int $id, string $name): stdClass
