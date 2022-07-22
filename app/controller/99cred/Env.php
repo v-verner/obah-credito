@@ -34,6 +34,8 @@ class Env
         $this->maxDuration  = (int) $this->getOption('max_duration');
         $this->durationStep = (int) $this->getOption('duration_step');
 
+        $this->itbiFee      = $this->getOption('itbi_fee') / 100;
+
         $this->minAmount = (int) $this->getOption('min_amount');
         $this->maxAmount = (int) $this->getOption('max_amount');
         $this->minInitialPaymentRatio = $this->getOption('min_initial_payment') / 100;
@@ -70,7 +72,7 @@ class Env
 
         $bankName    = trim($bankName);
         $isAvailable = false;
-        
+
         foreach ( $this->getApiAvailableBanks() as $key ) : 
             $isBankAvailable = strpos($bankName, $key) !== false;
             $hasStopWord     = strpos('poupan', $key) !== false;

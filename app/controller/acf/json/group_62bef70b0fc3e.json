@@ -90,7 +90,7 @@
             "required": 1,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "33",
+                "width": "50",
                 "class": "",
                 "id": ""
             },
@@ -111,7 +111,7 @@
             "required": 1,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "33",
+                "width": "50",
                 "class": "",
                 "id": ""
             },
@@ -132,11 +132,32 @@
             "required": 1,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "34",
+                "width": "50",
                 "class": "",
                 "id": ""
             },
             "default_value": 20,
+            "placeholder": "",
+            "prepend": "",
+            "append": "%",
+            "min": 1,
+            "max": 100,
+            "step": 1
+        },
+        {
+            "key": "field_62d9c1a9cbb7f",
+            "label": "Valor da Taxa ITBI",
+            "name": "99cred_api_itbi_fee",
+            "type": "number",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 5,
             "placeholder": "",
             "prepend": "",
             "append": "%",
@@ -550,5 +571,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1658435090
+    "modified": 1658438142
 }
