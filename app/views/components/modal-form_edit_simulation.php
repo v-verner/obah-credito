@@ -29,7 +29,7 @@ $includeITBI = get_post_meta($currentSimulationId, 'include_itbi_fee');
 			</div>
 			<div class="col input-col large-12">
                 <label for="initial_payment" class="uppercase">valor da entrada</label>
-                <input type="text" name="initial_payment" value="<?= number_format($lastSimulationRes->_Valor_Entrada, 2, ',', '.') ?>" data-min="" id="initial_payment" class="mb-0 mask-money" placeholder=' '>
+                <input type="text" name="initial_payment"  data-itbi="0" value="<?= number_format($lastSimulationRes->_Valor_Entrada, 2, ',', '.') ?>" data-min="" id="initial_payment" class="mb-0 mask-money" placeholder=' '>
                 <small class="initial-payment-rule-text"></small>
 			</div>
 			<div class="col input-col large-12">
@@ -45,7 +45,7 @@ $includeITBI = get_post_meta($currentSimulationId, 'include_itbi_fee');
 			</div>
 			<div class="col input-col large-12">
                 <div class="toggle-container">
-                    <input type="checkbox" name="include_itbi_fee" id="include_itbi_fee" <?= array_shift($includeITBI) === 'Sim' ? 'checked' : '' ?>>
+                    <input type="checkbox" name="include_itbi_fee"  data-itbi="0" id="include_itbi_fee" <?= array_shift($includeITBI) === 'Sim' ? 'checked' : '' ?>>
                     <label class="flex align-middle" for="include_itbi_fee">
                         <span class="toggle-state"></span>
                         <h2 class="uppercase mt-0">incluir despesas(itbi) ? </h2>

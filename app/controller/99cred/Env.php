@@ -20,6 +20,8 @@ class Env
     private $maxDuration;
     private $durationStep;
 
+    private $itbiFee;
+
     private $minAmount;
     private $maxAmount;
     private $minInitialPaymentRatio;
@@ -30,14 +32,12 @@ class Env
         $this->apiKey = $this->getOption('key');
         $this->minAge = (int) $this->getOption('min_age');
         $this->maxAge = (int) $this->getOption('max_age');
+        $this->minAmount = (int) $this->getOption('min_amount');
+        $this->maxAmount = (int) $this->getOption('max_amount');
         $this->minDuration  = (int) $this->getOption('min_duration');
         $this->maxDuration  = (int) $this->getOption('max_duration');
         $this->durationStep = (int) $this->getOption('duration_step');
-
         $this->itbiFee      = $this->getOption('itbi_fee') / 100;
-
-        $this->minAmount = (int) $this->getOption('min_amount');
-        $this->maxAmount = (int) $this->getOption('max_amount');
         $this->minInitialPaymentRatio = $this->getOption('min_initial_payment') / 100;
 
         $banks = $this->getOption('available_banks');
@@ -154,6 +154,11 @@ class Env
     public function getApiAvailableBanks(): ?array
     {
         return $this->apiAvailableBanks;
+    }
+
+    public function getItbiFee(): ?float
+    {
+        return $this->itbiFee;
     }
 
     public function getBrazilianStates(): array

@@ -10,10 +10,13 @@ function ajaxCreateSimulation(): void
         wp_send_json_error('Os termos e a LGPD do site precisam ser aceitos.');
     endif;
 
-    do_action('obah/create_lead', $_POST);
+    if (!OBAH_DEV) :
+        do_action('obah/create_lead', $_POST);
+    endif;
 
     $simulation         = new Cred99\Simulation();
     $api                = new Cred99\API();
+    $env                = new Cred99\Env();
     $now                = new DateTime();
 
     $full_name          = isset($_POST['full_name']) ? sanitize_text_field($_POST['full_name']) : '';
@@ -46,14 +49,14 @@ function ajaxCreateSimulation(): void
     $birthdate = new DateTime($birthday);
     $age       = $now->format('Y') - $birthdate->format('Y');
 
-    // $itbiFee   = $include_itbi_fee === 'Sim' ? ($property_price * $env->getItibFee()) : 0;
+    $itbiAmount = $include_itbi_fee === 'Sim' ? ($property_price * $env->getItbiFee()) : 0;
 
     $simulation->set('uf', $property_location);
     $simulation->set('perfil', $property_type);
     $simulation->set('condicao', $property_condition);
     $simulation->set('idade', $age);
     $simulation->set('valor', $property_price);
-$simulation->set('valor_financ', $property_price - $initial_payment/* + $itbiFee*/);
+    $simulation->set('valor_financ', ($property_price + $itbiAmount) - $initial_payment);
     $simulation->set('prazo', $payment_length);
     $simulation->set('nome', $full_name);
     $simulation->set('fone', preg_replace('/\D/', '', $phone));
@@ -94,9 +97,6 @@ $simulation->set('valor_financ', $property_price - $initial_payment/* + $itbiFee
 
     $url  = trailingslashit(get_permalink(getObahPageId('Simulador')));
     $url .= $simulationHash;
-
-    // TODO FUTURE
-    // CRIAR ALGUM MODO DE SALVAR O LINK DA SIMULAÇÃO
 
     wp_send_json_success($url);
 }

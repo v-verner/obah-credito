@@ -24,27 +24,23 @@ $maxAgeDate->modify('- '. $env->getMaximumAgeForSimulation() .' years');
                 <form id="create-simulation-form" class="align-center form-row row-small row">
 
                     <div class="col label-float large-6">
-                        <input type="text" name="full_name" id="full_name" class="uppercase" placeholder=" "
-                            required>
+                        <input type="text" name="full_name" id="full_name" class="uppercase" placeholder=" " autocomplete="name" required>
                         <label for="full_name" class="uppercase">nome completo </label>
                     </div>
                     <div class="col label-float large-6">
-                        <input type="text" name="cpf" id="cpf" class="mask-cpf uppercase" placeholder=' '
-                            inputmode="numeric"  required>
+                        <input type="text" name="cpf" id="cpf" class="mask-cpf uppercase" placeholder=' ' inputmode="numeric"  required>
                         <label for="cpf" class="uppercase">cpf </label>
                     </div>
                     <div class="col label-float large-4">
-                        <input type="text" name="birthday" id="birthday" class="uppercase" placeholder=" "
-                            onfocus="(this.type='date')" min="<?= $maxAgeDate->format('Y-m-d') ?>" max="<?= $minAgeDate->format('Y-m-d') ?>" required>
+                        <input type="text" name="birthday" id="birthday" class="uppercase" placeholder=" "  autocomplete="bday" onfocus="(this.type='date')" min="<?= $maxAgeDate->format('Y-m-d') ?>" max="<?= $minAgeDate->format('Y-m-d') ?>" required>
                         <label for="birthday" class="uppercase">data de nascimento </label>
                     </div>
                     <div class="col label-float large-4">
-                        <input type="text" name="phone" id="phone" class="mask-phone uppercase" placeholder=' '
-                            inputmode="numeric" required>
+                        <input type="text" name="phone" id="phone" class="mask-phone uppercase" placeholder=' '   autocomplete="tel-national" inputmode="numeric" required>
                         <label for="phone" class="uppercase">Telefone +55 </label>
                     </div>
                     <div class="col label-float large-4">
-                        <input type="email" name="email" id="email" class="uppercase" placeholder=' ' required>
+                        <input type="email" name="email" id="email" class="uppercase" placeholder=' '   autocomplete="email" required>
                         <label for="email" class="uppercase">e-mail </label>
                     </div>
                     <div class="col label-float large-6">
@@ -135,7 +131,7 @@ $maxAgeDate->modify('- '. $env->getMaximumAgeForSimulation() .' years');
 
                     </div>
                     <div class="col label-float large-4">
-                        <input type="text" name="initial_payment" id="initial_payment" class="mask-money mb-0" value="" placeholder=' '  required>
+                        <input type="text" name="initial_payment"  data-itbi="0" id="initial_payment" class="mask-money mb-0" value="" placeholder=' '  required>
                         <label for="initial_payment" class="uppercase">Valor de entrada</label>
                         <small class="initial-payment-rule-text"></small>
                     </div>
