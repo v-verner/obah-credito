@@ -32,6 +32,7 @@ jQuery(function($){
     const $initialPaymentAlert  = $('.initial-payment-rule-text');
 
     const ERROR_CLASS           = 'flashing-alert';
+    const LOADING_CLASS         = 'is-loading';
 
     $('.mask-cpf').mask('000.000.000-00', {reverse: false});
     $('.mask-phone').mask('(00) 0 0000-0000');
@@ -47,6 +48,9 @@ jQuery(function($){
         e.preventDefault();
 
         if (OBAH_SIMULATOR.hasAgeInRange(userAge)) {
+
+            $createSimulationForm.find('button').addClass(LOADING_CLASS);
+
             $.post(app_data.url, $createSimulationForm.serialize(), function(res){
                 if(res.success) {
                     Swal.fire(
@@ -54,6 +58,7 @@ jQuery(function($){
                         'Você será redirecionado para o simulador.',
                         'success'
                     ).then(() => {
+                        $createSimulationForm.find('button').removeClass(LOADING_CLASS);
                         window.location.href=res.data;
                     })
                 } else {
@@ -78,9 +83,6 @@ jQuery(function($){
                 text: 'Parece que sua idade não está dentro da idade aceita para realizar uma simulação em nossa plataforma.'
             });
         }
-
-        $('button.send-obah-simulation').addClass('is-loading');
-
     });
 
     // EDIT OBAH SIMULATION
@@ -88,6 +90,9 @@ jQuery(function($){
         e.preventDefault();
 
         if (!$(this).find('input').hasClass(ERROR_CLASS)) {
+
+            $updateSimulationForm.find('button').addClass(LOADING_CLASS);
+
             $.post(app_data.url, $updateSimulationForm.serialize(), function(res){
                 if(res.success) {
                     Swal.fire(
@@ -95,7 +100,9 @@ jQuery(function($){
                         'Os dados da sua simulação foram atualizados.',
                         'success'
                     ).then(() => {
-                        $('#container-form_simulation_table').html( res.data )
+                        $('#container-form_simulation_table').html( res.data );
+                        $.magnificPopup.close()
+                        $updateSimulationForm.find('button').removeClass(LOADING_CLASS);
                     })
     
                 } else {
