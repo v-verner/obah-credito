@@ -164,6 +164,7 @@ class Env
     public function getBrazilianStates(): array
     {
         return [
+            $this->getSimpleObject(25, 'São Paulo'),
             $this->getSimpleObject(1, 'Acre'),
             $this->getSimpleObject(2, 'Alagoas'),
             $this->getSimpleObject(3, 'Amapá'),
@@ -188,7 +189,6 @@ class Env
             $this->getSimpleObject(22, 'Rondônia'),
             $this->getSimpleObject(23, 'Roraima'),
             $this->getSimpleObject(24, 'Santa Catarina'),
-            $this->getSimpleObject(25, 'São Paulo'),
             $this->getSimpleObject(26, 'Sergipe'),
             $this->getSimpleObject(27, 'Tocantins')
         ];
