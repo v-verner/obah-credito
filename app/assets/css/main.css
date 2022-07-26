@@ -23,7 +23,8 @@
     left: 33%;
     border-radius: 99px;
     border-width: 2px 2px 0 0;
-    animation: spin 500ms linear infinite;
+    -webkit-animation: spin 500ms linear infinite;
+            animation: spin 500ms linear infinite;
 }
 
 img.header_logo.header-logo {
@@ -104,4 +105,8 @@ b.footer-privacy-policy:hover {
         min-width: 156px;
         min-height: 40px;
     }
+}
+
+.initial-payment-rule-text:empty {
+    display: none;
 }

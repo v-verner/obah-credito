@@ -34,7 +34,7 @@ $includeITBI = get_post_meta($currentSimulationId, 'include_itbi_fee');
 			</div>
 			<div class="col input-col large-12">
                 <label for="birthday" class="uppercase">quando você nasceu</label>
-            <input type="date" name="birthday" value="<?= get_post_meta($currentSimulationId, 'birthday', true) ?>" id="birthday" class="uppercase" placeholder=" "
+                <input type="date" name="birthday" value="<?= get_post_meta($currentSimulationId, 'birthday', true) ?>" id="birthday" class="uppercase" class="mb-0" placeholder=" "
                                 onfocus="(this.type='date')" min="<?= $maxAgeDate->format('Y-m-d') ?>" max="<?= $minAgeDate->format('Y-m-d') ?>" required>
 			</div>
 			<div class="col input-col large-12">
