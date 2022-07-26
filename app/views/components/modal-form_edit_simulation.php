@@ -15,7 +15,7 @@ $includeITBI = get_post_meta($currentSimulationId, 'include_itbi_fee');
 	<div class="sidebar-menu no-scrollbar ">
 		<div class="row edit-row align-center">
 			<div class="col input-col large-12 text-center">            
-                <img class="" src="<?= VVerner\Assets::getInstance()->getImageFileUrl('LOGO.png') ?>" alt="Obah-Crédito">
+                <img class="" src="<?= VVerner\Assets::getInstance()->getImageFileUrl('logo-novo.png') ?>" alt="Obah-Crédito">
 			</div>
             <form id="update-simulation-form">
 			<div class="col input-col large-12">
