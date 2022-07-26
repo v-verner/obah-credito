@@ -122,8 +122,8 @@ span.scroll-for-more-text{
 }
 
 #modal-form_edit_simulation img {
-    width: 309px;
-    height: 79px;
+    width: 300px;
+    height: auto;
 }
 
 #modal-form_edit_simulation{
