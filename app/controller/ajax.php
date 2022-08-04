@@ -10,7 +10,7 @@ function ajaxCreateSimulation(): void
         wp_send_json_error('Os termos e a LGPD do site precisam ser aceitos.');
     endif;
 
-    if (!OBAH_DEV) :
+    if (!OBAH_DEV && false) :
         do_action('obah/create_lead', $_POST);
     endif;
 
