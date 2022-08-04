@@ -93,7 +93,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col pb-0 small-12">
+                    <div class="col pb-0 small-12 simulation-results-table-container">
                         <div class="col-inner" id="container-form_simulation_table">
                             <?= VVerner\Views::getInstance()->getComponent('form_simulation_table') ?>
                         </div>

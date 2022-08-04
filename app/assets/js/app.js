@@ -42,45 +42,53 @@ jQuery(function($){
 
     // CREATE OBAH SIMULATION
     $createSimulationForm.on('submit', function(e){
-        const userBirth = $(this).find('#birthday').val();
-        const userAge = OBAH_SIMULATOR.calculateAge(userBirth);
-
         e.preventDefault();
 
-        if (OBAH_SIMULATOR.hasAgeInRange(userAge)) {
-
-            $createSimulationForm.find('button').addClass(LOADING_CLASS);
-
-            $.post(app_data.url, $createSimulationForm.serialize(), function(res){
-                if(res.success) {
-                    Swal.fire(
-                        'Dados enviados com sucesso!',
-                        'Você será redirecionado para o simulador.',
-                        'success'
-                    ).then(() => {
-                        $createSimulationForm.find('button').removeClass(LOADING_CLASS);
-                        window.location.href=res.data;
-                    })
-                } else {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Algo deu errado!',
-                        text: res.data
-                    });
-                }
-            })
-        } else if (!$(this).find('input').hasClass(ERROR_CLASS)) {
-            Swal.fire({
-                icon: 'error',
-                title: 'Algo deu errado!',
-                text: $(this).find('.initial-payment-rule-text').text().trim(),
-                footer: 'Confira suas informações e tente novamente, por favor.'
-            });
+        if (isCookieAccepted()) {
+            const userBirth = $(this).find('#birthday').val();
+            const userAge = OBAH_SIMULATOR.calculateAge(userBirth);
+    
+            if (OBAH_SIMULATOR.hasAgeInRange(userAge)) {
+    
+                $createSimulationForm.find('button').addClass(LOADING_CLASS);
+    
+                $.post(app_data.url, $createSimulationForm.serialize(), function(res){
+                    if(res.success) {
+                        Swal.fire(
+                            'Dados enviados com sucesso!',
+                            'Você será redirecionado para o simulador.',
+                            'success'
+                        ).then(() => {
+                            $createSimulationForm.find('button').removeClass(LOADING_CLASS);
+                            window.location.href=res.data;
+                        })
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Algo deu errado!',
+                            text: res.data
+                        });
+                    }
+                })
+            } else if (!$(this).find('input').hasClass(ERROR_CLASS)) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Algo deu errado!',
+                    text: $(this).find('.initial-payment-rule-text').text().trim(),
+                    footer: 'Confira suas informações e tente novamente, por favor.'
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Parece que sua idade não está dentro da idade aceita para realizar uma simulação em nossa plataforma.'
+                });
+            }
         } else {
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
-                text: 'Parece que sua idade não está dentro da idade aceita para realizar uma simulação em nossa plataforma.'
+                text: 'Você deve aceitar os cookies para que a simulação possa ser criada.'
             });
         }
     });
@@ -202,3 +210,15 @@ jQuery(function($){
         $propertyPriceInput.data('itbi', itbiAmount);
     }
 })
+
+function isCookieAccepted() {
+    let is = false;
+    document.cookie.split(';').forEach(cookie => {
+        const [name, value] = cookie.split('=');
+
+        if (name === 'viewed_cookie_policy' && value === 'yes') {
+            is = true;
+        }
+    })
+    return is;
+}

@@ -44,6 +44,12 @@ define('OBAH_SIMULATOR_FIELDS', [
 
 // SIMULAÇÂO
 define('SIMULATION_HASH_KEY', 'simulation_hash');
+define('SIMULATION_BANKS_ORDER', [
+    0  => 'ITAU ',
+    10 => 'SANTANDER',
+    20 => 'BRADESCO',
+    30 => 'CAIXA',
+]);
 
 // ENV
 define('OBAH_DEV', strpos($_SERVER['SERVER_NAME'], '.dev') !== false);

@@ -109,3 +109,11 @@ function formatBirthday( int $simulationId ): string
 
     return $birthdate->format('d/m/Y');
 }
+
+function getBankName( string $bankTitle ) : string
+{
+    $titlePieces = explode(' ', $bankTitle);
+    $bankName = array_shift($titlePieces);
+
+    return $bankName ? $bankName : '';
+}

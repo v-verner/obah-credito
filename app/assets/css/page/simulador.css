@@ -28,12 +28,21 @@
     padding: 20px !important;
 }
 
+.obah-edit-simulation-button span,
+.obah-edit-simulation-button i {
+    font-size: 17px;
+}
+
 .sim-col .edit {
     color: #04d9b2;
 }
 
 .sim-row .icon-box-text.last-reset {
     padding-left: 6px !important;
+}
+
+.result-bank-col {
+    border-right: 1px solid rgb(196, 196, 196) !important;
 }
 
 .sim-row i.icon-checkmark {

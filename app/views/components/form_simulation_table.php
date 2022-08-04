@@ -32,12 +32,15 @@
             </tr>
             
             <?php foreach($currentSimulation as $bank) :?>
+                <pre>
+                    <?php var_dump(getBankName($bank->Titulo)) ?>
+                </pre>
                 <tr class="bank">
-                    <td style="text-transform: uppercase">
+                    <td class="result-bank-col text-center" style="text-transform: uppercase">
                         <img width="62" height="62" src="<?= $bank->logo_banco ?>" alt="<?= $bank->Titulo ?>" title="<?= $bank->Titulo ?>" >
                     </td>  
                     <td class="text-center">
-                        <p>R$<?= number_format($bank->_Valor_Financiado, '2', ',' , '.') ?></p>
+                        <p><strong>R$<?= number_format($bank->_Valor_Financiado, '2', ',' , '.') ?></strong></p>
                     </td>
                     <td class="text-center">
                         <p>R$<?= number_format($bank->_Valor_Entrada, '2', ',' , '.') ?></p>
@@ -54,7 +57,7 @@
                     <td class="text-center">
                         <p><strong>R$<?= number_format($bank->Valor_Renda_Minima, '2', ',' , '.') ?></strong></p>
                     </td>
-                    <td class="text-center">
+                    <td class="text-center amortization-col">
                         <p><?= $bank->Modalidade ?></p>
                     </td>
                     <td class="text-center"><?= $bank->Taxa_Nominal ?>% a.a</td>
