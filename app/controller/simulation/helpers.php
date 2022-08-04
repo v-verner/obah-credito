@@ -99,6 +99,18 @@ function getLastSimulationResult( int $simulationId ): array
         });
     endif;
 
+    if ($currentResult) :
+        usort($currentResult, function($a, $b){
+            $nameA = strtoupper( getBankName( $a->Titulo ) );
+            $nameB = strtoupper( getBankName( $b->Titulo ) );
+
+            $priorityA = isset( SIMULATION_BANKS_ORDER[ $nameA ] ) ? SIMULATION_BANKS_ORDER[ $nameA ] : SIMULATION_LAST_PRIORITY;
+            $priorityB = isset( SIMULATION_BANKS_ORDER[ $nameB ] ) ? SIMULATION_BANKS_ORDER[ $nameB ] : SIMULATION_LAST_PRIORITY;
+
+            return $priorityA <=> $priorityB;
+        });
+    endif;
+
     return $currentResult;
 }
 

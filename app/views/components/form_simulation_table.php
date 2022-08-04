@@ -32,9 +32,6 @@
             </tr>
             
             <?php foreach($currentSimulation as $bank) :?>
-                <pre>
-                    <?php var_dump(getBankName($bank->Titulo)) ?>
-                </pre>
                 <tr class="bank">
                     <td class="result-bank-col text-center" style="text-transform: uppercase">
                         <img width="62" height="62" src="<?= $bank->logo_banco ?>" alt="<?= $bank->Titulo ?>" title="<?= $bank->Titulo ?>" >

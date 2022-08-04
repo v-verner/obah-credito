@@ -44,11 +44,12 @@ define('OBAH_SIMULATOR_FIELDS', [
 
 // SIMULAÇÂO
 define('SIMULATION_HASH_KEY', 'simulation_hash');
+define('SIMULATION_LAST_PRIORITY', PHP_INT_MAX);
 define('SIMULATION_BANKS_ORDER', [
-    0  => 'ITAU ',
-    10 => 'SANTANDER',
-    20 => 'BRADESCO',
-    30 => 'CAIXA',
+    'ITAU '     =>  0,
+    'SANTANDER' =>  10,
+    'BRADESCO'  =>  20,
+    'CAIXA'     =>  30
 ]);
 
 // ENV
